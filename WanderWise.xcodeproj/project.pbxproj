@@ -19,6 +19,7 @@
 		3DFF7E992B96AD1A005C66B9 /* TripEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFF7E982B96AD1A005C66B9 /* TripEvent.swift */; };
 		3DFF7E9B2B96B7B5005C66B9 /* ItineraryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFF7E9A2B96B7B5005C66B9 /* ItineraryTableViewCell.swift */; };
 		3DFF7E9D2B97B4FB005C66B9 /* ItinerarySectionHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFF7E9C2B97B4FB005C66B9 /* ItinerarySectionHeaderTableViewCell.swift */; };
+		3DFF7EC32B990C5C005C66B9 /* EditEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFF7EC22B990C5C005C66B9 /* EditEventViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		3DFF7E982B96AD1A005C66B9 /* TripEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripEvent.swift; sourceTree = "<group>"; };
 		3DFF7E9A2B96B7B5005C66B9 /* ItineraryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryTableViewCell.swift; sourceTree = "<group>"; };
 		3DFF7E9C2B97B4FB005C66B9 /* ItinerarySectionHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItinerarySectionHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		3DFF7EC22B990C5C005C66B9 /* EditEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,6 +91,7 @@
 				3DFF7E922B96A934005C66B9 /* ItineraryViewController.swift */,
 				3DFF7E9C2B97B4FB005C66B9 /* ItinerarySectionHeaderTableViewCell.swift */,
 				3DFF7E9A2B96B7B5005C66B9 /* ItineraryTableViewCell.swift */,
+				3DFF7EC22B990C5C005C66B9 /* EditEventViewController.swift */,
 			);
 			path = Itinerary;
 			sourceTree = "<group>";
@@ -169,6 +172,7 @@
 				3DFF7E952B96AC33005C66B9 /* Trip.swift in Sources */,
 				2C2E43462B8FBA5000593DE5 /* ViewController.swift in Sources */,
 				3DFF7E972B96ACC8005C66B9 /* Day.swift in Sources */,
+				3DFF7EC32B990C5C005C66B9 /* EditEventViewController.swift in Sources */,
 				2C2E43422B8FBA5000593DE5 /* AppDelegate.swift in Sources */,
 				3DFF7E9D2B97B4FB005C66B9 /* ItinerarySectionHeaderTableViewCell.swift in Sources */,
 				3DFF7E932B96A934005C66B9 /* ItineraryViewController.swift in Sources */,

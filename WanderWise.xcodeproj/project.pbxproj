@@ -98,6 +98,7 @@
 				2C9218752BA79B76004439B7 /* NewTripViewController.swift */,
 			);
 			path = NewTrip;
+			sourceTree = "<group>";
 		3DFF7E9E2B982BAC005C66B9 /* Itinerary */ = {
 			isa = PBXGroup;
 			children = (

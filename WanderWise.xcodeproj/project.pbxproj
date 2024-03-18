@@ -13,6 +13,7 @@
 		2C2E43492B8FBA5000593DE5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C2E43472B8FBA5000593DE5 /* Main.storyboard */; };
 		2C2E434B2B8FBA5200593DE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C2E434A2B8FBA5200593DE5 /* Assets.xcassets */; };
 		2C2E434E2B8FBA5200593DE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C2E434C2B8FBA5200593DE5 /* LaunchScreen.storyboard */; };
+		2C9218762BA79B76004439B7 /* NewTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9218752BA79B76004439B7 /* NewTripViewController.swift */; };
 		3DFF7E932B96A934005C66B9 /* ItineraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFF7E922B96A934005C66B9 /* ItineraryViewController.swift */; };
 		3DFF7E952B96AC33005C66B9 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFF7E942B96AC33005C66B9 /* Trip.swift */; };
 		3DFF7E972B96ACC8005C66B9 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFF7E962B96ACC8005C66B9 /* Day.swift */; };
@@ -33,6 +34,7 @@
 		2C2E434A2B8FBA5200593DE5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C2E434D2B8FBA5200593DE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C2E434F2B8FBA5200593DE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C9218752BA79B76004439B7 /* NewTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTripViewController.swift; sourceTree = "<group>"; };
 		3DFF7E922B96A934005C66B9 /* ItineraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryViewController.swift; sourceTree = "<group>"; };
 		3DFF7E942B96AC33005C66B9 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		3DFF7E962B96ACC8005C66B9 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 		2C2E43402B8FBA5000593DE5 /* WanderWise */ = {
 			isa = PBXGroup;
 			children = (
+				2C9218742BA79B4E004439B7 /* NewTrip */,
 				2C2E43412B8FBA5000593DE5 /* AppDelegate.swift */,
 				2C2E43432B8FBA5000593DE5 /* SceneDelegate.swift */,
 				2C2E43452B8FBA5000593DE5 /* ViewController.swift */,
@@ -89,6 +92,12 @@
 			path = WanderWise;
 			sourceTree = "<group>";
 		};
+		2C9218742BA79B4E004439B7 /* NewTrip */ = {
+			isa = PBXGroup;
+			children = (
+				2C9218752BA79B76004439B7 /* NewTripViewController.swift */,
+			);
+			path = NewTrip;
 		3DFF7E9E2B982BAC005C66B9 /* Itinerary */ = {
 			isa = PBXGroup;
 			children = (
@@ -181,6 +190,7 @@
 				3DFF7E972B96ACC8005C66B9 /* Day.swift in Sources */,
 				3DFF7EC32B990C5C005C66B9 /* EditEventViewController.swift in Sources */,
 				2C2E43422B8FBA5000593DE5 /* AppDelegate.swift in Sources */,
+				2C9218762BA79B76004439B7 /* NewTripViewController.swift in Sources */,
 				3DFF7EC92B993DBF005C66B9 /* EditItineraryViewController.swift in Sources */,
 				3DFF7E9D2B97B4FB005C66B9 /* ItinerarySectionHeaderTableViewCell.swift in Sources */,
 				3DFF7E932B96A934005C66B9 /* ItineraryViewController.swift in Sources */,

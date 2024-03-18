@@ -14,6 +14,15 @@
 		2C2E434B2B8FBA5200593DE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C2E434A2B8FBA5200593DE5 /* Assets.xcassets */; };
 		2C2E434E2B8FBA5200593DE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C2E434C2B8FBA5200593DE5 /* LaunchScreen.storyboard */; };
 		2C9218762BA79B76004439B7 /* NewTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9218752BA79B76004439B7 /* NewTripViewController.swift */; };
+		3DFF7E932B96A934005C66B9 /* ItineraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFF7E922B96A934005C66B9 /* ItineraryViewController.swift */; };
+		3DFF7E952B96AC33005C66B9 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFF7E942B96AC33005C66B9 /* Trip.swift */; };
+		3DFF7E972B96ACC8005C66B9 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFF7E962B96ACC8005C66B9 /* Day.swift */; };
+		3DFF7E992B96AD1A005C66B9 /* TripEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFF7E982B96AD1A005C66B9 /* TripEvent.swift */; };
+		3DFF7E9B2B96B7B5005C66B9 /* ItineraryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFF7E9A2B96B7B5005C66B9 /* ItineraryTableViewCell.swift */; };
+		3DFF7E9D2B97B4FB005C66B9 /* ItinerarySectionHeaderTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFF7E9C2B97B4FB005C66B9 /* ItinerarySectionHeaderTableViewCell.swift */; };
+		3DFF7EC32B990C5C005C66B9 /* EditEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFF7EC22B990C5C005C66B9 /* EditEventViewController.swift */; };
+		3DFF7EC72B993C72005C66B9 /* ItineraryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFF7EC62B993C72005C66B9 /* ItineraryHeaderView.swift */; };
+		3DFF7EC92B993DBF005C66B9 /* EditItineraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFF7EC82B993DBF005C66B9 /* EditItineraryViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +35,15 @@
 		2C2E434D2B8FBA5200593DE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C2E434F2B8FBA5200593DE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C9218752BA79B76004439B7 /* NewTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTripViewController.swift; sourceTree = "<group>"; };
+		3DFF7E922B96A934005C66B9 /* ItineraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryViewController.swift; sourceTree = "<group>"; };
+		3DFF7E942B96AC33005C66B9 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
+		3DFF7E962B96ACC8005C66B9 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
+		3DFF7E982B96AD1A005C66B9 /* TripEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripEvent.swift; sourceTree = "<group>"; };
+		3DFF7E9A2B96B7B5005C66B9 /* ItineraryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryTableViewCell.swift; sourceTree = "<group>"; };
+		3DFF7E9C2B97B4FB005C66B9 /* ItinerarySectionHeaderTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItinerarySectionHeaderTableViewCell.swift; sourceTree = "<group>"; };
+		3DFF7EC22B990C5C005C66B9 /* EditEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventViewController.swift; sourceTree = "<group>"; };
+		3DFF7EC62B993C72005C66B9 /* ItineraryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryHeaderView.swift; sourceTree = "<group>"; };
+		3DFF7EC82B993DBF005C66B9 /* EditItineraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItineraryViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +81,10 @@
 				2C2E43432B8FBA5000593DE5 /* SceneDelegate.swift */,
 				2C2E43452B8FBA5000593DE5 /* ViewController.swift */,
 				2C2E43472B8FBA5000593DE5 /* Main.storyboard */,
+				3DFF7E9E2B982BAC005C66B9 /* Itinerary */,
+				3DFF7E942B96AC33005C66B9 /* Trip.swift */,
+				3DFF7E962B96ACC8005C66B9 /* Day.swift */,
+				3DFF7E982B96AD1A005C66B9 /* TripEvent.swift */,
 				2C2E434A2B8FBA5200593DE5 /* Assets.xcassets */,
 				2C2E434C2B8FBA5200593DE5 /* LaunchScreen.storyboard */,
 				2C2E434F2B8FBA5200593DE5 /* Info.plist */,
@@ -76,6 +98,17 @@
 				2C9218752BA79B76004439B7 /* NewTripViewController.swift */,
 			);
 			path = NewTrip;
+		3DFF7E9E2B982BAC005C66B9 /* Itinerary */ = {
+			isa = PBXGroup;
+			children = (
+				3DFF7E922B96A934005C66B9 /* ItineraryViewController.swift */,
+				3DFF7E9C2B97B4FB005C66B9 /* ItinerarySectionHeaderTableViewCell.swift */,
+				3DFF7E9A2B96B7B5005C66B9 /* ItineraryTableViewCell.swift */,
+				3DFF7EC22B990C5C005C66B9 /* EditEventViewController.swift */,
+				3DFF7EC62B993C72005C66B9 /* ItineraryHeaderView.swift */,
+				3DFF7EC82B993DBF005C66B9 /* EditItineraryViewController.swift */,
+			);
+			path = Itinerary;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -149,9 +182,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3DFF7E992B96AD1A005C66B9 /* TripEvent.swift in Sources */,
+				3DFF7E9B2B96B7B5005C66B9 /* ItineraryTableViewCell.swift in Sources */,
+				3DFF7EC72B993C72005C66B9 /* ItineraryHeaderView.swift in Sources */,
+				3DFF7E952B96AC33005C66B9 /* Trip.swift in Sources */,
 				2C2E43462B8FBA5000593DE5 /* ViewController.swift in Sources */,
+				3DFF7E972B96ACC8005C66B9 /* Day.swift in Sources */,
+				3DFF7EC32B990C5C005C66B9 /* EditEventViewController.swift in Sources */,
 				2C2E43422B8FBA5000593DE5 /* AppDelegate.swift in Sources */,
 				2C9218762BA79B76004439B7 /* NewTripViewController.swift in Sources */,
+				3DFF7EC92B993DBF005C66B9 /* EditItineraryViewController.swift in Sources */,
+				3DFF7E9D2B97B4FB005C66B9 /* ItinerarySectionHeaderTableViewCell.swift in Sources */,
+				3DFF7E932B96A934005C66B9 /* ItineraryViewController.swift in Sources */,
 				2C2E43442B8FBA5000593DE5 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -304,6 +346,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WanderWise/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -311,6 +354,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -331,6 +375,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = WanderWise/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -338,6 +383,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

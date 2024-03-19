@@ -58,10 +58,10 @@
             </objects>
             <point key="canvasLocation" x="724" y="-3446"/>
         </scene>
-        <!--View Controller-->
+        <!--Sign up View Controller-->
         <scene sceneID="Kxr-hv-dgI">
             <objects>
-                <viewController id="xda-df-8yP" sceneMemberID="viewController">
+                <viewController title="Sign up View Controller" id="xda-df-8yP" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="CJJ-eJ-sDL">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -847,10 +847,10 @@
             </objects>
             <point key="canvasLocation" x="975" y="296"/>
         </scene>
-        <!--View Controller-->
+        <!--Profile Set up View Controller-->
         <scene sceneID="OSc-TQ-6if">
             <objects>
-                <viewController id="AtO-Kp-MPb" sceneMemberID="viewController">
+                <viewController title="Profile Set up View Controller" id="AtO-Kp-MPb" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Urz-D3-aHc">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -922,10 +922,10 @@
             </objects>
             <point key="canvasLocation" x="723" y="-2025"/>
         </scene>
-        <!--View Controller-->
+        <!--Signin View Controller-->
         <scene sceneID="1w3-fE-Yas">
             <objects>
-                <viewController id="41u-zl-12G" sceneMemberID="viewController">
+                <viewController title="Signin View Controller" id="41u-zl-12G" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Xh-wW-w78">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

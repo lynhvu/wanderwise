@@ -14,6 +14,7 @@
 		2C2E434B2B8FBA5200593DE5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C2E434A2B8FBA5200593DE5 /* Assets.xcassets */; };
 		2C2E434E2B8FBA5200593DE5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C2E434C2B8FBA5200593DE5 /* LaunchScreen.storyboard */; };
 		2C9218762BA79B76004439B7 /* NewTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9218752BA79B76004439B7 /* NewTripViewController.swift */; };
+		39FBE6DE2BA91D4400F6B1F8 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FBE6DD2BA91D4400F6B1F8 /* HomeScreenViewController.swift */; };
 		3DFF7E932B96A934005C66B9 /* ItineraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFF7E922B96A934005C66B9 /* ItineraryViewController.swift */; };
 		3DFF7E952B96AC33005C66B9 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFF7E942B96AC33005C66B9 /* Trip.swift */; };
 		3DFF7E972B96ACC8005C66B9 /* Day.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFF7E962B96ACC8005C66B9 /* Day.swift */; };
@@ -35,6 +36,7 @@
 		2C2E434D2B8FBA5200593DE5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C2E434F2B8FBA5200593DE5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C9218752BA79B76004439B7 /* NewTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTripViewController.swift; sourceTree = "<group>"; };
+		39FBE6DD2BA91D4400F6B1F8 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		3DFF7E922B96A934005C66B9 /* ItineraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryViewController.swift; sourceTree = "<group>"; };
 		3DFF7E942B96AC33005C66B9 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		3DFF7E962B96ACC8005C66B9 /* Day.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Day.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				2C2E43432B8FBA5000593DE5 /* SceneDelegate.swift */,
 				2C2E43452B8FBA5000593DE5 /* ViewController.swift */,
 				2C2E43472B8FBA5000593DE5 /* Main.storyboard */,
+				39FBE6DD2BA91D4400F6B1F8 /* HomeScreenViewController.swift */,
 				3DFF7E9E2B982BAC005C66B9 /* Itinerary */,
 				3DFF7E942B96AC33005C66B9 /* Trip.swift */,
 				3DFF7E962B96ACC8005C66B9 /* Day.swift */,
@@ -197,6 +200,7 @@
 				3DFF7E9D2B97B4FB005C66B9 /* ItinerarySectionHeaderTableViewCell.swift in Sources */,
 				3DFF7E932B96A934005C66B9 /* ItineraryViewController.swift in Sources */,
 				2C2E43442B8FBA5000593DE5 /* SceneDelegate.swift in Sources */,
+				39FBE6DE2BA91D4400F6B1F8 /* HomeScreenViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

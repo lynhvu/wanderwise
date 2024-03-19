@@ -19,7 +19,9 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
-        // set trip here ?
+        if trip == nil {
+            trip = upcomingTrips[0]
+        }
         titleLabel.text = trip.tripName
         dateLabel.text = trip.days[0].date
     }

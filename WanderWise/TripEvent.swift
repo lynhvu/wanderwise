@@ -7,7 +7,7 @@
 
 import Foundation
 
-class TripEvent {
+public class TripEvent {
     var title: String
     var location: String
     var time: String

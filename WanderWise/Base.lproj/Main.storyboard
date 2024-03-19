@@ -52,7 +52,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gpr-UU-DDC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="704.58015267175574" y="-2099.2957746478874"/>
+            <point key="canvasLocation" x="724" y="-3446"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Kxr-hv-dgI">
@@ -106,9 +106,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9I1-RH-juQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="705" y="-1413"/>
+            <point key="canvasLocation" x="724" y="-2760"/>
         </scene>
-        <!--New Trip View Controller-->
+        <!--Item-->
         <scene sceneID="enx-Lz-6Zu">
             <objects>
                 <viewController id="7Pt-uj-LiT" customClass="NewTripViewController" customModule="WanderWise" customModuleProvider="target" sceneMemberID="viewController">
@@ -172,20 +172,21 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Create Trip"/>
                                 <connections>
-                                    <segue destination="BSa-99-4f9" kind="show" id="luZ-9B-byD"/>
+                                    <segue destination="BSa-99-4f9" kind="show" id="KSV-iv-fZ4"/>
                                 </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yu5-LW-9lH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" selectedImage="calendar" catalog="system" id="6zg-aH-gxN"/>
                     <navigationItem key="navigationItem" id="SBR-VE-MsM"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GnA-pg-fJW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="705" y="48"/>
+            <point key="canvasLocation" x="1199" y="-1185"/>
         </scene>
-        <!--Home Screen View Controller-->
+        <!--Item-->
         <scene sceneID="Ut3-tc-uoQ">
             <objects>
                 <viewController id="P4n-Ee-dTD" customClass="HomeScreenViewController" customModule="WanderWise" customModuleProvider="target" sceneMemberID="viewController">
@@ -200,13 +201,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m5Q-za-yPT">
-                                <rect key="frame" x="283" y="777" width="90" height="35"/>
+                                <rect key="frame" x="283" y="728" width="90" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Plan Trip">
                                     <color key="baseBackgroundColor" red="0.78823529411764703" green="0.36470588235294116" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="7Pt-uj-LiT" kind="show" id="IRk-gs-4sd"/>
+                                    <segue destination="BSa-99-4f9" kind="show" id="ajc-iq-tdg"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bT6-g6-jie">
@@ -282,7 +283,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8gy-o5-UzW">
-                                <rect key="frame" x="20" y="440" width="353" height="270"/>
+                                <rect key="frame" x="20" y="440" width="353" height="221"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B6D-GH-1pd">
                                         <rect key="frame" x="0.0" y="0.0" width="353" height="27"/>
@@ -308,7 +309,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="WAC-J2-w5N">
-                                        <rect key="frame" x="0.0" y="37" width="353" height="233"/>
+                                        <rect key="frame" x="0.0" y="37" width="353" height="184"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" textLabel="0rc-4g-uHQ" detailTextLabel="hS7-QW-wz3" style="IBUITableViewCellStyleSubtitle" id="F1k-MF-tho">
@@ -375,6 +376,7 @@
                             <constraint firstItem="acd-W2-R7d" firstAttribute="trailing" secondItem="8gy-o5-UzW" secondAttribute="trailing" constant="20" id="xQ5-UQ-07J"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Item" selectedImage="house" catalog="system" id="bXh-6N-KSm"/>
                     <navigationItem key="navigationItem" id="a6l-Uh-wKs"/>
                     <connections>
                         <outlet property="greetingMessage" destination="pf8-ph-L5a" id="WIf-tH-wpi"/>
@@ -386,7 +388,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kW9-Ip-n8K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="705" y="-692"/>
+            <point key="canvasLocation" x="53" y="-1185"/>
         </scene>
         <!--Itinerary View Controller-->
         <scene sceneID="49f-pP-tP9">
@@ -548,7 +550,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="psb-k4-qJ2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="697" y="738"/>
+            <point key="canvasLocation" x="555" y="-442"/>
         </scene>
         <!--Edit Itinerary View Controller-->
         <scene sceneID="CHg-Tm-CHW">
@@ -711,7 +713,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yyd-Ab-hNh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="291" y="1476"/>
+            <point key="canvasLocation" x="149" y="296"/>
         </scene>
         <!--Edit Event View Controller-->
         <scene sceneID="mR5-yq-ZrB">
@@ -809,7 +811,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QvM-r9-Xy2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1117" y="1476"/>
+            <point key="canvasLocation" x="975" y="296"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="OSc-TQ-6if">
@@ -845,7 +847,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Save"/>
                                 <connections>
-                                    <segue destination="P4n-Ee-dTD" kind="show" id="l5d-d0-M6e"/>
+                                    <segue destination="nzj-kz-oKR" kind="show" id="9YV-ov-iXz"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile Info" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lBu-L4-oQy">
@@ -863,7 +865,26 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gez-6b-hJB" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1563" y="-1413"/>
+            <point key="canvasLocation" x="1580.9160305343512" y="-2760.5633802816901"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="6sf-kZ-Erp">
+            <objects>
+                <tabBarController id="nzj-kz-oKR" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="yz1-v3-2la"/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" backgroundImage="house" catalog="system" id="X7h-Rt-SDa">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="P4n-Ee-dTD" kind="relationship" relationship="viewControllers" id="s7z-9F-OYe"/>
+                        <segue destination="7Pt-uj-LiT" kind="relationship" relationship="viewControllers" id="HJv-gI-5pc"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8je-SF-5gE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="723" y="-2025"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="1w3-fE-Yas">
@@ -902,7 +923,7 @@
                                     <backgroundConfiguration key="background" cornerRadius="100"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="P4n-Ee-dTD" kind="show" id="rG0-24-ieb"/>
+                                    <segue destination="nzj-kz-oKR" kind="show" id="5j3-dQ-Jau"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -913,18 +934,20 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6yL-QM-FTv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-207" y="-1413"/>
+            <point key="canvasLocation" x="-189" y="-2760"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="luZ-9B-byD"/>
-        <segue reference="l5d-d0-M6e"/>
+        <segue reference="5j3-dQ-Jau"/>
+        <segue reference="ajc-iq-tdg"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="calendar" catalog="system" width="128" height="107"/>
+        <image name="house" catalog="system" width="128" height="104"/>
         <image name="square.and.pencil" catalog="system" width="128" height="121"/>
         <image name="trash" catalog="system" width="117" height="128"/>
         <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

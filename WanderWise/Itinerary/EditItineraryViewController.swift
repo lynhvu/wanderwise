@@ -25,7 +25,9 @@ class EditItineraryViewController: UIViewController, UITableViewDelegate, UITabl
             trip = upcomingTrips[0]
         }
         titleLabel.text = trip.tripName
-        dateLabel.text = "\(trip.days[0].date) - \(trip.days[trip.days.count - 1].date)"
+        if (trip.days.count > 0) {
+            dateLabel.text = "\(trip.days[0].date) - \(trip.days[trip.days.count - 1].date)"
+        }
         
         addEventButton.layer.cornerRadius = 0.5 * addEventButton.bounds.size.width
         addEventButton.clipsToBounds = true
@@ -33,7 +35,9 @@ class EditItineraryViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
-        dateLabel.text = "\(trip.days[0].date) - \(trip.days[trip.days.count - 1].date)"
+        if (trip.days.count > 0) {
+            dateLabel.text = "\(trip.days[0].date) - \(trip.days[trip.days.count - 1].date)"
+        }
     }
     
     // returns the amount of events for each day
@@ -79,11 +83,11 @@ class EditItineraryViewController: UIViewController, UITableViewDelegate, UITabl
                 day.events.append(event)
                 dateFound = true
             }
-            if dateFound == false {
-                let newDay = Day(date: date)
-                newDay.events.append(event)
-                trip.days.append(newDay)
-            }
+        }
+        if dateFound == false {
+            let newDay = Day(date: date)
+            newDay.events.append(event)
+            trip.days.append(newDay)
         }
     }
 

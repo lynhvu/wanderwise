@@ -28,7 +28,7 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         pastTableView.delegate = self
         pastTableView.dataSource = self
         
-        dummyData()
+        //dummyData()
         
         if upcomingTrips.isEmpty {
             upcomingTableView.isHidden = true
@@ -43,6 +43,20 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        if upcomingTrips.count > 0 {
+            upcomingTableView.isHidden = false
+            noUpcomingTripLabel.isHidden = true
+        }
+        
+        if pastTrips.count > 0 {
+            pastTableView.isHidden = false
+            noPastTripsLabel.isHidden = true
+        }
+        
+        upcomingTableView.reloadData()
+        pastTableView.reloadData()
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == upcomingTableView {
@@ -78,11 +92,11 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
-    // Function to load dummy data onto arrays
-    func dummyData(){
-        upcomingTrips.append(Trip(name: "Spring break cruise!"))
-        upcomingTrips.append(Trip(name: "Holiday cabin"))
-        upcomingTrips.append(Trip(name: "Backpacking"))
-        upcomingTrips.append(Trip(name: "Washington and Ohio trip"))
-    }
+//    // Function to load dummy data onto arrays
+//    func dummyData(){
+//        upcomingTrips.append(Trip(name: "Spring break cruise!"))
+//        upcomingTrips.append(Trip(name: "Holiday cabin"))
+//        upcomingTrips.append(Trip(name: "Backpacking"))
+//        upcomingTrips.append(Trip(name: "Washington and Ohio trip"))
+//    }
 }

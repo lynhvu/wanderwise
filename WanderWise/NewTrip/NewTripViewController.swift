@@ -9,21 +9,22 @@ import UIKit
 
 class NewTripViewController: UIViewController {
 
+    @IBOutlet weak var tripNameField: UITextField!
+    @IBOutlet weak var destinationField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "CreatedItinerarySegue",
+           let destination = segue.destination as? ItineraryViewController {
+            var newTrip = Trip(name: tripNameField.text!)
+            upcomingTrips.append(newTrip)
+            destination.trip = newTrip
+        }
     }
-    */
 
 }

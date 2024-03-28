@@ -21,11 +21,13 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
         
         tableView.delegate = self
         tableView.dataSource = self
-        if trip == nil {
-            trip = upcomingTrips[0]
-        }
+//        if trip == nil {
+//            trip = upcomingTrips[0]
+//        }
         titleLabel.text = trip.tripName
-        dateLabel.text = trip.days[0].date
+        if (trip.days.count > 0) {
+            dateLabel.text = "\(trip.days[0].date) - \(trip.days[trip.days.count - 1].date)"
+        }
         
         chatButton.layer.cornerRadius = 0.5 * chatButton.bounds.size.width
         chatButton.clipsToBounds = true
@@ -33,6 +35,9 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
+        if (trip.days.count > 0) {
+            dateLabel.text = "\(trip.days[0].date) - \(trip.days[trip.days.count - 1].date)"
+        }
     }
     
     // returns the amount of events for each day

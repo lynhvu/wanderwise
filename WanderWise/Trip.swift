@@ -13,6 +13,6 @@ public class Trip {
     
     init(name: String) {
         tripName = name
-        days = [Day(date: "09/02/2024")]
+//        days = [Day(date: "09/02/2024")]
     }
 }

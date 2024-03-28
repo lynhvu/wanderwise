@@ -192,7 +192,7 @@
                                     <color key="baseBackgroundColor" red="0.7831722498" green="0.47056704760000001" blue="0.47161024810000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="BSa-99-4f9" kind="show" id="KSV-iv-fZ4"/>
+                                    <segue destination="BSa-99-4f9" kind="show" identifier="CreatedItinerarySegue" id="KSV-iv-fZ4"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Trip" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="979-xf-dV2">
@@ -224,6 +224,10 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Item" selectedImage="calendar" catalog="system" id="6zg-aH-gxN"/>
                     <navigationItem key="navigationItem" id="SBR-VE-MsM"/>
+                    <connections>
+                        <outlet property="destinationField" destination="Qwe-cV-Yxz" id="CmK-so-J7W"/>
+                        <outlet property="tripNameField" destination="q7Y-x0-qTd" id="hyF-rS-Wiw"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GnA-pg-fJW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -555,11 +555,11 @@
             <objects>
                 <viewController id="BSa-99-4f9" customClass="ItineraryViewController" customModule="WanderWise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zfX-1e-LTX">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="OYj-PG-vUg">
-                                <rect key="frame" x="15" y="160" width="363" height="682"/>
+                                <rect key="frame" x="15" y="160" width="363" height="643"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SectionHeaderCell" rowHeight="68" id="dW6-ZJ-YQE" customClass="ItinerarySectionHeaderTableViewCell" customModule="WanderWise" customModuleProvider="target">
@@ -729,7 +729,7 @@
             <objects>
                 <viewController id="wSr-SM-C7x" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tPI-1X-nES">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="kz5-Cr-zgm"/>
                         <color key="backgroundColor" red="0.89179652929999997" green="0.95605427030000001" blue="0.99608594179999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -745,11 +745,11 @@
             <objects>
                 <viewController id="Eci-cM-Mwe" customClass="EditItineraryViewController" customModule="WanderWise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="myj-WN-jth">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="6KG-yZ-ivp">
-                                <rect key="frame" x="15" y="160" width="363" height="682"/>
+                                <rect key="frame" x="15" y="160" width="363" height="643"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SectionHeaderCell" rowHeight="68" id="zaS-38-lcI" customClass="ItinerarySectionHeaderTableViewCell" customModule="WanderWise" customModuleProvider="target">
@@ -874,9 +874,6 @@
                                         <buttonConfiguration key="configuration" style="plain" title="Done">
                                             <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
                                         </buttonConfiguration>
-                                        <connections>
-                                            <segue destination="BSa-99-4f9" kind="showDetail" id="Y6g-Fc-dMx"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <viewLayoutGuide key="safeArea" id="fkt-CQ-cOR"/>
@@ -920,50 +917,40 @@
             <objects>
                 <viewController id="hC5-Nn-KYf" customClass="EditEventViewController" customModule="WanderWise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tx2-7X-m7J">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Dc-aa-Y1J">
-                                <rect key="frame" x="319" y="0.0" width="48" height="35"/>
+                                <rect key="frame" x="319" y="44" width="48" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="trash" catalog="system">
                                     <color key="baseForegroundColor" red="0.72991901640000001" green="0.3883774579" blue="0.39606451990000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Event title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZkD-xw-n4O">
-                                <rect key="frame" x="34" y="61" width="325" height="34"/>
+                                <rect key="frame" x="34" y="105" width="325" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="search destination" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P0D-Mz-q5C">
-                                <rect key="frame" x="34" y="110" width="325" height="34"/>
+                                <rect key="frame" x="34" y="154" width="325" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HsF-fG-3yZ">
-                                <rect key="frame" x="34" y="159" width="175" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="175" id="Add-zX-69c"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nqq-HQ-WsU">
-                                <rect key="frame" x="234" y="159" width="125" height="34"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="125" id="TV4-eO-2HE"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <datePicker contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="V6U-jh-Y0w">
+                                <rect key="frame" x="34" y="203" width="127" height="39"/>
+                            </datePicker>
+                            <datePicker contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="3Mv-pP-II5">
+                                <rect key="frame" x="273" y="203" width="86" height="39"/>
+                            </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2T-Ia-gOB">
-                                <rect key="frame" x="34" y="223" width="46" height="21"/>
+                                <rect key="frame" x="34" y="262.33333333333331" width="46" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Notes" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hPC-CX-5yI">
-                                <rect key="frame" x="34" y="252" width="325" height="100"/>
+                                <rect key="frame" x="34" y="291.33333333333331" width="325" height="100"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="CtD-YV-5KK"/>
@@ -972,47 +959,54 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OjU-Fu-kJS">
-                                <rect key="frame" x="298" y="372" width="61" height="35"/>
+                                <rect key="frame" x="298" y="411.33333333333331" width="61" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Save">
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <color key="baseBackgroundColor" red="0.72991901640000001" green="0.3883774579" blue="0.39606451990000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="saveButtonPressed:" destination="hC5-Nn-KYf" eventType="touchUpInside" id="URs-4b-hWF"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="hoD-UL-i93"/>
                         <color key="backgroundColor" red="0.89179652929999997" green="0.95605427030000001" blue="0.99608594179999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="hoD-UL-i93" firstAttribute="trailing" secondItem="nqq-HQ-WsU" secondAttribute="trailing" constant="34" id="17c-5m-5yv"/>
+                            <constraint firstItem="r2T-Ia-gOB" firstAttribute="top" secondItem="V6U-jh-Y0w" secondAttribute="bottom" constant="25" id="1Yg-JK-HEw"/>
                             <constraint firstItem="hoD-UL-i93" firstAttribute="trailing" secondItem="P0D-Mz-q5C" secondAttribute="trailing" constant="34" id="1sC-ni-zRR"/>
                             <constraint firstItem="hPC-CX-5yI" firstAttribute="leading" secondItem="hoD-UL-i93" secondAttribute="leading" constant="34" id="2ou-MC-iMK"/>
                             <constraint firstItem="r2T-Ia-gOB" firstAttribute="leading" secondItem="hoD-UL-i93" secondAttribute="leading" constant="34" id="BL0-Tb-TZg"/>
-                            <constraint firstItem="HsF-fG-3yZ" firstAttribute="leading" secondItem="hoD-UL-i93" secondAttribute="leading" constant="34" id="BYW-wY-zAz"/>
                             <constraint firstItem="OjU-Fu-kJS" firstAttribute="top" secondItem="hPC-CX-5yI" secondAttribute="bottom" constant="20" id="FoV-Ko-leB"/>
+                            <constraint firstItem="V6U-jh-Y0w" firstAttribute="top" secondItem="P0D-Mz-q5C" secondAttribute="bottom" constant="15" id="IyI-hg-A2p"/>
                             <constraint firstItem="hPC-CX-5yI" firstAttribute="top" secondItem="r2T-Ia-gOB" secondAttribute="bottom" constant="8" symbolic="YES" id="N3S-41-Ylp"/>
                             <constraint firstItem="P0D-Mz-q5C" firstAttribute="leading" secondItem="hoD-UL-i93" secondAttribute="leading" constant="34" id="NbY-zg-8Pq"/>
-                            <constraint firstItem="nqq-HQ-WsU" firstAttribute="top" secondItem="P0D-Mz-q5C" secondAttribute="bottom" constant="15" id="ShV-Nu-vj3"/>
                             <constraint firstItem="P0D-Mz-q5C" firstAttribute="top" secondItem="ZkD-xw-n4O" secondAttribute="bottom" constant="15" id="ZoV-Z8-aTl"/>
-                            <constraint firstItem="HsF-fG-3yZ" firstAttribute="top" secondItem="P0D-Mz-q5C" secondAttribute="bottom" constant="15" id="ahS-jF-y3N"/>
+                            <constraint firstItem="hoD-UL-i93" firstAttribute="trailing" secondItem="3Mv-pP-II5" secondAttribute="trailing" constant="34" id="dQZ-C8-Oct"/>
                             <constraint firstItem="ZkD-xw-n4O" firstAttribute="top" secondItem="4Dc-aa-Y1J" secondAttribute="bottom" constant="26" id="eG1-wc-fB5"/>
                             <constraint firstItem="ZkD-xw-n4O" firstAttribute="leading" secondItem="hoD-UL-i93" secondAttribute="leading" constant="34" id="ejV-DU-VfP"/>
                             <constraint firstItem="hoD-UL-i93" firstAttribute="trailing" secondItem="4Dc-aa-Y1J" secondAttribute="trailing" constant="26" id="eof-Xb-FbA"/>
                             <constraint firstItem="4Dc-aa-Y1J" firstAttribute="top" secondItem="hoD-UL-i93" secondAttribute="top" id="ers-5F-djV"/>
+                            <constraint firstItem="V6U-jh-Y0w" firstAttribute="leading" secondItem="hoD-UL-i93" secondAttribute="leading" constant="34" id="fJD-C0-NHW"/>
                             <constraint firstItem="hoD-UL-i93" firstAttribute="trailing" secondItem="ZkD-xw-n4O" secondAttribute="trailing" constant="34" id="hA6-ND-GT7"/>
                             <constraint firstItem="hoD-UL-i93" firstAttribute="trailing" secondItem="OjU-Fu-kJS" secondAttribute="trailing" constant="34" id="qOf-r9-5RM"/>
                             <constraint firstItem="hoD-UL-i93" firstAttribute="trailing" secondItem="hPC-CX-5yI" secondAttribute="trailing" constant="34" id="sYf-Wu-YgS"/>
-                            <constraint firstItem="r2T-Ia-gOB" firstAttribute="top" secondItem="HsF-fG-3yZ" secondAttribute="bottom" constant="30" id="x5o-L3-l4W"/>
+                            <constraint firstItem="3Mv-pP-II5" firstAttribute="top" secondItem="P0D-Mz-q5C" secondAttribute="bottom" constant="15" id="zcV-SK-XUK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="7fw-Zd-Rcn"/>
                     <connections>
+                        <outlet property="datePicker" destination="V6U-jh-Y0w" id="0OX-gB-WpD"/>
+                        <outlet property="eventTitleField" destination="ZkD-xw-n4O" id="W2I-M5-4Lb"/>
+                        <outlet property="locationField" destination="P0D-Mz-q5C" id="ada-P2-KHp"/>
                         <outlet property="notesTextField" destination="hPC-CX-5yI" id="hah-W4-ZW1"/>
                         <outlet property="saveButton" destination="OjU-Fu-kJS" id="flE-Os-skL"/>
+                        <outlet property="timePicker" destination="3Mv-pP-II5" id="0Ve-Fa-0JP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QvM-r9-Xy2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="340" y="291"/>
+            <point key="canvasLocation" x="339.69465648854958" y="290.84507042253523"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="OSc-TQ-6if">
@@ -1213,8 +1207,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="iYh-KZ-4UX"/>
-        <segue reference="0Sq-Sp-g9I"/>
-        <segue reference="Y6g-Fc-dMx"/>
+        <segue reference="MeY-9U-F8j"/>
+        <segue reference="KSV-iv-fZ4"/>
         <segue reference="ZQB-ef-5vd"/>
     </inferredMetricsTieBreakers>
     <resources>

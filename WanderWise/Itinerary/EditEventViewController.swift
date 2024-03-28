@@ -9,8 +9,13 @@ import UIKit
 
 class EditEventViewController: UIViewController {
 
+    @IBOutlet weak var eventTitleField: UITextField!
+    @IBOutlet weak var locationField: UITextField!
+    @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var timePicker: UIDatePicker!
     @IBOutlet weak var notesTextField: UITextField!
     @IBOutlet weak var saveButton: UIButton!
+    var delegate: EditItineraryViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,15 +27,19 @@ class EditEventViewController: UIViewController {
         saveButton.clipsToBounds = true
     }
     
+    @IBAction func saveButtonPressed(_ sender: Any) {
+        let dateFormatter = DateFormatter()
+        //dateFormatter.dateFormat = "MM/dd/yyyy"
+        dateFormatter.dateStyle = .short
+        dateFormatter.timeStyle = .none
+        
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateStyle = .none
+        timeFormatter.timeStyle = .short
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        let newEvent = TripEvent(title: eventTitleField.text!, location: locationField.text!, notes: notesTextField.text!, time: timeFormatter.string(from: datePicker.date))
+       
+        delegate.addEventToTrip(date: dateFormatter.string(from: datePicker.date), event: newEvent)
     }
-    */
 
 }

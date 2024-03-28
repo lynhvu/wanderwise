@@ -25,10 +25,14 @@ class EditItineraryViewController: UIViewController, UITableViewDelegate, UITabl
             trip = upcomingTrips[0]
         }
         titleLabel.text = trip.tripName
-        dateLabel.text = trip.days[0].date
+        dateLabel.text = "\(trip.days[0].date) - \(trip.days[trip.days.count - 1].date)"
         
         addEventButton.layer.cornerRadius = 0.5 * addEventButton.bounds.size.width
         addEventButton.clipsToBounds = true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
     }
     
     // returns the amount of events for each day
@@ -61,13 +65,31 @@ class EditItineraryViewController: UIViewController, UITableViewDelegate, UITabl
     // custom view for section header cells
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SectionHeaderCell") as? ItinerarySectionHeaderTableViewCell
-        cell?.dayLabel.text = "Day " + String(section)
+        cell?.dayLabel.text = "Day " + String(section + 1)
         cell?.dateLabel.text = trip.days[section].date
         return cell
     }
+    
+    func addEventToTrip(date: String, event: TripEvent) {
+        // look for right date
+        var dateFound = false
+        for day in trip.days {
+            if day.date == date {
+                day.events.append(event)
+                dateFound = true
+            }
+            if dateFound == false {
+                let newDay = Day(date: date)
+                newDay.events.append(event)
+                trip.days.append(newDay)
+            }
+        }
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if let destination = segue.destination as? EditEventViewController {
+            destination.delegate = self
+        }
     }
 
 }

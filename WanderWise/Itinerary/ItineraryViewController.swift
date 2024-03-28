@@ -31,6 +31,10 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
         chatButton.clipsToBounds = true
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        tableView.reloadData()
+    }
+    
     // returns the amount of events for each day
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return trip.days[section].events.count

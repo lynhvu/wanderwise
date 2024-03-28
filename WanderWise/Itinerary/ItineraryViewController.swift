@@ -12,11 +12,13 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var chatButton: UIButton!
     
     var trip: Trip!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.delegate = self
         tableView.dataSource = self
         if trip == nil {
@@ -24,6 +26,9 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         titleLabel.text = trip.tripName
         dateLabel.text = trip.days[0].date
+        
+        chatButton.layer.cornerRadius = 0.5 * chatButton.bounds.size.width
+        chatButton.clipsToBounds = true
     }
     
     // returns the amount of events for each day

@@ -13,7 +13,7 @@ class EditEventViewController: UIViewController {
     @IBOutlet weak var locationField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var timePicker: UIDatePicker!
-    @IBOutlet weak var notesTextField: UITextField!
+    @IBOutlet weak var notesTextField: UITextView!
     @IBOutlet weak var saveButton: UIButton!
     var delegate: EditItineraryViewController!
     

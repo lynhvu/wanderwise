@@ -33,6 +33,7 @@ class EditItineraryViewController: UIViewController, UITableViewDelegate, UITabl
     
     override func viewWillAppear(_ animated: Bool) {
         tableView.reloadData()
+        dateLabel.text = "\(trip.days[0].date) - \(trip.days[trip.days.count - 1].date)"
     }
     
     // returns the amount of events for each day

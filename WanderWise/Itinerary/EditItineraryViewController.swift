@@ -12,11 +12,13 @@ class EditItineraryViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var addEventButton: UIButton!
     
     var trip: Trip!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tableView.delegate = self
         tableView.dataSource = self
         if trip == nil {
@@ -24,6 +26,9 @@ class EditItineraryViewController: UIViewController, UITableViewDelegate, UITabl
         }
         titleLabel.text = trip.tripName
         dateLabel.text = trip.days[0].date
+        
+        addEventButton.layer.cornerRadius = 0.5 * addEventButton.bounds.size.width
+        addEventButton.clipsToBounds = true
     }
     
     // returns the amount of events for each day
@@ -61,14 +66,8 @@ class EditItineraryViewController: UIViewController, UITableViewDelegate, UITabl
         return cell
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
     }
-    */
 
 }

@@ -555,11 +555,11 @@
             <objects>
                 <viewController id="BSa-99-4f9" customClass="ItineraryViewController" customModule="WanderWise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zfX-1e-LTX">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="OYj-PG-vUg">
-                                <rect key="frame" x="15" y="160" width="363" height="643"/>
+                                <rect key="frame" x="15" y="160" width="363" height="682"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SectionHeaderCell" rowHeight="68" id="dW6-ZJ-YQE" customClass="ItinerarySectionHeaderTableViewCell" customModule="WanderWise" customModuleProvider="target">
@@ -729,7 +729,7 @@
             <objects>
                 <viewController id="wSr-SM-C7x" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tPI-1X-nES">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <viewLayoutGuide key="safeArea" id="kz5-Cr-zgm"/>
                         <color key="backgroundColor" red="0.89179652929999997" green="0.95605427030000001" blue="0.99608594179999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -745,11 +745,11 @@
             <objects>
                 <viewController id="Eci-cM-Mwe" customClass="EditItineraryViewController" customModule="WanderWise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="myj-WN-jth">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="6KG-yZ-ivp">
-                                <rect key="frame" x="15" y="160" width="363" height="643"/>
+                                <rect key="frame" x="15" y="160" width="363" height="682"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SectionHeaderCell" rowHeight="68" id="zaS-38-lcI" customClass="ItinerarySectionHeaderTableViewCell" customModule="WanderWise" customModuleProvider="target">
@@ -882,6 +882,17 @@
                                 <viewLayoutGuide key="safeArea" id="fkt-CQ-cOR"/>
                                 <color key="backgroundColor" red="0.30729377270000002" green="0.31599867339999999" blue="0.39216703180000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="roQ-6X-Q7I">
+                                <rect key="frame" x="325" y="700" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" image="plus" catalog="system">
+                                    <color key="baseBackgroundColor" red="0.72991901640000001" green="0.3883774579" blue="0.39606451990000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="hC5-Nn-KYf" kind="show" id="0Sq-Sp-g9I"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="g0Y-9l-4yy"/>
                         <color key="backgroundColor" red="0.89179652929999997" green="0.95605427030000001" blue="0.99608594179999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -894,6 +905,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="UVt-CR-RtL"/>
                     <connections>
+                        <outlet property="addEventButton" destination="roQ-6X-Q7I" id="9jV-X9-fwM"/>
                         <outlet property="dateLabel" destination="AtO-Sw-e9r" id="IxT-c7-IGL"/>
                         <outlet property="tableView" destination="6KG-yZ-ivp" id="EFR-E4-Pu3"/>
                         <outlet property="titleLabel" destination="tE9-Vc-c5B" id="2Yo-IW-H8O"/>
@@ -908,28 +920,28 @@
             <objects>
                 <viewController id="hC5-Nn-KYf" customClass="EditEventViewController" customModule="WanderWise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tx2-7X-m7J">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Dc-aa-Y1J">
-                                <rect key="frame" x="319" y="44" width="48" height="35"/>
+                                <rect key="frame" x="319" y="0.0" width="48" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="trash" catalog="system">
                                     <color key="baseForegroundColor" red="0.72991901640000001" green="0.3883774579" blue="0.39606451990000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Event title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZkD-xw-n4O">
-                                <rect key="frame" x="34" y="105" width="325" height="34"/>
+                                <rect key="frame" x="34" y="61" width="325" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="search destination" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P0D-Mz-q5C">
-                                <rect key="frame" x="34" y="154" width="325" height="34"/>
+                                <rect key="frame" x="34" y="110" width="325" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Date" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HsF-fG-3yZ">
-                                <rect key="frame" x="34" y="203" width="175" height="34"/>
+                                <rect key="frame" x="34" y="159" width="175" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="175" id="Add-zX-69c"/>
                                 </constraints>
@@ -937,7 +949,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Time" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nqq-HQ-WsU">
-                                <rect key="frame" x="234" y="203" width="125" height="34"/>
+                                <rect key="frame" x="234" y="159" width="125" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="125" id="TV4-eO-2HE"/>
                                 </constraints>
@@ -945,13 +957,13 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2T-Ia-gOB">
-                                <rect key="frame" x="34" y="267" width="46" height="21"/>
+                                <rect key="frame" x="34" y="223" width="46" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Notes" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hPC-CX-5yI">
-                                <rect key="frame" x="34" y="296" width="325" height="100"/>
+                                <rect key="frame" x="34" y="252" width="325" height="100"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="CtD-YV-5KK"/>
@@ -960,7 +972,7 @@
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OjU-Fu-kJS">
-                                <rect key="frame" x="298" y="416" width="61" height="35"/>
+                                <rect key="frame" x="298" y="372" width="61" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Save">
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1201,7 +1213,8 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="iYh-KZ-4UX"/>
-        <segue reference="gno-hb-hhV"/>
+        <segue reference="0Sq-Sp-g9I"/>
+        <segue reference="Y6g-Fc-dMx"/>
         <segue reference="ZQB-ef-5vd"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -1209,6 +1222,7 @@
         <image name="house" catalog="system" width="128" height="104"/>
         <image name="message.fill" catalog="system" width="128" height="114"/>
         <image name="person.crop.circle" catalog="system" width="128" height="123"/>
+        <image name="plus" catalog="system" width="128" height="113"/>
         <image name="square.and.pencil" catalog="system" width="128" height="121"/>
         <image name="trash" catalog="system" width="117" height="128"/>
         <systemColor name="opaqueSeparatorColor">

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SignUpViewController: UIViewController {
 
@@ -16,12 +17,19 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
     
 
- 
     @IBAction func createAccountPressed(_ sender: Any) {
+        // create a new user
+        Auth.auth().createUser(withEmail: self.emailField.text!, password: self.passwordField.text!)  {
+            (authResult, error) in
+            if let error = error as NSError? {
+                print("\(error.localizedDescription)")
+            } else {
+                print("New user created!")
+            }
+        }
     }
     
 }

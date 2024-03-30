@@ -16,7 +16,10 @@ class SignUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        // hide text for password
+        passwordField.isSecureTextEntry = true
+        confirmPasswordField.isSecureTextEntry = true
     }
     
 

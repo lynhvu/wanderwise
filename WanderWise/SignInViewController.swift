@@ -16,14 +16,15 @@ class SignInViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // hide text for password
+        passwordField.isSecureTextEntry = true
     }
     
     @IBAction func loginPressed(_ sender: Any) {
         Auth.auth().signIn(withEmail: self.emailField.text!, password: self.passwordField.text!) {
             (authResult, error) in
             if let error = error as NSError? {
-                var errorMessage =  "\(error.localizedDescription)"
-                print(errorMessage)
+                print("\(error.localizedDescription)")
             } else {
                 print("Successfully logged in!")
             }

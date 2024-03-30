@@ -350,6 +350,9 @@
                                 <buttonConfiguration key="configuration" style="filled" title="Logout">
                                     <color key="baseBackgroundColor" red="0.78823529410000004" green="0.36470588240000001" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="logoutPressed:" destination="9c8-93-C0G" eventType="touchUpInside" id="MCN-DD-uSs"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RXv-Uz-BcP"/>

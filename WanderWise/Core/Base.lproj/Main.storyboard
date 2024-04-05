@@ -698,7 +698,7 @@
                                             <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <segue destination="Eci-cM-Mwe" kind="show" id="ufM-pq-Vdo"/>
+                                            <segue destination="Eci-cM-Mwe" kind="show" identifier="EditItinerarySegueIdentifier" id="ufM-pq-Vdo"/>
                                         </connections>
                                     </button>
                                 </subviews>

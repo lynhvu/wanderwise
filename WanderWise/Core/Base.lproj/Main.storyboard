@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iwz-7F-Zkg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iwz-7F-Zkg">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -94,7 +94,6 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="createAccountPressed:" destination="xda-df-8yP" eventType="touchUpInside" id="tWs-9v-WOL"/>
-                                    <segue destination="AtO-Kp-MPb" kind="show" id="RLw-Zn-qKl"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sign up" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NX4-e5-Kb1">
@@ -113,6 +112,7 @@
                         <outlet property="confirmPasswordField" destination="Whk-m2-wAp" id="p62-13-qG2"/>
                         <outlet property="emailField" destination="x2e-tC-7qr" id="u3F-vf-za6"/>
                         <outlet property="passwordField" destination="F5C-fL-R42" id="Iqj-8m-6SD"/>
+                        <segue destination="AtO-Kp-MPb" kind="show" identifier="ProfileInfoSegue" id="W6I-c3-1ZV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9I1-RH-juQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1057,7 +1057,7 @@
                                     <color key="baseBackgroundColor" red="0.72991901640000001" green="0.3883774579" blue="0.39606451990000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="Aa8-Hj-EEl" kind="presentation" modalPresentationStyle="fullScreen" id="yU2-eb-5mU"/>
+                                    <segue destination="Aa8-Hj-EEl" kind="presentation" modalPresentationStyle="fullScreen" id="VJR-yb-KRM"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile Info" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lBu-L4-oQy">
@@ -1133,7 +1133,6 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="loginPressed:" destination="41u-zl-12G" eventType="touchUpInside" id="wWD-Yc-N7d"/>
-                                    <segue destination="Aa8-Hj-EEl" kind="presentation" modalPresentationStyle="fullScreen" id="iYh-KZ-4UX"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1144,6 +1143,7 @@
                     <connections>
                         <outlet property="emailField" destination="Aks-rS-BHn" id="kj4-pc-boF"/>
                         <outlet property="passwordField" destination="4bn-cT-47Z" id="4KS-zh-KLu"/>
+                        <segue destination="Aa8-Hj-EEl" kind="presentation" identifier="SigninToHome" modalPresentationStyle="fullScreen" id="oYs-GF-ThQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6yL-QM-FTv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1224,8 +1224,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="iYh-KZ-4UX"/>
-        <segue reference="OcL-vV-pD4"/>
+        <segue reference="VJR-yb-KRM"/>
+        <segue reference="g71-X5-WfU"/>
         <segue reference="ZQB-ef-5vd"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -1240,7 +1240,7 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

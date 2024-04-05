@@ -7,7 +7,7 @@
 
 import UIKit
 
-class EditEventViewController: UIViewController {
+class EditEventViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
 
     @IBOutlet weak var eventTitleField: UITextField!
     @IBOutlet weak var locationField: UITextField!
@@ -23,6 +23,10 @@ class EditEventViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        eventTitleField.delegate = self
+        locationField.delegate = self
+        notesTextField.delegate = self
+        
         // Set fields to previous values
         if let event = selectedEvent {
             eventTitleField.text = event.name
@@ -37,6 +41,17 @@ class EditEventViewController: UIViewController {
         notesTextField.clipsToBounds = true
         saveButton.layer.cornerRadius = 10
         saveButton.clipsToBounds = true
+    }
+    
+    // Called when 'return' key pressed
+    func textFieldShouldReturn(_ textField:UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // Called when the user clicks on the view outside of UITextField or UITextView
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {

@@ -41,7 +41,12 @@ class NewTripViewController: UIViewController {
         
         // Generate days for each date between the start and end dates
         let dates = datesBetween(start: startDatePicker.date, end: endDatePicker.date)
-        let days = dates.map { Day(date: $0, events: []) }
+        // TODO: - Take off the dummy events
+        let days = dates.map { date -> Day in
+            // Add a dummy event for each day - replace "Dummy Event" and other properties as needed
+            let dummyEvent = Event(name: "Dummy Event", startTime: date, endTime: date, location: "Dummy Location", description: "This is a dummy event. Replace with real event details.")
+            return Day(date: date, events: [dummyEvent])
+        }
         
         // Create a new Trip object with the generated days
         let newTrip = Trip(id: UUID().uuidString, userId: userId, name: tripName, startDate: startDatePicker.date, endDate: endDatePicker.date, location: destination, days: days)
@@ -65,12 +70,17 @@ class NewTripViewController: UIViewController {
         
         while currentDate <= end {
             dates.append(currentDate)
-            guard let nextDate = calendar.date(byAdding: oneDay, to: currentDate) else { break }
+            guard let nextDate = calendar.date(byAdding: oneDay, to: currentDate), nextDate <= end else { break }
             currentDate = nextDate
+        }
+        
+        if !dates.contains(end) {
+            dates.append(end)
         }
         
         return dates
     }
+
     
     private func showAlert(message: String) {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)

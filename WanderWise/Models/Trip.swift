@@ -57,6 +57,22 @@ class Trip {
         return Trip(id: id, userId: userId, name: name, startDate: startDate, endDate: endDate, location: location, days: days)
     }
     
+    func updateEventInTrip(updatedEvent: Event) {
+            guard let dayIndex = days.firstIndex(where: { Calendar.current.isDate($0.date, inSameDayAs: updatedEvent.startTime) }) else { return }
+            
+            if let eventIndex = days[dayIndex].events.firstIndex(where: { $0.id == updatedEvent.id }) {
+                days[dayIndex].events[eventIndex] = updatedEvent
+            }
+            
+            saveToDatabase { error in
+                if let error = error {
+                    print("Error updating trip with new event details: \(error.localizedDescription)")
+                } else {
+                    print("Trip successfully updated with new event details")
+                }
+            }
+        }
+    
     func addEventToDay(event: Event, forDate date: Date) {
         if let dayIndex = self.days.firstIndex(where: { Calendar.current.isDate($0.date, inSameDayAs: date) }) {
             self.days[dayIndex].events.append(event)

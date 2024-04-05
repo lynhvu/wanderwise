@@ -18,8 +18,19 @@ class EditEventViewController: UIViewController {
 
     var trip: Trip!
     
+    var selectedEvent: Event?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Set fields to previous values
+        if let event = selectedEvent {
+            eventTitleField.text = event.name
+            locationField.text = event.location
+            datePicker.date = event.startTime // Assuming your event has a single date
+            timePicker.date = event.startTime // You might need a separate picker or method for end time if they differ
+            notesTextField.text = event.description
+        }
 
         // set rounded corners for the notes text field and save button
         notesTextField.layer.cornerRadius = 10
@@ -29,24 +40,21 @@ class EditEventViewController: UIViewController {
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
-        // Ensure the title is not empty, adjust validation as necessary
-        guard let title = eventTitleField.text, !title.isEmpty else {
-            // Handle empty title, e.g., show an alert
+        guard let event = selectedEvent,
+              let title = eventTitleField.text, !title.isEmpty else {
+            // Handle empty title or missing event here, e.g., show an alert
             return
         }
         
-        // Create a new Event object
-        let newEvent = Event(
-            name: title,
-            startTime: timePicker.date,
-            endTime: timePicker.date,
-            location: locationField.text ?? "",
-            description: notesTextField.text
-        )
+        // Update the existing Event object's properties
+        event.name = title
+        event.location = locationField.text ?? ""
+        event.startTime = datePicker.date
+        event.endTime = timePicker.date // Adjust if your model supports different start/end times
+        event.description = notesTextField.text
         
-        // Assuming a method in Trip to add the event to the correct day
-        // This method would find or create the Day object and add the Event to it, then save/update the Trip in Firestore
-        trip.addEventToDay(event: newEvent, forDate: datePicker.date)
+        // Now use the Trip method to update the event in its corresponding day
+        trip.updateEventInTrip(updatedEvent: event)
         
         // Dismiss the view controller or pop back to the previous screen
         navigationController?.popViewController(animated: true)

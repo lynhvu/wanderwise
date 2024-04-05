@@ -858,7 +858,6 @@
                                             <outlet property="notesLabel" destination="coq-GD-l75" id="ohd-DU-LTl"/>
                                             <outlet property="timeLabel" destination="Gc7-Wz-cMG" id="7aX-SG-3ku"/>
                                             <outlet property="titleLabel" destination="ZBr-pV-J04" id="zSE-Ci-907"/>
-                                            <segue destination="hC5-Nn-KYf" kind="show" id="MeY-9U-F8j"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -900,9 +899,6 @@
                                 <buttonConfiguration key="configuration" style="filled" image="plus" catalog="system">
                                     <color key="baseBackgroundColor" red="0.72991901640000001" green="0.3883774579" blue="0.39606451990000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
-                                <connections>
-                                    <segue destination="hC5-Nn-KYf" kind="show" id="0Sq-Sp-g9I"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="g0Y-9l-4yy"/>
@@ -920,6 +916,7 @@
                         <outlet property="dateLabel" destination="AtO-Sw-e9r" id="IxT-c7-IGL"/>
                         <outlet property="tableView" destination="6KG-yZ-ivp" id="EFR-E4-Pu3"/>
                         <outlet property="titleLabel" destination="tE9-Vc-c5B" id="2Yo-IW-H8O"/>
+                        <segue destination="hC5-Nn-KYf" kind="show" identifier="EditEventSegueIdentifier" id="5Ea-2u-8gu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yyd-Ab-hNh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1228,7 +1225,6 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="iYh-KZ-4UX"/>
-        <segue reference="0Sq-Sp-g9I"/>
         <segue reference="OcL-vV-pD4"/>
         <segue reference="ZQB-ef-5vd"/>
     </inferredMetricsTieBreakers>

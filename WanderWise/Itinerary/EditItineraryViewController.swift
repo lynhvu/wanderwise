@@ -44,6 +44,10 @@ class EditItineraryViewController: UIViewController, UITableViewDelegate, UITabl
         return trip.days[section].events.count
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "EditEventSegueIdentifier", sender: indexPath)
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as? ItineraryTableViewCell else {
@@ -91,8 +95,15 @@ class EditItineraryViewController: UIViewController, UITableViewDelegate, UITabl
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? EditEventViewController {
-            destination.trip = self.trip
+        if segue.identifier == "EditEventSegueIdentifier",
+           let destination = segue.destination as? EditEventViewController,
+           let indexPath = sender as? IndexPath {
+            
+            let selectedDay = trip.days[indexPath.section]
+            let selectedEvent = selectedDay.events[indexPath.row]
+            
+            destination.trip = trip
+            destination.selectedEvent = selectedEvent
         }
     }
 

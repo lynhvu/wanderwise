@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseFirestore
 
 class EditItineraryViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
@@ -15,29 +16,27 @@ class EditItineraryViewController: UIViewController, UITableViewDelegate, UITabl
     @IBOutlet weak var addEventButton: UIButton!
     
     var trip: Trip!
+    let dateFormatter = DateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
-        if trip == nil {
-            trip = upcomingTrips[0]
-        }
-        titleLabel.text = trip.tripName
-        if (trip.days.count > 0) {
-            dateLabel.text = "\(trip.days[0].date) - \(trip.days[trip.days.count - 1].date)"
-        }
+        
+        titleLabel.text = trip.name
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .none
+        updateDateLabel()
         
         addEventButton.layer.cornerRadius = 0.5 * addEventButton.bounds.size.width
         addEventButton.clipsToBounds = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         tableView.reloadData()
-        if (trip.days.count > 0) {
-            dateLabel.text = "\(trip.days[0].date) - \(trip.days[trip.days.count - 1].date)"
-        }
+        updateDateLabel()
     }
     
     // returns the amount of events for each day
@@ -47,19 +46,22 @@ class EditItineraryViewController: UIViewController, UITableViewDelegate, UITabl
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as? ItineraryTableViewCell
-    
-        // get the right day and event
-        let day = indexPath.section
-        let eventIndex = indexPath.row
-        let event = trip.days[day].events[eventIndex]
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as? ItineraryTableViewCell else {
+            return UITableViewCell()
+        }
         
-        // populate cell with the correct labels
-        cell?.titleLabel?.text = event.title
-        cell?.locationLabel?.text = event.location
-        cell?.notesLabel.text = event.notes
-        cell?.timeLabel.text = event.time
-        return cell!
+        let event = trip.days[indexPath.section].events[indexPath.row]
+        cell.titleLabel?.text = event.name
+        cell.locationLabel?.text = event.location
+        cell.notesLabel.text = event.description
+        
+        // Assuming you have start and end time labels
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateStyle = .none
+        timeFormatter.timeStyle = .short
+        cell.timeLabel.text = "\(timeFormatter.string(from: event.startTime)) - \(timeFormatter.string(from: event.endTime))"
+        
+        return cell
     }
     
     // the amount of days in a trip is how many sections we want
@@ -69,31 +71,28 @@ class EditItineraryViewController: UIViewController, UITableViewDelegate, UITabl
     
     // custom view for section header cells
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "SectionHeaderCell") as? ItinerarySectionHeaderTableViewCell
-        cell?.dayLabel.text = "Day " + String(section + 1)
-        cell?.dateLabel.text = trip.days[section].date
-        return cell
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "SectionHeaderCell") as? ItinerarySectionHeaderTableViewCell else {
+            return nil
+        }
+        
+        let day = trip.days[section]
+        cell.dayLabel.text = "Day \(section + 1)"
+        cell.dateLabel.text = dateFormatter.string(from: day.date)
+        
+        return cell.contentView
     }
     
-    func addEventToTrip(date: String, event: TripEvent) {
-        // look for right date
-        var dateFound = false
-        for day in trip.days {
-            if day.date == date {
-                day.events.append(event)
-                dateFound = true
-            }
-        }
-        if dateFound == false {
-            let newDay = Day(date: date)
-            newDay.events.append(event)
-            trip.days.append(newDay)
+    func updateDateLabel() {
+        if let startDate = trip.days.first?.date, let endDate = trip.days.last?.date {
+            let formattedStartDate = dateFormatter.string(from: startDate)
+            let formattedEndDate = dateFormatter.string(from: endDate)
+            dateLabel.text = "\(formattedStartDate) - \(formattedEndDate)"
         }
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? EditEventViewController {
-            destination.delegate = self
+            destination.trip = self.trip
         }
     }
 

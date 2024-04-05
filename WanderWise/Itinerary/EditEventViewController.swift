@@ -15,7 +15,8 @@ class EditEventViewController: UIViewController {
     @IBOutlet weak var timePicker: UIDatePicker!
     @IBOutlet weak var notesTextField: UITextView!
     @IBOutlet weak var saveButton: UIButton!
-    var delegate: EditItineraryViewController!
+
+    var trip: Trip!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,18 +29,27 @@ class EditEventViewController: UIViewController {
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
-        let dateFormatter = DateFormatter()
-        //dateFormatter.dateFormat = "MM/dd/yyyy"
-        dateFormatter.dateStyle = .short
-        dateFormatter.timeStyle = .none
+        // Ensure the title is not empty, adjust validation as necessary
+        guard let title = eventTitleField.text, !title.isEmpty else {
+            // Handle empty title, e.g., show an alert
+            return
+        }
         
-        let timeFormatter = DateFormatter()
-        timeFormatter.dateStyle = .none
-        timeFormatter.timeStyle = .short
-
-        let newEvent = TripEvent(title: eventTitleField.text!, location: locationField.text!, notes: notesTextField.text!, time: timeFormatter.string(from: datePicker.date))
-       
-        delegate.addEventToTrip(date: dateFormatter.string(from: datePicker.date), event: newEvent)
+        // Create a new Event object
+        let newEvent = Event(
+            name: title,
+            startTime: timePicker.date,
+            endTime: timePicker.date,
+            location: locationField.text ?? "",
+            description: notesTextField.text
+        )
+        
+        // Assuming a method in Trip to add the event to the correct day
+        // This method would find or create the Day object and add the Event to it, then save/update the Trip in Firestore
+        trip.addEventToDay(event: newEvent, forDate: datePicker.date)
+        
+        // Dismiss the view controller or pop back to the previous screen
+        navigationController?.popViewController(animated: true)
     }
 
 }

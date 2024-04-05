@@ -195,7 +195,7 @@
                                 <rect key="frame" x="269" y="729" width="108" height="34.333333333333371"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Create Trip">
-                                    <color key="baseBackgroundColor" red="0.7831722498" green="0.47056704760000001" blue="0.47161024810000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                    <color key="baseBackgroundColor" red="0.72991901640000001" green="0.3883774579" blue="0.39606451990000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="createTripButtonPressed:" destination="7Pt-uj-LiT" eventType="touchUpInside" id="Qt6-Tw-EyE"/>
@@ -351,7 +351,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Logout">
-                                    <color key="baseBackgroundColor" red="0.78823529410000004" green="0.36470588240000001" blue="0.38823529410000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="baseBackgroundColor" red="0.72991901640000001" green="0.3883774579" blue="0.39606451990000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="logoutPressed:" destination="9c8-93-C0G" eventType="touchUpInside" id="MCN-DD-uSs"/>
@@ -391,7 +391,7 @@
                                 <rect key="frame" x="283" y="738" width="90" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Plan Trip">
-                                    <color key="baseBackgroundColor" red="0.78823529411764703" green="0.36470588235294116" blue="0.38823529411764707" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="baseBackgroundColor" red="0.72991901640000001" green="0.3883774579" blue="0.39606451990000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <connections>
                                     <segue destination="7Pt-uj-LiT" kind="show" id="ZQB-ef-5vd"/>
@@ -1225,7 +1225,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="VJR-yb-KRM"/>
-        <segue reference="g71-X5-WfU"/>
+        <segue reference="OcL-vV-pD4"/>
         <segue reference="ZQB-ef-5vd"/>
     </inferredMetricsTieBreakers>
     <resources>

@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Welcome View Controller-->
         <scene sceneID="960-2E-qdX">
             <objects>
-                <viewController id="Wif-kM-CHM" sceneMemberID="viewController">
+                <viewController id="Wif-kM-CHM" customClass="WelcomeViewController" customModule="WanderWise" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gcZ-NA-2hG">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -52,6 +52,9 @@
                         <color key="backgroundColor" red="0.30588235294117649" green="0.31764705882352939" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="cn5-ly-tNQ"/>
+                    <connections>
+                        <segue destination="Aa8-Hj-EEl" kind="presentation" identifier="WelcomeToHomeSegue" modalPresentationStyle="fullScreen" id="otl-M1-mTN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gpr-UU-DDC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -899,6 +902,9 @@
                                 <buttonConfiguration key="configuration" style="filled" image="plus" catalog="system">
                                     <color key="baseBackgroundColor" red="0.72991901640000001" green="0.3883774579" blue="0.39606451990000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <segue destination="hC5-Nn-KYf" kind="show" id="58M-ee-QWt"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="g0Y-9l-4yy"/>
@@ -937,6 +943,9 @@
                                 <buttonConfiguration key="configuration" style="plain" image="trash" catalog="system">
                                     <color key="baseForegroundColor" red="0.72991901640000001" green="0.3883774579" blue="0.39606451990000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
+                                <connections>
+                                    <action selector="deleteButtonPressed:" destination="hC5-Nn-KYf" eventType="touchUpInside" id="akM-Q5-kPU"/>
+                                </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Event title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZkD-xw-n4O">
                                 <rect key="frame" x="34" y="105" width="325" height="34"/>
@@ -1010,6 +1019,7 @@
                     <navigationItem key="navigationItem" id="7fw-Zd-Rcn"/>
                     <connections>
                         <outlet property="datePicker" destination="V6U-jh-Y0w" id="0OX-gB-WpD"/>
+                        <outlet property="deleteButton" destination="4Dc-aa-Y1J" id="mOQ-0v-xnM"/>
                         <outlet property="eventTitleField" destination="ZkD-xw-n4O" id="W2I-M5-4Lb"/>
                         <outlet property="locationField" destination="P0D-Mz-q5C" id="ada-P2-KHp"/>
                         <outlet property="notesTextField" destination="TEC-tv-oA6" id="nRt-2k-vYA"/>
@@ -1240,7 +1250,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="VJR-yb-KRM"/>
+        <segue reference="otl-M1-mTN"/>
+        <segue reference="58M-ee-QWt"/>
         <segue reference="OcL-vV-pD4"/>
         <segue reference="ZQB-ef-5vd"/>
     </inferredMetricsTieBreakers>

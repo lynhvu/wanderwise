@@ -18,16 +18,23 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
     
     let dateFormatter = DateFormatter()
     
+    var shouldHideBackButton: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.delegate = self
         tableView.dataSource = self
         
+        titleLabel.text = trip.name
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
         
         updateDateLabel()
+        
+        if shouldHideBackButton {
+            self.navigationItem.hidesBackButton = true
+        }
         
         chatButton.layer.cornerRadius = 0.5 * chatButton.bounds.size.width
         chatButton.clipsToBounds = true

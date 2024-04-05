@@ -83,6 +83,7 @@ class NewTripViewController: UIViewController {
            let destination = segue.destination as? ItineraryViewController,
            let newTrip = sender as? Trip {
             destination.trip = newTrip
+            destination.shouldHideBackButton = true 
         }
     }
 }

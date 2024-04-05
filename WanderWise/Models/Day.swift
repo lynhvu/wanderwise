@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 class Day {
     var date: Date
@@ -24,12 +25,13 @@ class Day {
     }
     
     static func from(dictionary: [String: Any]) -> Day? {
-        guard let date = dictionary["date"] as? Date,
+        guard let timestamp = dictionary["date"] as? Timestamp,
               let eventsDictionaries = dictionary["events"] as? [[String: Any]] else {
             return nil
         }
         
-        let events = eventsDictionaries.compactMap { Event.from(dictionary: $0) }
+        let date = timestamp.dateValue()
+        let events = eventsDictionaries.compactMap(Event.from(dictionary:))
         return Day(date: date, events: events)
     }
 }

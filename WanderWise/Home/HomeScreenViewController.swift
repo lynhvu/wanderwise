@@ -54,6 +54,8 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        performSegue(withIdentifier: segueID, sender: (indexPath, tableView))
     }
     
     // MARK: - Fetching
@@ -90,12 +92,12 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == segueID {
-            if let destination = segue.destination as? ItineraryViewController,
-               let indexPath = (sender as? UITableView)?.indexPathForSelectedRow {
-                let trip = indexPath.section == 0 ? upcomingTrips[indexPath.row] : pastTrips[indexPath.row]
-                destination.trip = trip
-            }
+        if segue.identifier == segueID,
+           let destination = segue.destination as? ItineraryViewController,
+           let (indexPath, tableView) = sender as? (IndexPath, UITableView) {
+            
+            let trip = tableView == upcomingTableView ? upcomingTrips[indexPath.row] : pastTrips[indexPath.row]
+            destination.trip = trip
         }
     }
 }

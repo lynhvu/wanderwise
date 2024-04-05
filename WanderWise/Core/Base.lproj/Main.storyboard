@@ -443,9 +443,6 @@
                                                         </label>
                                                     </subviews>
                                                 </tableViewCellContentView>
-                                                <connections>
-                                                    <segue destination="BSa-99-4f9" kind="show" identifier="TripSegueIdentifier" id="gno-hb-hhV"/>
-                                                </connections>
                                             </tableViewCell>
                                         </prototypes>
                                     </tableView>
@@ -560,6 +557,7 @@
                         <outlet property="noUpcomingTripLabel" destination="w6S-yp-CSv" id="xoH-bP-g5J"/>
                         <outlet property="pastTableView" destination="WAC-J2-w5N" id="CqH-0L-qSa"/>
                         <outlet property="upcomingTableView" destination="zZe-D6-RWv" id="Dce-OR-C4B"/>
+                        <segue destination="BSa-99-4f9" kind="show" identifier="TripSegueIdentifier" id="g71-X5-WfU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kW9-Ip-n8K" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1231,7 +1229,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="iYh-KZ-4UX"/>
         <segue reference="0Sq-Sp-g9I"/>
-        <segue reference="OcL-vV-pD4"/>
+        <segue reference="g71-X5-WfU"/>
         <segue reference="ZQB-ef-5vd"/>
     </inferredMetricsTieBreakers>
     <resources>

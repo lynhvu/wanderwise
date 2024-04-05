@@ -24,6 +24,8 @@
 		3D0EFBA52BB8EBC800C42F8F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D0EFBA42BB8EBC700C42F8F /* GoogleService-Info.plist */; };
 		3D0EFBA72BB8EC2100C42F8F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0EFBA62BB8EC2100C42F8F /* SignInViewController.swift */; };
 		3D0EFBA92BB8EC2D00C42F8F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0EFBA82BB8EC2D00C42F8F /* SignUpViewController.swift */; };
+		3D5827072BBFD050001CB2E0 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5827062BBFD050001CB2E0 /* WelcomeViewController.swift */; };
+		3D5827092BBFD637001CB2E0 /* ProfileInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5827082BBFD636001CB2E0 /* ProfileInfoViewController.swift */; };
 		3D80D23F2BB5202600228CE3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D80D23E2BB5202600228CE3 /* SettingsViewController.swift */; };
 		3DFF7E932B96A934005C66B9 /* ItineraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFF7E922B96A934005C66B9 /* ItineraryViewController.swift */; };
 		3DFF7E9B2B96B7B5005C66B9 /* ItineraryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFF7E9A2B96B7B5005C66B9 /* ItineraryTableViewCell.swift */; };
@@ -50,6 +52,8 @@
 		3D0EFBA42BB8EBC700C42F8F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3D0EFBA62BB8EC2100C42F8F /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		3D0EFBA82BB8EC2D00C42F8F /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		3D5827062BBFD050001CB2E0 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		3D5827082BBFD636001CB2E0 /* ProfileInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoViewController.swift; sourceTree = "<group>"; };
 		3D80D23E2BB5202600228CE3 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		3DFF7E922B96A934005C66B9 /* ItineraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryViewController.swift; sourceTree = "<group>"; };
 		3DFF7E9A2B96B7B5005C66B9 /* ItineraryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryTableViewCell.swift; sourceTree = "<group>"; };
@@ -79,6 +83,8 @@
 				3D0EFBA62BB8EC2100C42F8F /* SignInViewController.swift */,
 				3D0EFBA82BB8EC2D00C42F8F /* SignUpViewController.swift */,
 				3D80D23E2BB5202600228CE3 /* SettingsViewController.swift */,
+				3D5827062BBFD050001CB2E0 /* WelcomeViewController.swift */,
+				3D5827082BBFD636001CB2E0 /* ProfileInfoViewController.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -252,12 +258,14 @@
 				2C2FF32E2BBE3F5D00B46650 /* Day.swift in Sources */,
 				3D0EFBA92BB8EC2D00C42F8F /* SignUpViewController.swift in Sources */,
 				3DFF7EC32B990C5C005C66B9 /* EditEventViewController.swift in Sources */,
+				3D5827072BBFD050001CB2E0 /* WelcomeViewController.swift in Sources */,
 				2C2E43422B8FBA5000593DE5 /* AppDelegate.swift in Sources */,
 				3D80D23F2BB5202600228CE3 /* SettingsViewController.swift in Sources */,
 				2C2FF3302BBE3F6C00B46650 /* Event.swift in Sources */,
 				2C9218762BA79B76004439B7 /* NewTripViewController.swift in Sources */,
 				3DFF7EC92B993DBF005C66B9 /* EditItineraryViewController.swift in Sources */,
 				2C2FF32C2BBE3E5A00B46650 /* Trip.swift in Sources */,
+				3D5827092BBFD637001CB2E0 /* ProfileInfoViewController.swift in Sources */,
 				3DFF7E9D2B97B4FB005C66B9 /* ItinerarySectionHeaderTableViewCell.swift in Sources */,
 				3D0EFBA72BB8EC2100C42F8F /* SignInViewController.swift in Sources */,
 				3DFF7E932B96A934005C66B9 /* ItineraryViewController.swift in Sources */,

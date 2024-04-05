@@ -86,6 +86,14 @@ class EditItineraryViewController: UIViewController, UITableViewDelegate, UITabl
         return cell.contentView
     }
     
+    // swipe to delete an event
+        func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+            if editingStyle == .delete {
+                // TODO: delete in firestore db
+                tableView.deleteRows(at: [indexPath], with: .fade)
+            }
+        }
+    
     func updateDateLabel() {
         if let startDate = trip.days.first?.date, let endDate = trip.days.last?.date {
             let formattedStartDate = dateFormatter.string(from: startDate)

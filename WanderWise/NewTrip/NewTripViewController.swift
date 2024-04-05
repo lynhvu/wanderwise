@@ -8,7 +8,7 @@
 import UIKit
 import FirebaseAuth
 
-class NewTripViewController: UIViewController {
+class NewTripViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var tripNameField: UITextField!
     @IBOutlet weak var destinationField: UITextField!
@@ -18,9 +18,21 @@ class NewTripViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        tripNameField.delegate = self
+        destinationField.delegate = self
     }
     
+    // Called when 'return' key pressed
+    func textFieldShouldReturn(_ textField:UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    // Called when the user clicks on the view outside of the UITextField
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+
     @IBAction func createTripButtonPressed(_ sender: UIButton) {
         // Validate inputs
         guard let tripName = tripNameField.text, !tripName.isEmpty,

@@ -108,6 +108,9 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
         if segue.identifier == "EditItinerarySegueIdentifier",
            let destination = segue.destination as? EditItineraryViewController {
             destination.trip = trip
+        } else if segue.identifier == "ChatSegue",
+                  let destination = segue.destination as? ChatViewController {
+            destination.location = trip.location
         }
     }
 }

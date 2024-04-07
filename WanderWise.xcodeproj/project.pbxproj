@@ -21,6 +21,7 @@
 		2C9218762BA79B76004439B7 /* NewTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9218752BA79B76004439B7 /* NewTripViewController.swift */; };
 		2CB090D52BA9502500C6490D /* README.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2CB090D42BA9502500C6490D /* README.pdf */; };
 		39FBE6DE2BA91D4400F6B1F8 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FBE6DD2BA91D4400F6B1F8 /* HomeScreenViewController.swift */; };
+		3D0ECFFB2BC2333100B230B3 /* GenerativeAI-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D0ECFFA2BC2333100B230B3 /* GenerativeAI-Info.plist */; };
 		3D0EFBA52BB8EBC800C42F8F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D0EFBA42BB8EBC700C42F8F /* GoogleService-Info.plist */; };
 		3D0EFBA72BB8EC2100C42F8F /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0EFBA62BB8EC2100C42F8F /* SignInViewController.swift */; };
 		3D0EFBA92BB8EC2D00C42F8F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0EFBA82BB8EC2D00C42F8F /* SignUpViewController.swift */; };
@@ -33,6 +34,8 @@
 		3DFF7EC32B990C5C005C66B9 /* EditEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFF7EC22B990C5C005C66B9 /* EditEventViewController.swift */; };
 		3DFF7EC72B993C72005C66B9 /* ItineraryHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFF7EC62B993C72005C66B9 /* ItineraryHeaderView.swift */; };
 		3DFF7EC92B993DBF005C66B9 /* EditItineraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFF7EC82B993DBF005C66B9 /* EditItineraryViewController.swift */; };
+		3DFFA3982BC23409005ADE5D /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFFA3972BC23409005ADE5D /* ChatViewController.swift */; };
+		3DFFA39B2BC23939005ADE5D /* GoogleGenerativeAI in Frameworks */ = {isa = PBXBuildFile; productRef = 3DFFA39A2BC23939005ADE5D /* GoogleGenerativeAI */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +52,7 @@
 		2C9218752BA79B76004439B7 /* NewTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTripViewController.swift; sourceTree = "<group>"; };
 		2CB090D42BA9502500C6490D /* README.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = README.pdf; sourceTree = "<group>"; };
 		39FBE6DD2BA91D4400F6B1F8 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
+		3D0ECFFA2BC2333100B230B3 /* GenerativeAI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GenerativeAI-Info.plist"; sourceTree = "<group>"; };
 		3D0EFBA42BB8EBC700C42F8F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3D0EFBA62BB8EC2100C42F8F /* SignInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		3D0EFBA82BB8EC2D00C42F8F /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
@@ -61,6 +65,7 @@
 		3DFF7EC22B990C5C005C66B9 /* EditEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditEventViewController.swift; sourceTree = "<group>"; };
 		3DFF7EC62B993C72005C66B9 /* ItineraryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryHeaderView.swift; sourceTree = "<group>"; };
 		3DFF7EC82B993DBF005C66B9 /* EditItineraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItineraryViewController.swift; sourceTree = "<group>"; };
+		3DFFA3972BC23409005ADE5D /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +76,7 @@
 				2C23C35E2BBE783F00EF81F7 /* FirebaseAuth in Frameworks */,
 				2C23C3602BBE783F00EF81F7 /* FirebaseFirestore in Frameworks */,
 				2C23C3622BBE783F00EF81F7 /* FirebaseStorage in Frameworks */,
+				3DFFA39B2BC23939005ADE5D /* GoogleGenerativeAI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +132,8 @@
 				2C9218742BA79B4E004439B7 /* NewTrip */,
 				2CB090D42BA9502500C6490D /* README.pdf */,
 				2C23C35A2BBE417B00EF81F7 /* User */,
+				3D0ECFFA2BC2333100B230B3 /* GenerativeAI-Info.plist */,
+				3DEFFD742BC246E700DE0DE5 /* Chat */,
 			);
 			path = WanderWise;
 			sourceTree = "<group>";
@@ -157,6 +165,14 @@
 				2C9218752BA79B76004439B7 /* NewTripViewController.swift */,
 			);
 			path = NewTrip;
+			sourceTree = "<group>";
+		};
+		3DEFFD742BC246E700DE0DE5 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				3DFFA3972BC23409005ADE5D /* ChatViewController.swift */,
+			);
+			path = Chat;
 			sourceTree = "<group>";
 		};
 		3DFF7E9E2B982BAC005C66B9 /* Itinerary */ = {
@@ -192,6 +208,7 @@
 				2C23C35D2BBE783F00EF81F7 /* FirebaseAuth */,
 				2C23C35F2BBE783F00EF81F7 /* FirebaseFirestore */,
 				2C23C3612BBE783F00EF81F7 /* FirebaseStorage */,
+				3DFFA39A2BC23939005ADE5D /* GoogleGenerativeAI */,
 			);
 			productName = WanderWise;
 			productReference = 2C2E433E2B8FBA5000593DE5 /* WanderWise.app */;
@@ -223,6 +240,7 @@
 			mainGroup = 2C2E43352B8FBA5000593DE5;
 			packageReferences = (
 				2C23C35C2BBE783F00EF81F7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				3DFFA3992BC23938005ADE5D /* XCRemoteSwiftPackageReference "generative-ai-swift" */,
 			);
 			productRefGroup = 2C2E433F2B8FBA5000593DE5 /* Products */;
 			projectDirPath = "";
@@ -240,6 +258,7 @@
 			files = (
 				2CB090D52BA9502500C6490D /* README.pdf in Resources */,
 				2C2E434E2B8FBA5200593DE5 /* LaunchScreen.storyboard in Resources */,
+				3D0ECFFB2BC2333100B230B3 /* GenerativeAI-Info.plist in Resources */,
 				3D0EFBA52BB8EBC800C42F8F /* GoogleService-Info.plist in Resources */,
 				2C2E434B2B8FBA5200593DE5 /* Assets.xcassets in Resources */,
 				2C2E43492B8FBA5000593DE5 /* Main.storyboard in Resources */,
@@ -264,6 +283,7 @@
 				2C2FF3302BBE3F6C00B46650 /* Event.swift in Sources */,
 				2C9218762BA79B76004439B7 /* NewTripViewController.swift in Sources */,
 				3DFF7EC92B993DBF005C66B9 /* EditItineraryViewController.swift in Sources */,
+				3DFFA3982BC23409005ADE5D /* ChatViewController.swift in Sources */,
 				2C2FF32C2BBE3E5A00B46650 /* Trip.swift in Sources */,
 				3D5827092BBFD637001CB2E0 /* ProfileInfoViewController.swift in Sources */,
 				3DFF7E9D2B97B4FB005C66B9 /* ItinerarySectionHeaderTableViewCell.swift in Sources */,
@@ -505,6 +525,14 @@
 				minimumVersion = 10.23.1;
 			};
 		};
+		3DFFA3992BC23938005ADE5D /* XCRemoteSwiftPackageReference "generative-ai-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/google/generative-ai-swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.4.9;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -522,6 +550,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2C23C35C2BBE783F00EF81F7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		3DFFA39A2BC23939005ADE5D /* GoogleGenerativeAI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3DFFA3992BC23938005ADE5D /* XCRemoteSwiftPackageReference "generative-ai-swift" */;
+			productName = GoogleGenerativeAI;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

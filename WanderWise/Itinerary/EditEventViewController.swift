@@ -35,7 +35,7 @@ class EditEventViewController: UIViewController, UITextFieldDelegate, UITextView
         if let event = selectedEvent {
             eventTitleField.text = event.name
             locationField.text = event.location
-            datePicker.date = event.startTime // Assuming your event has a single date
+            datePicker.date = event.date // Assuming your event has a single date
             timePicker.date = event.startTime // You might need a separate picker or method for end time if they differ
             notesTextField.text = event.description
             
@@ -89,7 +89,6 @@ class EditEventViewController: UIViewController, UITextFieldDelegate, UITextView
             updateExistingEvent()
         }
         
-        // Dismiss the view controller or pop back to the previous screen
         navigationController?.popViewController(animated: true)
     }
     
@@ -121,7 +120,7 @@ class EditEventViewController: UIViewController, UITextFieldDelegate, UITextView
         
         let newEvent = Event(name: title, date: datePicker.date, startTime: timePicker.date, location: location, description: notesTextField.text)
         
-        trip.addEventToDay(event: newEvent, forDate: newEvent.startTime)
+        trip.addEventToDay(event: newEvent, forDate: newEvent.date)
     }
     
     private func showAlert(message: String) {

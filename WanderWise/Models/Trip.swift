@@ -58,19 +58,34 @@ class Trip {
     }
     
     func updateEventInTrip(updatedEvent: Event) {
-            guard let dayIndex = days.firstIndex(where: { Calendar.current.isDate($0.date, inSameDayAs: updatedEvent.startTime) }) else { return }
-            
+        // Attempt to find the day that matches the updated event's date
+        if let dayIndex = days.firstIndex(where: { Calendar.current.isDate($0.date, inSameDayAs: updatedEvent.date) }) {
+            // Check if the event is already part of this day
             if let eventIndex = days[dayIndex].events.firstIndex(where: { $0.id == updatedEvent.id }) {
+                // Update the event in place
                 days[dayIndex].events[eventIndex] = updatedEvent
-            }
-            
-            saveToDatabase { error in
-                if let error = error {
-                    print("Error updating trip with new event details: \(error.localizedDescription)")
-                } else {
-                    print("Trip successfully updated with new event details")
+            } else {
+                // If the event was not found in the day, it means the event's date was changed.
+                // Remove the event from its original day.
+                for day in days {
+                    if let index = day.events.firstIndex(where: { $0.id == updatedEvent.id }) {
+                        day.events.remove(at: index)
+                        break
+                    }
                 }
+                // Add the updated event to the correct day.
+                days[dayIndex].events.append(updatedEvent)
             }
+        }
+
+        // Save the updated trip to Firestore
+        saveToDatabase { error in
+            if let error = error {
+                print("Error updating trip with new event details: \(error.localizedDescription)")
+            } else {
+                print("Trip successfully updated with new event details")
+            }
+        }
         }
     
     func addEventToDay(event: Event, forDate date: Date) {

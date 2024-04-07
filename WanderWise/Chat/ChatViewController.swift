@@ -28,20 +28,41 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         messageField.delegate = self
         tableView.reloadData()
+        scrollToBottom()
         
         // set up keyboard notifications
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
         // set up the AI Model
-        var firstMessage = "Hi! Welcome to \(location ?? "your new adventure")! I'm happy to be your tour guide during your trip, what would you like to know? I can give you recommendations for things to do, places to eat, or how to get around. Just let me know what you're interested in and I'll be happy to help."
-        messages.append("\(firstMessage)")
+        setUpModel()
+    }
+    
+    func setUpModel() {
         model = GenerativeModel(name: "gemini-pro", apiKey: getAPIKey())
-        let history = [
-            ModelContent(role: "user", parts: "You are my tour guide while I am visiting \(String(describing: location)). Please answer any questions I may have."),
-          ModelContent(role: "model", parts: messages[0]),
-        ]
-        chat = model.startChat(history: history)
+        if messages.count == 0 {
+            let firstMessage = "Hi! Welcome to \(location ?? "your new adventure")! I'm happy to be your tour guide during your trip, what would you like to know? I can give you recommendations for things to do, places to eat, or how to get around. Just let me know what you're interested in and I'll be happy to help."
+            messages.append("\(firstMessage)")
+            model = GenerativeModel(name: "gemini-pro", apiKey: getAPIKey())
+            let history = [
+                ModelContent(role: "user", parts: "You are my tour guide while I am visiting \(String(describing: location)). Please answer any questions I may have."),
+                ModelContent(role: "model", parts: messages[0]),
+            ]
+            chat = model.startChat(history: history)
+        } else {
+            var history: [ModelContent] = []
+            var role = "user"
+            for message in messages {
+                history.append(ModelContent(role: role, parts: message))
+                // change role
+                if role == "user" {
+                    role = "model"
+                } else {
+                    role = "user"
+                }
+            }
+            chat = model.startChat(history: history)
+        }
     }
     
     // Handle keyboard show event
@@ -103,8 +124,10 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     // Scroll to the bottom of the table view
     func scrollToBottom() {
-        let indexPath = IndexPath(row: messages.count - 1, section: 0)
-        tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        if !messages.isEmpty {
+            let indexPath = IndexPath(row: messages.count - 1, section: 0)
+            tableView.scrollToRow(at: indexPath, at: .bottom, animated: true)
+        }
     }
     
     func getModelResponse(newMessage: String) {

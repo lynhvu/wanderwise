@@ -20,7 +20,7 @@ class EditEventViewController: UIViewController, UITextFieldDelegate, UITextView
     var trip: Trip!
     
     var selectedEvent: Event?
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -80,27 +80,50 @@ class EditEventViewController: UIViewController, UITextFieldDelegate, UITextView
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
-        
-        guard let event = selectedEvent,
-              let title = eventTitleField.text, !title.isEmpty else {
-            // Handle empty title or missing event here, e.g., show an alert
-            return
+        if selectedEvent == nil {
+            createNewEvent()
+        } else {
+            updateExistingEvent()
         }
-        
-        // Update the existing Event object's properties
-        event.name = title
-        event.location = locationField.text ?? ""
-        event.startTime = datePicker.date
-        event.endTime = timePicker.date // Adjust if your model supports different start/end times
-        event.description = notesTextField.text
-        
-        // Now use the Trip method to update the event in its corresponding day
-        trip.updateEventInTrip(updatedEvent: event)
-        
-        // TODO: logic for adding new event
         
         // Dismiss the view controller or pop back to the previous screen
         navigationController?.popViewController(animated: true)
     }
-
+    
+    private func updateExistingEvent() {
+        guard let event = selectedEvent,
+              let title = eventTitleField.text, !title.isEmpty,
+              let location = locationField.text, !location.isEmpty else {
+              showAlert(message: "Please fill out all fields.")
+              return
+          }
+        
+        // Update the existing Event object's properties
+        event.name = title
+        event.location = locationField.text ?? ""
+        event.date = datePicker.date
+        event.startTime = timePicker.date
+        event.description = notesTextField.text
+        
+        // Now use the Trip method to update the event in its corresponding day
+        trip.updateEventInTrip(updatedEvent: event)
+    }
+    
+    private func createNewEvent() {
+        guard let title = eventTitleField.text, !title.isEmpty,
+              let location = locationField.text, !location.isEmpty else {
+            showAlert(message: "Please fill out all fields.")
+            return
+        }
+        
+        let newEvent = Event(name: title, date: datePicker.date, startTime: timePicker.date, location: location, description: notesTextField.text)
+        
+        trip.addEventToDay(event: newEvent, forDate: newEvent.startTime)
+    }
+    
+    private func showAlert(message: String) {
+        let alert = UIAlertController(title: "Warning", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alert, animated: true)
+    }
 }

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iwz-7F-Zkg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iwz-7F-Zkg">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -903,7 +903,7 @@
                                     <color key="baseBackgroundColor" red="0.72991901640000001" green="0.3883774579" blue="0.39606451990000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="hC5-Nn-KYf" kind="show" id="58M-ee-QWt"/>
+                                    <segue destination="hC5-Nn-KYf" kind="show" identifier="AddEventSegueIdentifier" id="0RG-ej-sod"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -918,7 +918,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="UVt-CR-RtL"/>
                     <connections>
-                        <outlet property="addEventButton" destination="roQ-6X-Q7I" id="9jV-X9-fwM"/>
+                        <outlet property="addEventButton" destination="roQ-6X-Q7I" id="QCj-6v-Of9"/>
                         <outlet property="dateLabel" destination="AtO-Sw-e9r" id="IxT-c7-IGL"/>
                         <outlet property="tableView" destination="6KG-yZ-ivp" id="EFR-E4-Pu3"/>
                         <outlet property="titleLabel" destination="tE9-Vc-c5B" id="2Yo-IW-H8O"/>
@@ -1251,7 +1251,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="otl-M1-mTN"/>
-        <segue reference="58M-ee-QWt"/>
+        <segue reference="0RG-ej-sod"/>
         <segue reference="OcL-vV-pD4"/>
         <segue reference="ZQB-ef-5vd"/>
     </inferredMetricsTieBreakers>

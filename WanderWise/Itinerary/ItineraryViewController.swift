@@ -70,7 +70,7 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
         let timeFormatter = DateFormatter()
         timeFormatter.dateStyle = .none
         timeFormatter.timeStyle = .short
-        cell.timeLabel.text = "\(timeFormatter.string(from: event.startTime)) - \(timeFormatter.string(from: event.endTime))"
+        cell.timeLabel.text = "\(timeFormatter.string(from: event.startTime))"
         
         return cell
     }

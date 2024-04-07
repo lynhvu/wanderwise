@@ -56,7 +56,7 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
         // TODO: - Take off the dummy events
         let days = dates.map { date -> Day in
             // Add a dummy event for each day - replace "Dummy Event" and other properties as needed
-            let dummyEvent = Event(name: "Dummy Event", startTime: date, endTime: date, location: "Dummy Location", description: "This is a dummy event. Replace with real event details.")
+            let dummyEvent = Event(name: "Dummy Event", date: date, startTime: date, location: "Dummy Location", description: "This is a dummy event. Replace with real event details.")
             return Day(date: date, events: [dummyEvent])
         }
         

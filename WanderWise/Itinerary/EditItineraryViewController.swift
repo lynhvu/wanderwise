@@ -63,7 +63,7 @@ class EditItineraryViewController: UIViewController, UITableViewDelegate, UITabl
         let timeFormatter = DateFormatter()
         timeFormatter.dateStyle = .none
         timeFormatter.timeStyle = .short
-        cell.timeLabel.text = "\(timeFormatter.string(from: event.startTime)) - \(timeFormatter.string(from: event.endTime))"
+        cell.timeLabel.text = "\(timeFormatter.string(from: event.startTime))"
         
         return cell
     }
@@ -101,17 +101,20 @@ class EditItineraryViewController: UIViewController, UITableViewDelegate, UITabl
             dateLabel.text = "\(formattedStartDate) - \(formattedEndDate)"
         }
     }
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EditEventSegueIdentifier",
            let destination = segue.destination as? EditEventViewController,
            let indexPath = sender as? IndexPath {
-            
             let selectedDay = trip.days[indexPath.section]
             let selectedEvent = selectedDay.events[indexPath.row]
             
             destination.trip = trip
             destination.selectedEvent = selectedEvent
+        } else if segue.identifier == "AddEventSegueIdentifier",
+                  let destination = segue.destination as? EditEventViewController {
+            destination.trip = trip
+            destination.selectedEvent = nil
         }
     }
 

@@ -28,6 +28,9 @@ class EditEventViewController: UIViewController, UITextFieldDelegate, UITextView
         locationField.delegate = self
         notesTextField.delegate = self
         
+        datePicker.minimumDate = trip.startDate
+        datePicker.maximumDate = trip.endDate
+        
         // Set fields to previous values
         if let event = selectedEvent {
             eventTitleField.text = event.name

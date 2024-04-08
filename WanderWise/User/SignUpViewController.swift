@@ -10,13 +10,18 @@ import FirebaseAuth
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
 
+    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var confirmPasswordField: UITextField!
+    @IBOutlet weak var notificationsSwitch: UISwitch!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        nameField.delegate = self
+        usernameField.delegate = self
         emailField.delegate = self
         passwordField.delegate = self
         confirmPasswordField.delegate = self
@@ -38,25 +43,27 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     }
 
     @IBAction func createAccountPressed(_ sender: Any) {
-        // create a new user
-        if self.passwordField.text! == self.confirmPasswordField.text! {
-            Auth.auth().createUser(withEmail: self.emailField.text!, password: self.passwordField.text!)  {
-                (authResult, error) in
-                if let error = error as NSError? {
-                    let signUpErrorAlert = UIAlertController(
-                        title: "Error",
-                        message: "\(error.localizedDescription)",
-                        preferredStyle: .alert)
-                        signUpErrorAlert.addAction(UIAlertAction(
-                        title: "OK",
-                        style: .default))
-                    self.present(signUpErrorAlert, animated: true)
-                } else {
-                    self.performSegue(withIdentifier: "ProfileInfoSegue", sender: self)
+        if (allFieldsFilled()) {
+            // create a new user
+            if self.passwordField.text! == self.confirmPasswordField.text! {
+                Auth.auth().createUser(withEmail: self.emailField.text!, password: self.passwordField.text!)  {
+                        (authResult, error) in
+                        if let error = error as NSError? {
+                            let signUpErrorAlert = UIAlertController(
+                                title: "Error",
+                                message: "\(error.localizedDescription)",
+                                preferredStyle: .alert)
+                                signUpErrorAlert.addAction(UIAlertAction(
+                                    title: "OK",
+                                    style: .default))
+                            self.present(signUpErrorAlert, animated: true)
+                        } else {
+                            if (self.saveUserProfile(authResult: authResult)) {
+                                self.performSegue(withIdentifier: "SignUpToHomeSegue", sender: self)
+                            }
+                        }
                 }
-            }
-            print("New user created!")
-        } else {
+            } else {
             // Alert for mismatching password fields
             let signUpErrorAlert = UIAlertController(
                 title: "Error",
@@ -66,7 +73,58 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 title: "OK",
                 style: .default))
             self.present(signUpErrorAlert, animated: true)
+            }
         }
     }
     
+    // Save the user profile information to the database
+    func saveUserProfile(authResult: AuthDataResult?) -> Bool {
+        var successfulSave = false
+        
+        let name = self.nameField.text ?? ""
+        let username = self.usernameField.text ?? ""
+        let email = self.emailField.text ?? ""
+        let notifications = self.notificationsSwitch.isOn
+        
+        let userId = authResult?.user.uid ?? ""
+        
+        let newUser = UserProfile(userId: userId, name: name, username: username, email: email, notifications: notifications)
+        
+        newUser.saveUserInfo(userId: userId) { error in
+            if let error = error {
+                    // Handle error
+                    print("Error saving user info: \(error.localizedDescription)")
+                } else {
+                    // User info saved successfully
+                    print("UserProfile info saved successfully")
+                    successfulSave = true
+                }
+        }
+        return successfulSave
+    }
+    
+    // Helper function to verify all fields are filled
+    func allFieldsFilled() -> Bool {
+        let name = self.nameField.text ?? ""
+        let username = self.usernameField.text ?? ""
+        let email = self.emailField.text ?? ""
+        let psw = self.passwordField.text ?? ""
+        let confirmPsw = self.confirmPasswordField.text ?? ""
+        
+        var allFieldsFilled = false
+        
+        if (name == "" || username == "" || email == "" || psw == "" || confirmPsw == "") {
+            let signUpErrorAlert = UIAlertController(
+                title: "Missing Information",
+                message: "Please fill in all fields.",
+                preferredStyle: .alert)
+                signUpErrorAlert.addAction(UIAlertAction(
+                title: "OK",
+                style: .default))
+            self.present(signUpErrorAlert, animated: true)
+        } else {
+            allFieldsFilled = true
+        }
+        return allFieldsFilled
+    }
 }

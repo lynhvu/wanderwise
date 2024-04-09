@@ -19,6 +19,8 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     var upcomingTrips = [Trip]()
     var pastTrips = [Trip]()
     
+    var currUserProfile = UserProfile()
+    
     let textCellIdentifier = "TextCell"
     let segueID = "TripSegueIdentifier"
     
@@ -28,12 +30,32 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         upcomingTableView.dataSource = self
         pastTableView.delegate = self
         pastTableView.dataSource = self
+        
+        updateWelcomeMessage()
+        loadTrips()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        updateWelcomeMessage()
         loadTrips()
+    }
+    
+    func updateWelcomeMessage(){
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("No user is currently signed in.")
+            return
+        }
+        currUserProfile.getUserInfo(userId: userId) { error in
+            if let error = error {
+                    print("Error getting user profile: \(error.localizedDescription)")
+                } else {
+                    print("UserProfile info retrieved successfully")
+                    DispatchQueue.main.async {
+                        self.greetingMessage.text = "Hello \(self.currUserProfile.firstName)!"
+                    }
+                }
+        }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,8 +69,28 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: textCellIdentifier, for: indexPath)
-        let trip = tableView == upcomingTableView ? upcomingTrips[indexPath.row] : pastTrips[indexPath.row]
-        cell.textLabel?.text = trip.name
+        
+        if tableView == upcomingTableView {
+            let trip = upcomingTrips[indexPath.row]
+            // Check if the trip is currently occurring
+            if Date() >= trip.startDate && Date() <= trip.endDate {
+                // Highlight the cell, for example, by changing its background color
+                cell.backgroundColor = UIColor.systemGreen.withAlphaComponent(0.2) // A light green color
+                cell.textLabel?.textColor = UIColor.darkText
+            } else {
+                // Reset the cell appearance if it's not an active trip
+                cell.backgroundColor = UIColor.white
+                cell.textLabel?.textColor = UIColor.black
+            }
+            cell.textLabel?.text = trip.name
+        } else if tableView == pastTableView {
+            let trip = pastTrips[indexPath.row]
+            // Reset appearance for past trips, or customize as needed
+            cell.backgroundColor = UIColor.white
+            cell.textLabel?.textColor = UIColor.black
+            cell.textLabel?.text = trip.name
+        }
+        
         return cell
     }
     

@@ -9,18 +9,22 @@ import UIKit
 import FirebaseAuth
 
 class SignUpViewController: UIViewController, UITextFieldDelegate {
-
-    @IBOutlet weak var nameField: UITextField!
+    
+    @IBOutlet weak var firstNameField: UITextField!
+    @IBOutlet weak var lastNameField: UITextField!
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var confirmPasswordField: UITextField!
     @IBOutlet weak var notificationsSwitch: UISwitch!
     
+    var userId = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        nameField.delegate = self
+        firstNameField.delegate = self
+        lastNameField.delegate = self
         usernameField.delegate = self
         emailField.delegate = self
         passwordField.delegate = self
@@ -81,14 +85,15 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     func saveUserProfile(authResult: AuthDataResult?) -> Bool {
         var successfulSave = false
         
-        let name = self.nameField.text ?? ""
+        let firstName = self.firstNameField.text ?? ""
+        let lastName = self.lastNameField.text ?? ""
         let username = self.usernameField.text ?? ""
         let email = self.emailField.text ?? ""
         let notifications = self.notificationsSwitch.isOn
         
         let userId = authResult?.user.uid ?? ""
         
-        let newUser = UserProfile(userId: userId, name: name, username: username, email: email, notifications: notifications)
+        let newUser = UserProfile(userId: userId, firstName: firstName, lastName: lastName, username: username, email: email, notifications: notifications)
         
         newUser.saveUserInfo(userId: userId) { error in
             if let error = error {
@@ -105,7 +110,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     
     // Helper function to verify all fields are filled
     func allFieldsFilled() -> Bool {
-        let name = self.nameField.text ?? ""
+        let firstName = self.firstNameField.text ?? ""
+        let lastName = self.lastNameField.text ?? ""
         let username = self.usernameField.text ?? ""
         let email = self.emailField.text ?? ""
         let psw = self.passwordField.text ?? ""
@@ -113,7 +119,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
         var allFieldsFilled = false
         
-        if (name == "" || username == "" || email == "" || psw == "" || confirmPsw == "") {
+        if (firstName == "" || lastName == "" || username == "" || email == "" || psw == "" || confirmPsw == "") {
             let signUpErrorAlert = UIAlertController(
                 title: "Missing Information",
                 message: "Please fill in all fields.",
@@ -127,4 +133,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
         return allFieldsFilled
     }
+
 }
+
+

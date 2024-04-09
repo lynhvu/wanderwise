@@ -12,7 +12,8 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, UINavigatio
     
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
-    @IBOutlet weak var nameField: UITextField!
+    @IBOutlet weak var firstNameField: UITextField!
+    @IBOutlet weak var lastNameField: UITextField!
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var profileImageView: UIImageView!
@@ -25,7 +26,8 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, UINavigatio
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        nameField.delegate = self
+        firstNameField.delegate = self
+        lastNameField.delegate = self
         usernameField.delegate = self
         emailField.delegate = self
         
@@ -36,6 +38,8 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, UINavigatio
         
         cancelButton.isHidden = true
         saveButton.isHidden = true
+        
+        emailField.isEnabled = false
         
         // load in user's profile information
         guard let userId = Auth.auth().currentUser?.uid else {
@@ -51,7 +55,6 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, UINavigatio
                     } else {
                         print("UserProfile info retrieved successfully")
                         DispatchQueue.main.async {
-                            print("NAME = " + self.currUserProfile!.name)
                             self.reflectUserInfo()
                         }
                     }
@@ -113,24 +116,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, UINavigatio
     }
     
     
-    
-    @IBAction func nameEdit(_ sender: Any) {
-        editInfo()
-    }
-    
-    @IBAction func usernameEdit(_ sender: Any) {
-        editInfo()
-    }
-    
-    @IBAction func emailEdit(_ sender: Any) {
-        editInfo()
-    }
-    
-    @IBAction func notificationsEdit(_ sender: Any) {
-        editInfo()
-    }
-    
-    func editInfo(){
+    @IBAction func infoEdited(_ sender: Any) {
         cancelButton.isHidden = false
         saveButton.isHidden = false
     }
@@ -159,7 +145,8 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, UINavigatio
                 }
                 let updatedUserProfile = UserProfile(
                     userId: userId,
-                    name: self.nameField.text ?? "",
+                    firstName: self.firstNameField.text ?? "",
+                    lastName: self.lastNameField.text ?? "",
                     username: self.usernameField.text ?? "",
                     email: self.emailField.text ?? "",
                     notifications: self.notificationSwitch.isOn)
@@ -181,11 +168,12 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, UINavigatio
     }
     
     func reflectUserInfo(){
-        nameField.text = currUserProfile!.name
+        firstNameField.text = currUserProfile!.firstName
+        lastNameField.text = currUserProfile!.lastName
         usernameField.text = currUserProfile!.username
         emailField.text = currUserProfile!.email
         notificationSwitch.setOn(currUserProfile!.notifications, animated: false)
     }
     
-    // TODO: add checks so the data they want to save is safe + figure out how to change email to account ?
+    // TODO: add checks so the data they want to save is safe
 }

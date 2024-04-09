@@ -20,7 +20,14 @@
 		2C2FF3302BBE3F6C00B46650 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C2FF32F2BBE3F6C00B46650 /* Event.swift */; };
 		2C9218762BA79B76004439B7 /* NewTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9218752BA79B76004439B7 /* NewTripViewController.swift */; };
 		2CB090D52BA9502500C6490D /* README.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 2CB090D42BA9502500C6490D /* README.pdf */; };
+		39422C432BC4B82500128FD7 /* GoogleMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 39422C422BC4B82500128FD7 /* GoogleMaps */; };
+		39422C452BC4B82500128FD7 /* GoogleMapsBase in Frameworks */ = {isa = PBXBuildFile; productRef = 39422C442BC4B82500128FD7 /* GoogleMapsBase */; };
+		39422C472BC4B82500128FD7 /* GoogleMapsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 39422C462BC4B82500128FD7 /* GoogleMapsCore */; };
 		398A282E2BC384870093255C /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398A282D2BC384870093255C /* UserProfile.swift */; };
+		398A28522BC4AD700093255C /* GlobalMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398A28512BC4AD700093255C /* GlobalMapViewController.swift */; };
+		39F196E42BC4CC6E00BD1ED7 /* GooglePlaces in Frameworks */ = {isa = PBXBuildFile; productRef = 39F196E32BC4CC6E00BD1ED7 /* GooglePlaces */; };
+		39F196E82BC4D33500BD1ED7 /* tempController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F196E72BC4D33500BD1ED7 /* tempController.swift */; };
+		39F196EA2BC4F7C100BD1ED7 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F196E92BC4F7C100BD1ED7 /* NotificationService.swift */; };
 		39FBE6DE2BA91D4400F6B1F8 /* HomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FBE6DD2BA91D4400F6B1F8 /* HomeScreenViewController.swift */; };
 		3D0ECFFB2BC2333100B230B3 /* GenerativeAI-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D0ECFFA2BC2333100B230B3 /* GenerativeAI-Info.plist */; };
 		3D0EFBA52BB8EBC800C42F8F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3D0EFBA42BB8EBC700C42F8F /* GoogleService-Info.plist */; };
@@ -53,6 +60,9 @@
 		2C9218752BA79B76004439B7 /* NewTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTripViewController.swift; sourceTree = "<group>"; };
 		2CB090D42BA9502500C6490D /* README.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = README.pdf; sourceTree = "<group>"; };
 		398A282D2BC384870093255C /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
+		398A28512BC4AD700093255C /* GlobalMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GlobalMapViewController.swift; path = WanderWise/Core/Maps/GlobalMapViewController.swift; sourceTree = SOURCE_ROOT; };
+		39F196E72BC4D33500BD1ED7 /* tempController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempController.swift; sourceTree = "<group>"; };
+		39F196E92BC4F7C100BD1ED7 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		39FBE6DD2BA91D4400F6B1F8 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
 		3D0ECFFA2BC2333100B230B3 /* GenerativeAI-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GenerativeAI-Info.plist"; sourceTree = "<group>"; };
 		3D0EFBA42BB8EBC700C42F8F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -76,8 +86,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C23C35E2BBE783F00EF81F7 /* FirebaseAuth in Frameworks */,
+				39F196E42BC4CC6E00BD1ED7 /* GooglePlaces in Frameworks */,
+				39422C452BC4B82500128FD7 /* GoogleMapsBase in Frameworks */,
 				2C23C3602BBE783F00EF81F7 /* FirebaseFirestore in Frameworks */,
+				39422C432BC4B82500128FD7 /* GoogleMaps in Frameworks */,
 				2C23C3622BBE783F00EF81F7 /* FirebaseStorage in Frameworks */,
+				39422C472BC4B82500128FD7 /* GoogleMapsCore in Frameworks */,
 				3DFFA39B2BC23939005ADE5D /* GoogleGenerativeAI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -92,6 +106,7 @@
 				3D0EFBA82BB8EC2D00C42F8F /* SignUpViewController.swift */,
 				3D80D23E2BB5202600228CE3 /* SettingsViewController.swift */,
 				3D5827062BBFD050001CB2E0 /* WelcomeViewController.swift */,
+				39F196E92BC4F7C100BD1ED7 /* NotificationService.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -129,6 +144,7 @@
 				2C23C35B2BBE418F00EF81F7 /* Home */,
 				2C2E434F2B8FBA5200593DE5 /* Info.plist */,
 				3DFF7E9E2B982BAC005C66B9 /* Itinerary */,
+				398A28532BC4ADB30093255C /* Maps */,
 				2C2FF32A2BBE3E4900B46650 /* Models */,
 				2C9218742BA79B4E004439B7 /* NewTrip */,
 				2CB090D42BA9502500C6490D /* README.pdf */,
@@ -165,8 +181,18 @@
 			isa = PBXGroup;
 			children = (
 				2C9218752BA79B76004439B7 /* NewTripViewController.swift */,
+				39F196E72BC4D33500BD1ED7 /* tempController.swift */,
 			);
 			path = NewTrip;
+			sourceTree = "<group>";
+		};
+		398A28532BC4ADB30093255C /* Maps */ = {
+			isa = PBXGroup;
+			children = (
+				398A28512BC4AD700093255C /* GlobalMapViewController.swift */,
+			);
+			name = Maps;
+			path = Core/Maps;
 			sourceTree = "<group>";
 		};
 		3DEFFD742BC246E700DE0DE5 /* Chat */ = {
@@ -212,6 +238,10 @@
 				2C23C35F2BBE783F00EF81F7 /* FirebaseFirestore */,
 				2C23C3612BBE783F00EF81F7 /* FirebaseStorage */,
 				3DFFA39A2BC23939005ADE5D /* GoogleGenerativeAI */,
+				39422C422BC4B82500128FD7 /* GoogleMaps */,
+				39422C442BC4B82500128FD7 /* GoogleMapsBase */,
+				39422C462BC4B82500128FD7 /* GoogleMapsCore */,
+				39F196E32BC4CC6E00BD1ED7 /* GooglePlaces */,
 			);
 			productName = WanderWise;
 			productReference = 2C2E433E2B8FBA5000593DE5 /* WanderWise.app */;
@@ -244,6 +274,8 @@
 			packageReferences = (
 				2C23C35C2BBE783F00EF81F7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				3DFFA3992BC23938005ADE5D /* XCRemoteSwiftPackageReference "generative-ai-swift" */,
+				39422C412BC4B82500128FD7 /* XCRemoteSwiftPackageReference "ios-maps-sdk" */,
+				39F196E22BC4CC6E00BD1ED7 /* XCRemoteSwiftPackageReference "ios-places-sdk" */,
 			);
 			productRefGroup = 2C2E433F2B8FBA5000593DE5 /* Products */;
 			projectDirPath = "";
@@ -278,6 +310,7 @@
 				3DFF7E9B2B96B7B5005C66B9 /* ItineraryTableViewCell.swift in Sources */,
 				3DBAE0FA2BC5CD7800AE0961 /* GenerativeAI.swift in Sources */,
 				3DFF7EC72B993C72005C66B9 /* ItineraryHeaderView.swift in Sources */,
+				398A28522BC4AD700093255C /* GlobalMapViewController.swift in Sources */,
 				398A282E2BC384870093255C /* UserProfile.swift in Sources */,
 				2C2FF32E2BBE3F5D00B46650 /* Day.swift in Sources */,
 				3D0EFBA92BB8EC2D00C42F8F /* SignUpViewController.swift in Sources */,
@@ -285,7 +318,9 @@
 				3D5827072BBFD050001CB2E0 /* WelcomeViewController.swift in Sources */,
 				2C2E43422B8FBA5000593DE5 /* AppDelegate.swift in Sources */,
 				3D80D23F2BB5202600228CE3 /* SettingsViewController.swift in Sources */,
+				39F196E82BC4D33500BD1ED7 /* tempController.swift in Sources */,
 				2C2FF3302BBE3F6C00B46650 /* Event.swift in Sources */,
+				39F196EA2BC4F7C100BD1ED7 /* NotificationService.swift in Sources */,
 				2C9218762BA79B76004439B7 /* NewTripViewController.swift in Sources */,
 				3DFF7EC92B993DBF005C66B9 /* EditItineraryViewController.swift in Sources */,
 				3DFFA3982BC23409005ADE5D /* ChatViewController.swift in Sources */,
@@ -529,6 +564,22 @@
 				minimumVersion = 10.23.1;
 			};
 		};
+		39422C412BC4B82500128FD7 /* XCRemoteSwiftPackageReference "ios-maps-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googlemaps/ios-maps-sdk";
+			requirement = {
+				kind = exactVersion;
+				version = 8.4.0;
+			};
+		};
+		39F196E22BC4CC6E00BD1ED7 /* XCRemoteSwiftPackageReference "ios-places-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/googlemaps/ios-places-sdk";
+			requirement = {
+				kind = exactVersion;
+				version = 8.5.0;
+			};
+		};
 		3DFFA3992BC23938005ADE5D /* XCRemoteSwiftPackageReference "generative-ai-swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/generative-ai-swift";
@@ -554,6 +605,26 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2C23C35C2BBE783F00EF81F7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseStorage;
+		};
+		39422C422BC4B82500128FD7 /* GoogleMaps */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39422C412BC4B82500128FD7 /* XCRemoteSwiftPackageReference "ios-maps-sdk" */;
+			productName = GoogleMaps;
+		};
+		39422C442BC4B82500128FD7 /* GoogleMapsBase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39422C412BC4B82500128FD7 /* XCRemoteSwiftPackageReference "ios-maps-sdk" */;
+			productName = GoogleMapsBase;
+		};
+		39422C462BC4B82500128FD7 /* GoogleMapsCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39422C412BC4B82500128FD7 /* XCRemoteSwiftPackageReference "ios-maps-sdk" */;
+			productName = GoogleMapsCore;
+		};
+		39F196E32BC4CC6E00BD1ED7 /* GooglePlaces */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 39F196E22BC4CC6E00BD1ED7 /* XCRemoteSwiftPackageReference "ios-places-sdk" */;
+			productName = GooglePlaces;
 		};
 		3DFFA39A2BC23939005ADE5D /* GoogleGenerativeAI */ = {
 			isa = XCSwiftPackageProductDependency;

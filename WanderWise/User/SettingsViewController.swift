@@ -91,11 +91,25 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, UINavigatio
     // Linh
     @IBAction func logoutPressed(_ sender: Any) {
         do {
-            try Auth.auth().signOut()
-            self.performSegue(withIdentifier: "LogoutToWelcomeScreenSegue", sender: self)
-        } catch {
-            print("sign out error")
-        }
+            let confirmAlert = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: UIAlertController.Style.alert)
+
+            confirmAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
+                do {
+                    try Auth.auth().signOut()
+                    self.performSegue(withIdentifier: "LogoutToWelcomeScreenSegue", sender: self)
+                    print("Handle Ok logic here")
+                } catch let signOutError as NSError {
+                    print("Error signing out: \(signOutError)")
+                    // Handle sign out error here
+                }
+            }))
+
+            confirmAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
+                print("Handle Cancel Logic here")
+            }))
+
+            present(confirmAlert, animated: true, completion: nil)
+        } 
     }
     
     

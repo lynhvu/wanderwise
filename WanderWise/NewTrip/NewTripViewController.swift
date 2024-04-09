@@ -7,9 +7,10 @@
 
 import UIKit
 import FirebaseAuth
+import GooglePlaces
 
 class NewTripViewController: UIViewController, UITextFieldDelegate {
-
+    
     @IBOutlet weak var tripNameField: UITextField!
     @IBOutlet weak var destinationField: UITextField!
     @IBOutlet weak var startDatePicker: UIDatePicker!
@@ -17,9 +18,23 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tripNameField.delegate = self
         destinationField.delegate = self
+    }
+    
+    
+    @IBAction func specifyLocation(_ sender: Any) {
+        let autocompleteController = GMSAutocompleteViewController()
+        autocompleteController.delegate = self
+        
+        // Specify the place data types to return.
+        let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt64(UInt(GMSPlaceField.name.rawValue) |
+            UInt(GMSPlaceField.placeID.rawValue)))
+        autocompleteController.placeFields = fields
+        
+        // Display the autocomplete view controller.
+        present(autocompleteController, animated: true, completion: nil)
     }
     
     // Called when 'return' key pressed
@@ -32,7 +47,7 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-
+    
     @IBAction func createTripButtonPressed(_ sender: UIButton) {
         // Validate inputs
         guard let tripName = tripNameField.text, !tripName.isEmpty,
@@ -92,7 +107,7 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
         
         return dates
     }
-
+    
     
     private func showAlert(message: String) {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
@@ -105,7 +120,41 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
            let destination = segue.destination as? ItineraryViewController,
            let newTrip = sender as? Trip {
             destination.trip = newTrip
-            destination.shouldHideBackButton = true 
+            destination.shouldHideBackButton = true
         }
     }
 }
+
+extension NewTripViewController: GMSAutocompleteViewControllerDelegate {
+    
+    // Handle the user's selection.
+    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+        destinationField.text = place.name
+        // TODO: save the placeID
+        print("Place name: \(place.name)")
+        print("Place ID: \(place.placeID)")
+        print("Place attributions: \(place.attributions)")
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+        // TODO: handle the error.
+        print("Error: ", error.localizedDescription)
+    }
+    
+    // User canceled the operation.
+    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    // Turn the network activity indicator on and off again.
+    func didRequestAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+    }
+    
+    func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
+        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+    }
+    
+}
+

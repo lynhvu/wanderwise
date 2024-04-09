@@ -141,7 +141,8 @@ class Trip {
         
         db.collection("trips")
           .whereField("userId", isEqualTo: userId)
-          .whereField("startDate", isGreaterThan: now)
+          .whereField("endDate", isGreaterThanOrEqualTo: now)
+          .order(by: "startDate")
           .getDocuments { (querySnapshot, error) in
               guard let documents = querySnapshot?.documents else {
                   print("No upcoming trips for user \(userId)")

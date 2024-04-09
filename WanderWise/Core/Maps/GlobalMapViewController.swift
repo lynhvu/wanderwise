@@ -6,13 +6,26 @@
 //
 
 import UIKit
+import GoogleMaps
 
 class GlobalMapViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        let options = GMSMapViewOptions()
+        options.camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 1)
+        options.frame = view.bounds
+        
+        let mapView = GMSMapView(options: options)
+        view.addSubview(mapView)
+        
+        // Creates a marker in the center of the map.
+        let marker = GMSMarker()
+        marker.position = CLLocationCoordinate2D(latitude: -33.86, longitude: 151.20)
+        marker.title = "Sydney"
+        marker.snippet = "Australia"
+        marker.map = mapView
     }
     
 

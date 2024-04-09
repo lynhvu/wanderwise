@@ -21,9 +21,6 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
     let dateFormatter = DateFormatter()
     let timeFormatter = DateFormatter()
     var days: [Day] = []
-    let dispatchGroup = DispatchGroup()
-
-    let semaphore = DispatchSemaphore(value: 0)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,7 +51,6 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-    
         guard self.startDatePicker.date < self.endDatePicker.date else {
             self.showAlert(message: "The start date must be before the end date.")
             return
@@ -67,7 +63,7 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
         
         // AI Logic
         model = GenerativeModel(name: "gemini-pro", apiKey: getAPIKey())
-        let itineraryPrompt = "Hi! You are my travel guide for my trip to \(destination) from \(startDatePicker.date) to \(endDatePicker.date). Please give me a full itinerary of places to eat for breakfast, lunch, and dinner as well as a mix of entertainment and attractions options for each so that the day is filled from 9am - 9pm with at least 6 different events. Only suggest places that include actual location names so that I don't have to do any research. Try not to include general areas and be as specific as possible about locations. Give me the result back in this format [date, time, type of event, location, notes]. The date format has to be year-month-day. For example, for a day in Austin, Texas, the result needs to look exactly like this for one of the events: [2024-04-09,8:00 AM,\"Food\",\"Bird Bird Biscuit\",\"The firebird biscuit is really popular\"] with no spaces inbetween sections. Do not include any extra information in the location section and do not include any additional sections. Do no deviate from this output format. And make sure that the type, location, and notes section are surrounded by quotation marks yet still comma separated from the location name. Do not leave a day empty. \n I want to separate the days by events so add a vertical line after listing all of the events for a day and make sure events are enclosed in []. An itinerary for a two day trip to Austin, Texas should look something like this: [2024-04-09,8:00 AM,\"Breakfast\",\"Bird Bird Biscuit\",\"The firebird biscuit is really popular\"] [2024-04-09,10:00 AM,\"Entertainment\",\"Lady Bird Lake\",\"Go kayaking\"] | [2024-04-10,8:00 AM,\"Brunch\",\"Dish Society\",\"New popular brunch place\"] [2024-04-10,10:00 AM,\"Attraction\",\"Capitol\",\"Take a tour of the state capitol\"] | \n Please try not to overlap any of the same locations for any of the days. Do not inlcude any other output."
+        let itineraryPrompt = "Hi! You are my travel guide for my trip to \(destination) from \(startDatePicker.date) to \(endDatePicker.date). Please give me a full itinerary of places to eat for breakfast, lunch, and dinner as well as a mix of entertainment and attractions options for each so that the day is filled from 9am - 9pm with at least 6 different events. Only suggest places that include actual location names so that I don't have to do any research. Try not to include general areas and be as specific as possible about locations. Give me the result back in this format [date, time, type of event, location, notes]. The date format has to be year-month-day. For example, for a day in Austin, Texas, the result needs to look exactly like this for one of the events: [2024-04-09,8:00 AM,\"Food\",\"Bird Bird Biscuit\",\"The firebird biscuit is really popular\"] with no spaces in between sections. Do not include any extra information in the location section and do not include any additional sections. Do no deviate from this output format. And make sure that the type, location, and notes section are surrounded by quotation marks yet still comma separated from the location name. Do not leave a day empty. \n I want to separate the days by events so add a vertical line after listing all of the events for a day and make sure events are enclosed in []. An itinerary for a two day trip to Austin, Texas should look something like this: [2024-04-09,8:00 AM,\"Breakfast\",\"Bird Bird Biscuit\",\"The firebird biscuit is really popular\"] [2024-04-09,10:00 AM,\"Entertainment\",\"Lady Bird Lake\",\"Go kayaking\"] | [2024-04-10,8:00 AM,\"Brunch\",\"Dish Society\",\"New popular brunch place\"] [2024-04-10,10:00 AM,\"Attraction\",\"Capitol\",\"Take a tour of the state capitol\"] | \n Please try not to overlap any of the same locations for any of the days. Do not inlcude any other output."
         let history = [
             ModelContent(role: "user", parts: itineraryPrompt),
             ModelContent(role: "model", parts: "Yes I can do that.")
@@ -129,7 +125,6 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
                             self.performSegue(withIdentifier: "CreatedItinerarySegue", sender: newTrip)
                         }
                     }
-                    
                 }
             } catch {
                 print("\(error)")
@@ -138,43 +133,28 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
     }
     
     func addEventsToDay(itinerary: String) {
+        // get days in itinerary
         let daysString = itinerary.components(separatedBy: "|")
         for day in daysString {
             let eventsString = day.components(separatedBy: "]")
             var events: [Event] = []
             var curDate: Date!
+            // get events for each day
             for event in eventsString {
                 let values = event.components(separatedBy: ",")
                 if values.count == 5 {
                     curDate = dateFormatter.date(from: String(values[0].suffix(10)))!
-                    print(String(values[3].dropFirst().dropLast().dropFirst()))
-                    print(String(values[4].dropFirst().dropLast().dropFirst()))
+                    // create new event
                     let newEvent = Event(name: String(values[2].dropFirst().dropLast()), date: curDate, startTime: timeFormatter.date(from: values[1])!, location: String(values[3].dropFirst().dropLast()), description: String(values[4].dropFirst().dropLast()))
                     events.append(newEvent)
                 }
             }
             if events.count > 0 {
+                // create new day with all the events
                 let newDay = Day(date: curDate, events: events)
-                print("TESTING \(newDay)")
                 days.append(newDay)
             }
         }
     }
-    
-    func getAPIKey() -> String {
-        guard let filePath = Bundle.main.path(forResource: "GenerativeAI-Info", ofType: "plist")
-        else {
-          fatalError("Couldn't find file 'GenerativeAI-Info.plist'.")
-        }
-        let plist = NSDictionary(contentsOfFile: filePath)
-        guard let value = plist?.object(forKey: "API_KEY") as? String else {
-          fatalError("Couldn't find key 'API_KEY' in 'GenerativeAI-Info.plist'.")
-        }
-        if value.starts(with: "_") {
-          fatalError(
-            "Follow the instructions at https://ai.google.dev/tutorials/setup to get an API key."
-          )
-        }
-        return value
-    }
+
 }

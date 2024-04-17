@@ -15,14 +15,16 @@ class UserProfile {
     var username: String
     var email: String
     var notifications: Bool
+    var imageURL: String
     
-    init(userId: String, firstName: String, lastName: String, username: String, email: String, notifications: Bool) {
+    init(userId: String, firstName: String, lastName: String, username: String, email: String, notifications: Bool, imageURL: String) {
         self.userId = userId
         self.firstName = firstName
         self.lastName = lastName
         self.username = username
         self.email = email
         self.notifications = notifications
+        self.imageURL = imageURL
     }
     
     init() {
@@ -32,6 +34,7 @@ class UserProfile {
         self.username = ""
         self.email = ""
         self.notifications = false
+        self.imageURL = ""
     }
     
     func saveUserInfo(userId: String, completion: @escaping (Error?) -> Void) {
@@ -46,7 +49,8 @@ class UserProfile {
             "lastName": self.lastName,
             "username": self.username,
             "email": self.email,
-            "notifications": self.notifications
+            "notifications": self.notifications,
+            "imageURL": self.imageURL
         ]
         
         userDocument.setData(userData) { error in
@@ -80,7 +84,8 @@ class UserProfile {
                           let lastName = userData["lastName"] as? String,
                           let username = userData["username"] as? String,
                           let email = userData["email"] as? String,
-                          let notifications = userData["notifications"] as? Bool else {
+                          let notifications = userData["notifications"] as? Bool,
+                          let imageURL = userData["imageURL"] as? String else {
                         // Handle error: Invalid user data format or user not found
                         print("User info not found or invalid format")
                         completion(nil)
@@ -93,6 +98,7 @@ class UserProfile {
                     self.username = username
                     self.email = email
                     self.notifications = notifications
+                    self.imageURL = imageURL
                     completion(nil)
                 }
             }

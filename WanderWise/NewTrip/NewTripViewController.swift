@@ -16,12 +16,15 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var destinationField: UITextField!
     @IBOutlet weak var startDatePicker: UIDatePicker!
     @IBOutlet weak var endDatePicker: UIDatePicker!
+    @IBOutlet weak var createTripButton: UIButton!
     
     var model: GenerativeModel!
     var chat: Chat!
     let dateFormatter = DateFormatter()
     let timeFormatter = DateFormatter()
     var days: [Day] = []
+    
+    let activityIndicator = UIActivityIndicatorView(style: .large)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +34,8 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
         
         dateFormatter.dateFormat = "yyyy-MM-dd"
         timeFormatter.dateFormat = "h:mm a"
+        
+        activityIndicator.center = view.center
     }
     
     
@@ -59,6 +64,13 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func createTripButtonPressed(_ sender: UIButton) {
+        // show activity indicator and block create trip button
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        createTripButton.isEnabled = false
+        createTripButton.alpha = 0.75
+        view.alpha = 0.75
+        
         // error-checking
         guard let tripName = self.tripNameField.text, !tripName.isEmpty,
               let destination = self.destinationField.text, !destination.isEmpty else {
@@ -84,7 +96,8 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
             ModelContent(role: "model", parts: "Yes I can do that.")
         ]
         chat = model.startChat(history: history)
-        getModelResponse(newMessage: itineraryPrompt, tripName: tripName, userId: userId, destination: destination)
+        var dates = datesBetween(start: startDatePicker.date, end: endDatePicker.date)
+        getModelResponse(newMessage: itineraryPrompt, tripName: tripName, userId: userId, destination: destination, dates: dates)
     }
     
     func datesBetween(start: Date, end: Date) -> [Date] {
@@ -122,13 +135,13 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func getModelResponse(newMessage: String, tripName: String, userId: String, destination: String) {
+    func getModelResponse(newMessage: String, tripName: String, userId: String, destination: String, dates: [Date]) {
         Task {
             do {
                 let response = try await self.chat.sendMessage(newMessage)
                 if let text = response.text {
                     print(text)
-                    addEventsToDay(itinerary: text)
+                    addEventsToDay(itinerary: text, dates: dates)
                     
                     let newTrip = Trip(id: UUID().uuidString, userId: userId, name: tripName, startDate: self.startDatePicker.date, endDate: self.endDatePicker.date, location: destination, days: self.days)
                     
@@ -140,6 +153,10 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
                             self.performSegue(withIdentifier: "CreatedItinerarySegue", sender: newTrip)
                         }
                     }
+                    
+                    // remove activity indicator from view
+                    activityIndicator.stopAnimating()
+                    activityIndicator.removeFromSuperview()
                 }
             } catch {
                 print("\(error)")
@@ -147,9 +164,10 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    func addEventsToDay(itinerary: String) {
+    func addEventsToDay(itinerary: String, dates: [Date]) {
         // get days in itinerary
         let daysString = itinerary.components(separatedBy: "|")
+        var dateIndex = 0
         for day in daysString {
             let eventsString = day.components(separatedBy: "]")
             var events: [Event] = []
@@ -158,7 +176,7 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
             for event in eventsString {
                 let values = event.components(separatedBy: ",")
                 if values.count == 5 {
-                    curDate = dateFormatter.date(from: String(values[0].suffix(10)))!
+                    curDate = dates[dateIndex]
                     // create new event
                     let newEvent = Event(name: String(values[2].dropFirst().dropLast()), date: curDate, startTime: timeFormatter.date(from: values[1])!, location: String(values[3].dropFirst().dropLast()), description: String(values[4].dropFirst().dropLast()))
                     events.append(newEvent)
@@ -169,6 +187,7 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
                 let newDay = Day(date: curDate, events: events)
                 days.append(newDay)
             }
+            dateIndex += 1
         }
     }
 

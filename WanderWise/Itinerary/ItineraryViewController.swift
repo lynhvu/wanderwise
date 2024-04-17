@@ -25,6 +25,8 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
         
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.contentInset = UIEdgeInsets(top: -25, left: 0, bottom: 0, right: 0)
+
         
         titleLabel.text = trip.name
         dateFormatter.dateStyle = .medium
@@ -50,11 +52,10 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return trip.days[section].events.count
     }
-    
+        
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
     }
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "EventCell", for: indexPath) as? ItineraryTableViewCell else {
@@ -89,10 +90,10 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
         let day = trip.days[section]
         cell.dayLabel.text = "Day \(section + 1)"
         cell.dateLabel.text = dateFormatter.string(from: day.date)
+        cell.contentView.backgroundColor = UIColor(red: 249/255, green: 219/255, blue: 189/255, alpha: 1)
         
         return cell.contentView
     }
-    
     
     func updateDateLabel() {
         if let startDate = trip.days.first?.date, let endDate = trip.days.last?.date {

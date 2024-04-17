@@ -90,10 +90,11 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         let username = self.usernameField.text ?? ""
         let email = self.emailField.text ?? ""
         let notifications = self.notificationsSwitch.isOn
+        let imageURL = ""
         
         let userId = authResult?.user.uid ?? ""
         
-        let newUser = UserProfile(userId: userId, firstName: firstName, lastName: lastName, username: username, email: email, notifications: notifications)
+        let newUser = UserProfile(userId: userId, firstName: firstName, lastName: lastName, username: username, email: email, notifications: notifications, imageURL: imageURL)
         
         newUser.saveUserInfo(userId: userId) { error in
             if let error = error {

@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseStorage
 
 class SettingsViewController: UIViewController, UITextFieldDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     
@@ -32,7 +33,6 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, UINavigatio
         emailField.delegate = self
         
         imagePicker.delegate = self
-        profileImageView.image = UIImage(named: "Image.png")
         profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
         profileImageView.clipsToBounds = true
         
@@ -51,13 +51,13 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, UINavigatio
             currUserProfile = UserProfile()
             currUserProfile?.getUserInfo(userId: userId) { error in
                 if let error = error {
-                        print("Error getting user profile: \(error.localizedDescription)")
-                    } else {
-                        print("UserProfile info retrieved successfully")
-                        DispatchQueue.main.async {
-                            self.reflectUserInfo()
-                        }
+                    print("Error getting user profile: \(error.localizedDescription)")
+                } else {
+                    print("UserProfile info retrieved successfully")
+                    DispatchQueue.main.async {
+                        self.reflectUserInfo()
                     }
+                }
             }
         }
         reflectUserInfo()
@@ -75,10 +75,13 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, UINavigatio
     }
     
     @IBAction func editPictureButtonPressed(_ sender: Any) {
+        cancelButton.isHidden = false
+        saveButton.isHidden = false
+        
         if UIImagePickerController.isSourceTypeAvailable(.savedPhotosAlbum){
             imagePicker.sourceType = .savedPhotosAlbum
             imagePicker.allowsEditing = false
-
+            
             present(imagePicker, animated: true, completion: nil)
         }
     }
@@ -95,7 +98,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, UINavigatio
     @IBAction func logoutPressed(_ sender: Any) {
         do {
             let confirmAlert = UIAlertController(title: "Logout", message: "Are you sure you want to logout?", preferredStyle: UIAlertController.Style.alert)
-
+            
             confirmAlert.addAction(UIAlertAction(title: "Ok", style: .default, handler: { (action: UIAlertAction!) in
                 do {
                     try Auth.auth().signOut()
@@ -106,13 +109,13 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, UINavigatio
                     // Handle sign out error here
                 }
             }))
-
+            
             confirmAlert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (action: UIAlertAction!) in
                 print("Handle Cancel Logic here")
             }))
-
+            
             present(confirmAlert, animated: true, completion: nil)
-        } 
+        }
     }
     
     
@@ -128,51 +131,120 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, UINavigatio
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("No user is currently signed in.")
+            return
+        }
+        
         let saveAlert = UIAlertController(
             title: "Save Information",
             message: "Are you sure you want to save this information to your profile? This action cannot be undone.",
             preferredStyle: .alert)
-            saveAlert.addAction(UIAlertAction(
+        saveAlert.addAction(UIAlertAction(
             title: "Cancel",
             style: .destructive))
-            saveAlert.addAction(UIAlertAction(
+        saveAlert.addAction(UIAlertAction(
             title: "Save",
-            style: .default) {
-                _ in
-                guard let userId = Auth.auth().currentUser?.uid else {
-                    print("No user is currently signed in.")
-                    return
-                }
-                let updatedUserProfile = UserProfile(
-                    userId: userId,
-                    firstName: self.firstNameField.text ?? "",
-                    lastName: self.lastNameField.text ?? "",
-                    username: self.usernameField.text ?? "",
-                    email: self.emailField.text ?? "",
-                    notifications: self.notificationSwitch.isOn)
-                updatedUserProfile.saveUserInfo(userId: userId){ error in
-                    if let error = error {
-                            // Handle error
-                            print("Error saving user updated info: \(error.localizedDescription)")
-                        } else {
-                            // User info saved successfully
-                            print("UserProfile updated info saved successfully")
-                            self.currUserProfile = updatedUserProfile
-                            self.reflectUserInfo()
+            style: .default) { _ in
+                if let profileImage = self.profileImageView.image {
+                    self.uploadProfileImage(profileImage, userId: userId) { [weak self] result in
+                        switch result {
+                        case .success(let imageURL):
+                            self?.saveUserProfile(userId: userId, imageURL: imageURL)
+                        case .failure(let error):
+                            print("Error uploading profile image: \(error)")
                         }
+                    }
+                } else {
+                    self.saveUserProfile(userId: userId, imageURL: nil)
                 }
-                self.cancelButton.isHidden = true
-                self.saveButton.isHidden = true
+                
             })
         self.present(saveAlert, animated: true)
     }
     
-    func reflectUserInfo(){
-        firstNameField.text = currUserProfile!.firstName
-        lastNameField.text = currUserProfile!.lastName
-        usernameField.text = currUserProfile!.username
-        emailField.text = currUserProfile!.email
-        notificationSwitch.setOn(currUserProfile!.notifications, animated: false)
+    func reflectUserInfo() {
+        firstNameField.text = currUserProfile?.firstName
+        lastNameField.text = currUserProfile?.lastName
+        usernameField.text = currUserProfile?.username
+        emailField.text = currUserProfile?.email
+        notificationSwitch.setOn(currUserProfile?.notifications ?? false, animated: false)
+        
+        // Default image
+        let defaultImage = UIImage(named: "Image.png")
+        
+        // Check if imageURL exists and is not an empty string
+        if let imageURLString = currUserProfile?.imageURL, !imageURLString.isEmpty, let imageURL = URL(string: imageURLString) {
+            // Fetch and set the user profile image
+            URLSession.shared.dataTask(with: imageURL) { data, _, error in
+                guard let data = data, error == nil else {
+                    DispatchQueue.main.async {
+                        self.profileImageView.image = defaultImage // Use default image in case of error
+                    }
+                    return
+                }
+                DispatchQueue.main.async {
+                    self.profileImageView.image = UIImage(data: data)
+                }
+            }.resume()
+        } else {
+            // Set to default image if imageURL is empty or nil
+            self.profileImageView.image = defaultImage
+        }
+    }
+
+    
+    func uploadProfileImage(_ image: UIImage, userId: String, completion: @escaping (Result<String, Error>) -> Void) {
+        guard let imageData = image.jpegData(compressionQuality: 0.4) else {
+            return
+        }
+        
+        let storageRef = Storage.storage().reference().child("profileImages/\(userId).jpg")
+        storageRef.putData(imageData, metadata: nil) { metadata, error in
+            guard metadata != nil else {
+                completion(.failure(error!))
+                return
+            }
+            
+            storageRef.downloadURL { url, error in
+                guard let downloadURL = url else {
+                    completion(.failure(error!))
+                    return
+                }
+                completion(.success(downloadURL.absoluteString))
+            }
+        }
+    }
+    
+    
+    private func saveUserProfile(userId: String, imageURL: String?) {
+        let updatedUserProfile = UserProfile(
+            userId: userId,
+            firstName: self.firstNameField.text ?? "",
+            lastName: self.lastNameField.text ?? "",
+            username: self.usernameField.text ?? "",
+            email: self.emailField.text ?? "",
+            notifications: self.notificationSwitch.isOn,
+            imageURL: imageURL ?? ""
+        )
+        
+        updatedUserProfile.saveUserInfo(userId: userId) { [weak self] error in
+            if let error = error {
+                // Handle error
+                print("Error saving user updated info: \(error.localizedDescription)")
+                // Optionally, show an alert to the user
+            } else {
+                // User info saved successfully
+                print("UserProfile updated info saved successfully")
+                self?.currUserProfile = updatedUserProfile
+                DispatchQueue.main.async {
+                    self?.reflectUserInfo()
+                    self?.cancelButton.isHidden = true
+                    self?.saveButton.isHidden = true
+                    // Optionally, show a success message to the user
+                }
+            }
+        }
     }
     
     // TODO: add checks so the data they want to save is safe

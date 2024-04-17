@@ -16,12 +16,15 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var destinationField: UITextField!
     @IBOutlet weak var startDatePicker: UIDatePicker!
     @IBOutlet weak var endDatePicker: UIDatePicker!
+    @IBOutlet weak var createTripButton: UIButton!
     
     var model: GenerativeModel!
     var chat: Chat!
     let dateFormatter = DateFormatter()
     let timeFormatter = DateFormatter()
     var days: [Day] = []
+    
+    let activityIndicator = UIActivityIndicatorView(style: .large)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +34,8 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
         
         dateFormatter.dateFormat = "yyyy-MM-dd"
         timeFormatter.dateFormat = "h:mm a"
+        
+        activityIndicator.center = view.center
     }
     
     
@@ -59,6 +64,13 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func createTripButtonPressed(_ sender: UIButton) {
+        // show activity indicator and block create trip button
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        createTripButton.isEnabled = false
+        createTripButton.alpha = 0.75
+        view.alpha = 0.75
+        
         // error-checking
         guard let tripName = self.tripNameField.text, !tripName.isEmpty,
               let destination = self.destinationField.text, !destination.isEmpty else {
@@ -140,6 +152,10 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
                             self.performSegue(withIdentifier: "CreatedItinerarySegue", sender: newTrip)
                         }
                     }
+                    
+                    // remove activity indicator from view
+                    activityIndicator.stopAnimating()
+                    activityIndicator.removeFromSuperview()
                 }
             } catch {
                 print("\(error)")

@@ -277,6 +277,7 @@
                     <tabBarItem key="tabBarItem" title="Item" selectedImage="calendar" catalog="system" id="6zg-aH-gxN"/>
                     <navigationItem key="navigationItem" id="SBR-VE-MsM"/>
                     <connections>
+                        <outlet property="createTripButton" destination="kXe-Lc-h3n" id="KtJ-AG-f6x"/>
                         <outlet property="destinationField" destination="Qwe-cV-Yxz" id="CmK-so-J7W"/>
                         <outlet property="endDatePicker" destination="dQt-Wv-KVd" id="kMA-AB-3wD"/>
                         <outlet property="startDatePicker" destination="ZTy-vs-TB2" id="Wdc-0w-vvc"/>
@@ -1342,7 +1343,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="oYs-GF-ThQ"/>
         <segue reference="0RG-ej-sod"/>
-        <segue reference="g71-X5-WfU"/>
+        <segue reference="OcL-vV-pD4"/>
         <segue reference="ZQB-ef-5vd"/>
     </inferredMetricsTieBreakers>
     <resources>

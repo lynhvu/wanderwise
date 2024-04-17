@@ -8,8 +8,6 @@
 import UIKit
 import GoogleGenerativeAI
 
-var messages: [String] = []
-
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var tableView: UITableView!
@@ -20,6 +18,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     var location: String!
     var model: GenerativeModel!
     var chat: Chat!
+    var messages: [String] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,30 +38,19 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func setUpModel() {
+        messages = []
+        
         model = GenerativeModel(name: "gemini-pro", apiKey: getAPIKey())
-        if messages.count == 0 {
-            let firstMessage = "Hi! Welcome to \(location ?? "your new adventure")! I'm happy to be your tour guide during your trip, what would you like to know? I can give you recommendations for things to do, places to eat, or how to get around. Just let me know what you're interested in and I'll be happy to help."
-            messages.append("\(firstMessage)")
-            model = GenerativeModel(name: "gemini-pro", apiKey: getAPIKey())
-            let history = [
-                ModelContent(role: "user", parts: "You are my tour guide while I am visiting \(String(describing: location)). Please answer any questions I may have."),
-                ModelContent(role: "model", parts: messages[0]),
-            ]
-            chat = model.startChat(history: history)
-        } else {
-            var history: [ModelContent] = []
-            var role = "user"
-            for message in messages {
-                history.append(ModelContent(role: role, parts: message))
-                // change role
-                if role == "user" {
-                    role = "model"
-                } else {
-                    role = "user"
-                }
-            }
-            chat = model.startChat(history: history)
-        }
+        
+        let firstMessage = "Hi! Welcome to \(location ?? "your new adventure")! I'm happy to be your tour guide during your trip, what would you like to know? I can give you recommendations for things to do, places to eat, or how to get around. Just let me know what you're interested in and I'll be happy to help."
+        messages.append("\(firstMessage)")
+        model = GenerativeModel(name: "gemini-pro", apiKey: getAPIKey())
+        let history = [
+            ModelContent(role: "user", parts: "You are my tour guide while I am visiting \(String(describing: location)). Please answer any questions I may have."),
+            ModelContent(role: "model", parts: messages[0]),
+        ]
+        chat = model.startChat(history: history)
+      
     }
     
     // Handle keyboard show event

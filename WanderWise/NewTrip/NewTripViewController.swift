@@ -64,13 +64,6 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func createTripButtonPressed(_ sender: UIButton) {
-        // show activity indicator and block create trip button
-        view.addSubview(activityIndicator)
-        activityIndicator.startAnimating()
-        createTripButton.isEnabled = false
-        createTripButton.alpha = 0.75
-        view.alpha = 0.75
-        
         // error-checking
         guard let tripName = self.tripNameField.text, !tripName.isEmpty,
               let destination = self.destinationField.text, !destination.isEmpty else {
@@ -87,6 +80,13 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
             self.showAlert(message: "User not found. Please sign in.")
             return
         }
+        
+        // show activity indicator and block create trip button
+        view.addSubview(activityIndicator)
+        activityIndicator.startAnimating()
+        createTripButton.isEnabled = false
+        createTripButton.alpha = 0.85
+        view.alpha = 0.85
         
         // AI Logic
         model = GenerativeModel(name: "gemini-pro", apiKey: getAPIKey())

@@ -14,7 +14,6 @@ class EditEventViewController: UIViewController, UITextFieldDelegate, UITextView
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var timePicker: UIDatePicker!
     @IBOutlet weak var notesTextField: UITextView!
-    @IBOutlet weak var deleteButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
 
     var trip: Trip!
@@ -38,11 +37,6 @@ class EditEventViewController: UIViewController, UITextFieldDelegate, UITextView
             datePicker.date = event.date // Assuming your event has a single date
             timePicker.date = event.startTime // You might need a separate picker or method for end time if they differ
             notesTextField.text = event.description
-            
-            deleteButton.isHidden = false
-        } else {
-            // don't give the option to delete event if it hasn't been saved yet
-            deleteButton.isHidden = true
         }
 
         // set rounded corners for the notes text field and save button
@@ -61,25 +55,6 @@ class EditEventViewController: UIViewController, UITextFieldDelegate, UITextView
     // Called when the user clicks on the view outside of UITextField or UITextView
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
-    }
-    
-    @IBAction func deleteButtonPressed(_ sender: Any) {
-        let deleteAlert = UIAlertController(
-            title: "Delete Event",
-            message: "Are you sure you want to remove this event from your itinerary?",
-            preferredStyle: .alert)
-            deleteAlert.addAction(UIAlertAction(
-            title: "Cancel",
-            style: .default))
-            deleteAlert.addAction(UIAlertAction(
-            title: "Delete",
-            style: .destructive) {
-                _ in
-                // TODO: delete selectedEvent from db
-            })
-        self.present(deleteAlert, animated: true)
-        
-        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func saveButtonPressed(_ sender: Any) {

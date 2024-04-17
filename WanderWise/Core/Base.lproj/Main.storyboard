@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iwz-7F-Zkg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iwz-7F-Zkg">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -1064,40 +1064,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Dc-aa-Y1J">
-                                <rect key="frame" x="319" y="44" width="48" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" image="trash" catalog="system">
-                                    <color key="baseForegroundColor" red="0.72991901640000001" green="0.3883774579" blue="0.39606451990000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <action selector="deleteButtonPressed:" destination="hC5-Nn-KYf" eventType="touchUpInside" id="akM-Q5-kPU"/>
-                                </connections>
-                            </button>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Event title" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ZkD-xw-n4O">
-                                <rect key="frame" x="34" y="105" width="325" height="34"/>
+                                <rect key="frame" x="34" y="85" width="325" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="search destination" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="P0D-Mz-q5C">
-                                <rect key="frame" x="34" y="154" width="325" height="34"/>
+                                <rect key="frame" x="34" y="134" width="325" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <datePicker contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="V6U-jh-Y0w">
-                                <rect key="frame" x="34" y="203" width="127" height="39"/>
+                            <datePicker contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="V6U-jh-Y0w">
+                                <rect key="frame" x="34" y="183" width="127" height="34.333333333333343"/>
                             </datePicker>
-                            <datePicker contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="3Mv-pP-II5">
-                                <rect key="frame" x="273" y="203" width="86" height="39"/>
+                            <datePicker contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="time" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="3Mv-pP-II5">
+                                <rect key="frame" x="273" y="183" width="86" height="36"/>
                             </datePicker>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r2T-Ia-gOB">
-                                <rect key="frame" x="34" y="262.33333333333331" width="46" height="21"/>
+                                <rect key="frame" x="34" y="243" width="46" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OjU-Fu-kJS">
-                                <rect key="frame" x="298" y="413.33333333333331" width="61" height="35"/>
+                                <rect key="frame" x="298" y="394" width="61" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Save">
                                     <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -1108,7 +1098,7 @@
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="TEC-tv-oA6">
-                                <rect key="frame" x="34" y="298.33333333333331" width="325" height="100"/>
+                                <rect key="frame" x="34" y="279" width="325" height="100"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="VlU-UZ-jfV"/>
@@ -1132,11 +1122,9 @@
                             <constraint firstItem="OjU-Fu-kJS" firstAttribute="top" secondItem="TEC-tv-oA6" secondAttribute="bottom" constant="15" id="Xh5-Ov-0QQ"/>
                             <constraint firstItem="P0D-Mz-q5C" firstAttribute="top" secondItem="ZkD-xw-n4O" secondAttribute="bottom" constant="15" id="ZoV-Z8-aTl"/>
                             <constraint firstItem="hoD-UL-i93" firstAttribute="trailing" secondItem="3Mv-pP-II5" secondAttribute="trailing" constant="34" id="dQZ-C8-Oct"/>
-                            <constraint firstItem="ZkD-xw-n4O" firstAttribute="top" secondItem="4Dc-aa-Y1J" secondAttribute="bottom" constant="26" id="eG1-wc-fB5"/>
                             <constraint firstItem="ZkD-xw-n4O" firstAttribute="leading" secondItem="hoD-UL-i93" secondAttribute="leading" constant="34" id="ejV-DU-VfP"/>
-                            <constraint firstItem="hoD-UL-i93" firstAttribute="trailing" secondItem="4Dc-aa-Y1J" secondAttribute="trailing" constant="26" id="eof-Xb-FbA"/>
-                            <constraint firstItem="4Dc-aa-Y1J" firstAttribute="top" secondItem="hoD-UL-i93" secondAttribute="top" id="ers-5F-djV"/>
                             <constraint firstItem="V6U-jh-Y0w" firstAttribute="leading" secondItem="hoD-UL-i93" secondAttribute="leading" constant="34" id="fJD-C0-NHW"/>
+                            <constraint firstItem="ZkD-xw-n4O" firstAttribute="top" secondItem="hoD-UL-i93" secondAttribute="top" constant="41" id="gEP-Mq-8uk"/>
                             <constraint firstItem="hoD-UL-i93" firstAttribute="trailing" secondItem="ZkD-xw-n4O" secondAttribute="trailing" constant="34" id="hA6-ND-GT7"/>
                             <constraint firstItem="TEC-tv-oA6" firstAttribute="top" secondItem="r2T-Ia-gOB" secondAttribute="bottom" constant="15" id="olr-l4-wZ3"/>
                             <constraint firstItem="hoD-UL-i93" firstAttribute="trailing" secondItem="OjU-Fu-kJS" secondAttribute="trailing" constant="34" id="qOf-r9-5RM"/>
@@ -1146,7 +1134,6 @@
                     <navigationItem key="navigationItem" id="7fw-Zd-Rcn"/>
                     <connections>
                         <outlet property="datePicker" destination="V6U-jh-Y0w" id="0OX-gB-WpD"/>
-                        <outlet property="deleteButton" destination="4Dc-aa-Y1J" id="mOQ-0v-xnM"/>
                         <outlet property="eventTitleField" destination="ZkD-xw-n4O" id="W2I-M5-4Lb"/>
                         <outlet property="locationField" destination="P0D-Mz-q5C" id="ada-P2-KHp"/>
                         <outlet property="notesTextField" destination="TEC-tv-oA6" id="nRt-2k-vYA"/>
@@ -1355,18 +1342,17 @@
         <image name="person.crop.circle" catalog="system" width="128" height="123"/>
         <image name="plus" catalog="system" width="128" height="113"/>
         <image name="square.and.pencil" catalog="system" width="128" height="121"/>
-        <image name="trash" catalog="system" width="117" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="opaqueSeparatorColor">
-            <color red="0.77647058820000003" green="0.77647058820000003" blue="0.7843137255" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemRedColor">
-            <color red="1" green="0.23137254900000001" blue="0.18823529410000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

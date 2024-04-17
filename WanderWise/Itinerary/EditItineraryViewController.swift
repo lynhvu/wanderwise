@@ -91,8 +91,21 @@ class EditItineraryViewController: UIViewController, UITableViewDelegate, UITabl
     // swipe to delete an event
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // TODO: delete in firestore db
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            let deleteAlert = UIAlertController(
+                title: "Delete Event",
+                message: "Are you sure you want to remove this event from your itinerary?",
+                preferredStyle: .alert)
+            deleteAlert.addAction(UIAlertAction(
+                title: "Cancel",
+                style: .default))
+            deleteAlert.addAction(UIAlertAction(
+                title: "Delete",
+                style: .destructive) {
+                    _ in
+                    self.trip.deleteEventInTrip(event: self.trip.days[indexPath.section].events[indexPath.row])
+                    tableView.deleteRows(at: [indexPath], with: .fade)
+                })
+            self.present(deleteAlert, animated: true)
         }
     }
     
@@ -119,5 +132,5 @@ class EditItineraryViewController: UIViewController, UITableViewDelegate, UITabl
             destination.selectedEvent = nil
         }
     }
-
+    
 }

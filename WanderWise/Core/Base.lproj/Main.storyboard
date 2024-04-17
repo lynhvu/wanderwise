@@ -1017,14 +1017,6 @@
                                         <color key="textColor" systemColor="systemBackgroundColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yeD-be-ZxH">
-                                        <rect key="frame" x="290" y="17" width="65" height="35"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Done">
-                                            <color key="baseForegroundColor" systemColor="systemBackgroundColor"/>
-                                        </buttonConfiguration>
-                                    </button>
                                 </subviews>
                                 <viewLayoutGuide key="safeArea" id="fkt-CQ-cOR"/>
                                 <color key="backgroundColor" red="0.30729377270000002" green="0.31599867339999999" blue="0.39216703180000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

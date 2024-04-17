@@ -48,13 +48,13 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         }
         currUserProfile.getUserInfo(userId: userId) { error in
             if let error = error {
-                    print("Error getting user profile: \(error.localizedDescription)")
-                } else {
-                    print("UserProfile info retrieved successfully")
-                    DispatchQueue.main.async {
-                        self.greetingMessage.text = "Hello \(self.currUserProfile.firstName)!"
-                    }
+                print("Error getting user profile: \(error.localizedDescription)")
+            } else {
+                print("UserProfile info retrieved successfully")
+                DispatchQueue.main.async {
+                    self.greetingMessage.text = "Hello \(self.currUserProfile.firstName)!"
                 }
+            }
         }
     }
     
@@ -98,6 +98,41 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         tableView.deselectRow(at: indexPath, animated: true)
         
         performSegue(withIdentifier: segueID, sender: (indexPath, tableView))
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let deleteAlert = UIAlertController(
+                title: "Delete Trip",
+                message: "Are you sure you want to remove this trip?",
+                preferredStyle: .alert)
+            deleteAlert.addAction(UIAlertAction(
+                title: "Cancel",
+                style: .default))
+            deleteAlert.addAction(UIAlertAction(
+                title: "Delete",
+                style: .destructive) { [weak self] _ in
+                    guard let self = self else { return }
+                    let trip = (tableView == self.upcomingTableView) ? self.upcomingTrips[indexPath.row] : self.pastTrips[indexPath.row]
+                    
+                    Trip.deleteTripById(tripId: trip.id) { error in
+                        if let error = error {
+                            print("Error deleting trip: \(error.localizedDescription)")
+                        } else {
+                            print("Trip successfully deleted")
+                            DispatchQueue.main.async {
+                                if tableView == self.upcomingTableView {
+                                    self.upcomingTrips.remove(at: indexPath.row)
+                                } else {
+                                    self.pastTrips.remove(at: indexPath.row)
+                                }
+                                tableView.deleteRows(at: [indexPath], with: .fade)
+                            }
+                        }
+                    }
+                })
+            self.present(deleteAlert, animated: true)
+        }
     }
     
     // MARK: - Fetching

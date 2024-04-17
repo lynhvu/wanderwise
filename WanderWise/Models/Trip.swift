@@ -52,33 +52,43 @@ class Trip {
 
         let startDate = startDateTimestamp.dateValue()
         let endDate = endDateTimestamp.dateValue()
-
+        
         let days = daysDictionaries.compactMap { Day.from(dictionary: $0) }
         return Trip(id: id, userId: userId, name: name, startDate: startDate, endDate: endDate, location: location, days: days)
     }
     
+    func deleteEventInTrip(event: Event) {
+        for day in days {
+            if let index = day.events.firstIndex(where: { $0.id == event.id }) {
+                day.events.remove(at: index)
+                break
+            }
+        }
+        
+        saveToDatabase { error in
+            if let error = error {
+                print("Error deleting event from trip: \(error.localizedDescription)")
+            } else {
+                print("Trip successfully updated with new event details")
+            }
+        }
+    }
+    
     func updateEventInTrip(updatedEvent: Event) {
-        // Attempt to find the day that matches the updated event's date
         if let dayIndex = days.firstIndex(where: { Calendar.current.isDate($0.date, inSameDayAs: updatedEvent.date) }) {
-            // Check if the event is already part of this day
             if let eventIndex = days[dayIndex].events.firstIndex(where: { $0.id == updatedEvent.id }) {
-                // Update the event in place
                 days[dayIndex].events[eventIndex] = updatedEvent
             } else {
-                // If the event was not found in the day, it means the event's date was changed.
-                // Remove the event from its original day.
                 for day in days {
                     if let index = day.events.firstIndex(where: { $0.id == updatedEvent.id }) {
                         day.events.remove(at: index)
                         break
                     }
                 }
-                // Add the updated event to the correct day.
                 days[dayIndex].events.append(updatedEvent)
             }
         }
-
-        // Save the updated trip to Firestore
+        
         saveToDatabase { error in
             if let error = error {
                 print("Error updating trip with new event details: \(error.localizedDescription)")
@@ -86,7 +96,7 @@ class Trip {
                 print("Trip successfully updated with new event details")
             }
         }
-        }
+    }
     
     func addEventToDay(event: Event, forDate date: Date) {
         if let dayIndex = self.days.firstIndex(where: { Calendar.current.isDate($0.date, inSameDayAs: date) }) {
@@ -110,9 +120,16 @@ class Trip {
     func saveToDatabase(completion: @escaping (Error?) -> Void) {
         let db = Firestore.firestore()
         let tripDictionary = self.toDictionary()
-
+        
         // Save or update the trip in Firestore
         db.collection("trips").document(self.id).setData(tripDictionary) { error in
+            completion(error)
+        }
+    }
+    
+    static func deleteTripById(tripId: String, completion: @escaping (Error?) -> Void) {
+        let db = Firestore.firestore()
+        db.collection("trips").document(tripId).delete() { error in
             completion(error)
         }
     }
@@ -124,7 +141,7 @@ class Trip {
                 print("No documents for user \(userId)")
                 completion(nil)
                 return
-        }
+            }
             
             let trips = documents.compactMap { docSnapshot -> Trip? in
                 var tripData = docSnapshot.data()
@@ -140,23 +157,23 @@ class Trip {
         let now = Date()
         
         db.collection("trips")
-          .whereField("userId", isEqualTo: userId)
-          .whereField("endDate", isGreaterThanOrEqualTo: now)
-          .order(by: "startDate")
-          .getDocuments { (querySnapshot, error) in
-              guard let documents = querySnapshot?.documents else {
-                  print("No upcoming trips for user \(userId)")
-                  completion(nil)
-                  return
-              }
-              
-              let trips = documents.compactMap { docSnapshot -> Trip? in
-                  var tripData = docSnapshot.data()
-                  tripData["id"] = docSnapshot.documentID
-                  return Trip.from(dictionary: tripData)
-              }
-              completion(trips)
-          }
+            .whereField("userId", isEqualTo: userId)
+            .whereField("endDate", isGreaterThanOrEqualTo: now)
+            .order(by: "startDate")
+            .getDocuments { (querySnapshot, error) in
+                guard let documents = querySnapshot?.documents else {
+                    print("No upcoming trips for user \(userId)")
+                    completion(nil)
+                    return
+                }
+                
+                let trips = documents.compactMap { docSnapshot -> Trip? in
+                    var tripData = docSnapshot.data()
+                    tripData["id"] = docSnapshot.documentID
+                    return Trip.from(dictionary: tripData)
+                }
+                completion(trips)
+            }
     }
     
     static func getPastTripsByUserId(userId: String, completion: @escaping ([Trip]?) -> Void) {
@@ -164,21 +181,21 @@ class Trip {
         let now = Date()
         
         db.collection("trips")
-          .whereField("userId", isEqualTo: userId)
-          .whereField("endDate", isLessThan: now)
-          .getDocuments { (querySnapshot, error) in
-              guard let documents = querySnapshot?.documents else {
-                  print("No past trips for user \(userId)")
-                  completion(nil)
-                  return
-              }
-                            
-              let trips = documents.compactMap { docSnapshot -> Trip? in
-                  var tripData = docSnapshot.data()
-                  tripData["id"] = docSnapshot.documentID
-                  return Trip.from(dictionary: tripData)
-              }
-              completion(trips)
-          }
+            .whereField("userId", isEqualTo: userId)
+            .whereField("endDate", isLessThan: now)
+            .getDocuments { (querySnapshot, error) in
+                guard let documents = querySnapshot?.documents else {
+                    print("No past trips for user \(userId)")
+                    completion(nil)
+                    return
+                }
+                
+                let trips = documents.compactMap { docSnapshot -> Trip? in
+                    var tripData = docSnapshot.data()
+                    tripData["id"] = docSnapshot.documentID
+                    return Trip.from(dictionary: tripData)
+                }
+                completion(trips)
+            }
     }
 }

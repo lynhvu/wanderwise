@@ -34,6 +34,7 @@
 		3D0EFBA92BB8EC2D00C42F8F /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D0EFBA82BB8EC2D00C42F8F /* SignUpViewController.swift */; };
 		3D5827072BBFD050001CB2E0 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D5827062BBFD050001CB2E0 /* WelcomeViewController.swift */; };
 		3D80D23F2BB5202600228CE3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D80D23E2BB5202600228CE3 /* SettingsViewController.swift */; };
+		3DA7F0962BD06AC000A951BD /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DA7F0952BD06AC000A951BD /* EventDetailViewController.swift */; };
 		3DBAE0FA2BC5CD7800AE0961 /* GenerativeAI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DBAE0F92BC5CD7700AE0961 /* GenerativeAI.swift */; };
 		3DFF7E932B96A934005C66B9 /* ItineraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFF7E922B96A934005C66B9 /* ItineraryViewController.swift */; };
 		3DFF7E9B2B96B7B5005C66B9 /* ItineraryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFF7E9A2B96B7B5005C66B9 /* ItineraryTableViewCell.swift */; };
@@ -68,6 +69,7 @@
 		3D0EFBA82BB8EC2D00C42F8F /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		3D5827062BBFD050001CB2E0 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		3D80D23E2BB5202600228CE3 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		3DA7F0952BD06AC000A951BD /* EventDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
 		3DBAE0F92BC5CD7700AE0961 /* GenerativeAI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenerativeAI.swift; sourceTree = "<group>"; };
 		3DFF7E922B96A934005C66B9 /* ItineraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryViewController.swift; sourceTree = "<group>"; };
 		3DFF7E9A2B96B7B5005C66B9 /* ItineraryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryTableViewCell.swift; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 		3DFF7E9E2B982BAC005C66B9 /* Itinerary */ = {
 			isa = PBXGroup;
 			children = (
+				3DA7F0952BD06AC000A951BD /* EventDetailViewController.swift */,
 				3DFF7E922B96A934005C66B9 /* ItineraryViewController.swift */,
 				3DFF7E9C2B97B4FB005C66B9 /* ItinerarySectionHeaderTableViewCell.swift */,
 				3DFF7E9A2B96B7B5005C66B9 /* ItineraryTableViewCell.swift */,
@@ -309,6 +312,7 @@
 				398A28522BC4AD700093255C /* GlobalMapViewController.swift in Sources */,
 				398A282E2BC384870093255C /* UserProfile.swift in Sources */,
 				2C2FF32E2BBE3F5D00B46650 /* Day.swift in Sources */,
+				3DA7F0962BD06AC000A951BD /* EventDetailViewController.swift in Sources */,
 				3D0EFBA92BB8EC2D00C42F8F /* SignUpViewController.swift in Sources */,
 				3DFF7EC32B990C5C005C66B9 /* EditEventViewController.swift in Sources */,
 				3D5827072BBFD050001CB2E0 /* WelcomeViewController.swift in Sources */,

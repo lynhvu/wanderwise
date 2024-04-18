@@ -20,6 +20,8 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
     
     var shouldHideBackButton: Bool = false
     
+    var selectedEvent: Event!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -54,7 +56,9 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
     }
         
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        selectedEvent = trip.days[indexPath.section].events[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
+        performSegue(withIdentifier: "EventDetailSegue", sender: self)
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -112,6 +116,10 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
         } else if segue.identifier == "ChatSegue",
                   let destination = segue.destination as? ChatViewController {
             destination.location = trip.location
+        } else if segue.identifier == "EventDetailSegue",
+                  let destination = segue.destination as? EventDetailViewController {
+            destination.selectedEvent = selectedEvent
+            
         }
     }
 }

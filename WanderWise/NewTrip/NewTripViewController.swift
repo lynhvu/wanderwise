@@ -32,6 +32,9 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
         tripNameField.delegate = self
         destinationField.delegate = self
         
+        startDatePicker.minimumDate = Date()
+        endDatePicker.minimumDate = Date()
+        
         dateFormatter.dateFormat = "yyyy-MM-dd"
         timeFormatter.dateFormat = "h:mm a"
         

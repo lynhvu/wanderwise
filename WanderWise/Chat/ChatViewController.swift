@@ -29,8 +29,6 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.reloadData()
         scrollToBottom()
         
-        print("TRIP: \(trip!.toString())")
-        
         // set up keyboard notifications
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
@@ -95,9 +93,28 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         return messages.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath)
-        cell.textLabel?.text = messages[indexPath.row]
-        return cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath) as! MessageCell
+//        cell.textLabel?.text = messages[indexPath.row]
+//        return cell
+        
+        let message = messages[indexPath.row]
+            
+            // Determine if the message is from the user or the model
+            let isUserMessage = indexPath.row % 2 == 0
+            
+            // Set the bubble style based on the sender
+            if isUserMessage {
+                cell.bubbleView.backgroundColor = UIColor(red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0) // Light gray for user
+                cell.messageLabel.textColor = .black
+            } else {
+                cell.bubbleView.backgroundColor = UIColor(red: 0.1, green: 0.65, blue: 1.0, alpha: 1.0) // Blue for model
+                cell.messageLabel.textColor = .white
+            }
+            
+            // Set the message text
+            cell.messageLabel.text = message
+            
+            return cell
     }
 
     @IBAction func sendButtonPressed(_ sender: Any) {

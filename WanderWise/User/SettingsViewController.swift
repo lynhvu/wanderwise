@@ -104,6 +104,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, UINavigatio
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let newProfilePic = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             profileImageView.image = newProfilePic
+            profileImageView.contentMode = .scaleAspectFill
         }
         
         picker.dismiss(animated: true, completion: nil)

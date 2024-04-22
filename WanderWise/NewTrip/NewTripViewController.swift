@@ -99,7 +99,7 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
             ModelContent(role: "model", parts: "Yes I can do that.")
         ]
         chat = model.startChat(history: history)
-        var dates = datesBetween(start: startDatePicker.date, end: endDatePicker.date)
+        let dates = datesBetween(start: startDatePicker.date, end: endDatePicker.date)
         getModelResponse(newMessage: itineraryPrompt, tripName: tripName, userId: userId, destination: destination, dates: dates)
     }
     
@@ -160,6 +160,9 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
                     // remove activity indicator from view
                     activityIndicator.stopAnimating()
                     activityIndicator.removeFromSuperview()
+                    createTripButton.isEnabled = true
+                    createTripButton.alpha = 1
+                    view.alpha = 1
                 }
             } catch {
                 print("\(error)")

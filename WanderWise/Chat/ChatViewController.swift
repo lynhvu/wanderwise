@@ -15,7 +15,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var messageFieldBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var sendButtonBottomConstraint: NSLayoutConstraint!
     
-    var location: String!
+    var trip: Trip!
     var model: GenerativeModel!
     var chat: Chat!
     var messages: [String] = []
@@ -28,6 +28,8 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         messageField.delegate = self
         tableView.reloadData()
         scrollToBottom()
+        
+        print("TRIP: \(trip!.toString())")
         
         // set up keyboard notifications
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -42,11 +44,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         model = GenerativeModel(name: "gemini-pro", apiKey: getAPIKey())
         
-        let firstMessage = "Hi! Welcome to \(location ?? "your new adventure")! I'm happy to be your tour guide during your trip, what would you like to know? I can give you recommendations for things to do, places to eat, or how to get around. Just let me know what you're interested in and I'll be happy to help."
+        let firstMessage = "Hi! Welcome to \(trip!.location)! I'm happy to be your tour guide during your trip, what would you like to know? I can give you recommendations for things to do, places to eat, or how to get around. Just let me know what you're interested in and I'll be happy to help."
         messages.append("\(firstMessage)")
         model = GenerativeModel(name: "gemini-pro", apiKey: getAPIKey())
         let history = [
-            ModelContent(role: "user", parts: "You are my tour guide while I am visiting \(String(describing: location)). Please answer any questions I may have."),
+            ModelContent(role: "user", parts: "You are my tour guide while I am visiting \(trip!.location). This is my current itinerary: \(trip!.toString()). Please answer any questions I may have."),
             ModelContent(role: "model", parts: messages[0]),
         ]
         chat = model.startChat(history: history)

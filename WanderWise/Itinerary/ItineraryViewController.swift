@@ -115,7 +115,7 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
             destination.trip = trip
         } else if segue.identifier == "ChatSegue",
                   let destination = segue.destination as? ChatViewController {
-            destination.location = trip.location
+            destination.trip = trip
         } else if segue.identifier == "EventDetailSegue",
                   let destination = segue.destination as? EventDetailViewController {
             destination.selectedEvent = selectedEvent

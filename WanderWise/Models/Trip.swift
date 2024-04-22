@@ -39,6 +39,22 @@ class Trip {
         ]
     }
     
+    func toString() -> String {
+        var itinerary = ""
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy"
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "h:mm a"
+    
+        for day in days {
+            for event in day.events {
+                itinerary += "\(dateFormatter.string(from: day.date)), \(timeFormatter.string(from: event.startTime)), \(event.location), \(event.description) \n"
+            }
+        }
+        return itinerary
+    }
+    
     static func from(dictionary: [String: Any]) -> Trip? {
         guard let id = dictionary["id"] as? String,
               let userId = dictionary["userId"] as? String,

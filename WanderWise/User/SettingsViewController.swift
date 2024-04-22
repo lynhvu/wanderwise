@@ -35,6 +35,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, UINavigatio
         imagePicker.delegate = self
         profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
         profileImageView.clipsToBounds = true
+        profileImageView.contentMode = .scaleAspectFill
         
         cancelButton.isHidden = true
         saveButton.isHidden = true
@@ -104,7 +105,6 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, UINavigatio
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let newProfilePic = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             profileImageView.image = newProfilePic
-            profileImageView.contentMode = .scaleAspectFill
         }
         
         picker.dismiss(animated: true, completion: nil)
@@ -187,7 +187,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, UINavigatio
         notificationSwitch.setOn(currUserProfile?.notifications ?? false, animated: false)
         
         // Default image
-        let defaultImage = UIImage(named: "Image.png")
+        let defaultImage = UIImage(systemName: "person.crop.circle.fill")
         
         // Check if imageURL exists and is not an empty string
         if let imageURLString = currUserProfile?.imageURL, !imageURLString.isEmpty, let imageURL = URL(string: imageURLString) {

@@ -23,6 +23,7 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
     let dateFormatter = DateFormatter()
     let timeFormatter = DateFormatter()
     var days: [Day] = []
+    var currDestinationPlaceId = ""
     
     let activityIndicator = UIActivityIndicatorView(style: .large)
     
@@ -146,7 +147,7 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
                     print(text)
                     addEventsToDay(itinerary: text, dates: dates)
                     
-                    let newTrip = Trip(id: UUID().uuidString, userId: userId, name: tripName, startDate: self.startDatePicker.date, endDate: self.endDatePicker.date, location: destination, days: self.days)
+                    let newTrip = Trip(id: UUID().uuidString, userId: userId, name: tripName, startDate: self.startDatePicker.date, endDate: self.endDatePicker.date, location: destination, placeId: self.currDestinationPlaceId, days: self.days)
                     
                     // Save the new Trip to Firestore
                     newTrip.saveToDatabase { error in
@@ -204,7 +205,7 @@ extension NewTripViewController: GMSAutocompleteViewControllerDelegate {
     // Handle the user's selection.
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         destinationField.text = place.name
-        // TODO: save the placeID
+        currDestinationPlaceId = place.placeID ?? ""
         print("Place name: \(place.name)")
         print("Place ID: \(place.placeID)")
         print("Place attributions: \(place.attributions)")

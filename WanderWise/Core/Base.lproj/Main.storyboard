@@ -297,8 +297,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="803"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yar-E9-cYQ">
-                                <rect key="frame" x="141" y="74" width="111" height="50"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yar-E9-cYQ">
+                                <rect key="frame" x="141" y="74" width="111" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -394,12 +395,9 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xQK-fZ-wbq">
-                                <rect key="frame" x="288" y="74" width="90" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="Lgu-pO-NZJ"/>
-                                    <constraint firstAttribute="height" constant="50" id="e5N-X8-eMS"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xQK-fZ-wbq">
+                                <rect key="frame" x="312" y="73" width="61" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Save"/>
                                 <connections>
@@ -418,12 +416,9 @@
                                     <segue destination="iwz-7F-Zkg" kind="presentation" identifier="LogoutToWelcomeScreenSegue" modalPresentationStyle="fullScreen" id="pgn-To-lCW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UzX-AT-mmZ">
-                                <rect key="frame" x="15" y="74" width="90" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="Sez-cK-NeH"/>
-                                    <constraint firstAttribute="height" constant="50" id="ViN-Mn-PVc"/>
-                                </constraints>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UzX-AT-mmZ">
+                                <rect key="frame" x="16" y="73" width="77" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="tintColor" systemColor="systemRedColor"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Cancel"/>
@@ -443,14 +438,6 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="RXv-Uz-BcP"/>
                         <color key="backgroundColor" red="0.89179652929999997" green="0.95605427030000001" blue="0.99608594179999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                        <constraints>
-                            <constraint firstItem="Yar-E9-cYQ" firstAttribute="top" secondItem="RXv-Uz-BcP" secondAttribute="top" constant="30" id="AFh-Zd-Dqg"/>
-                            <constraint firstAttribute="trailing" secondItem="xQK-fZ-wbq" secondAttribute="trailing" constant="15" id="PQy-xX-VOc"/>
-                            <constraint firstItem="UzX-AT-mmZ" firstAttribute="leading" secondItem="RXv-Uz-BcP" secondAttribute="leading" constant="15" id="eh0-hE-ip5"/>
-                            <constraint firstItem="xQK-fZ-wbq" firstAttribute="top" secondItem="RXv-Uz-BcP" secondAttribute="top" constant="30" id="hyW-63-gnS"/>
-                            <constraint firstItem="Yar-E9-cYQ" firstAttribute="centerX" secondItem="prr-XX-w6s" secondAttribute="centerX" id="mOn-aH-xdb"/>
-                            <constraint firstItem="UzX-AT-mmZ" firstAttribute="top" secondItem="RXv-Uz-BcP" secondAttribute="top" constant="30" id="tHb-56-eyD"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6Xn-hu-hr9"/>
                     <connections>

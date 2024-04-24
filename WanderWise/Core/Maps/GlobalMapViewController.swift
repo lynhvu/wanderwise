@@ -10,10 +10,10 @@ import GoogleMaps
 import GooglePlaces
 import FirebaseAuth
 
-class GlobalMapViewController: UIViewController {
+class GlobalMapViewController: UIViewController, GMSMapViewDelegate {
     
     let placesClient = GMSPlacesClient.shared()
-    var mapView: GMSMapView?
+    var mapView: GMSMapView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,10 +24,15 @@ class GlobalMapViewController: UIViewController {
         }
 
         let options = GMSMapViewOptions()
-        options.camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 1)
-        options.frame = view.bounds
+        options.camera = GMSCameraPosition.camera(withLatitude: 20, longitude: -100, zoom: 3)
+        let customFrame = CGRect(x: view.bounds.origin.x,
+                                 y: view.bounds.origin.y - 50,
+                                 width: view.bounds.width,
+                                 height: view.bounds.height + 50)
+        options.frame = customFrame
         
         mapView = GMSMapView(options: options)
+        mapView.delegate = self
         view.addSubview(mapView!)
         
         loadUpcomingTrips(userId: userId)
@@ -39,7 +44,9 @@ class GlobalMapViewController: UIViewController {
             print("No user is currently signed in.")
             return
         }
+        mapView.clear()
         loadUpcomingTrips(userId: userId)
+        loadPreviousTrips(userId: userId)
     }
     
     func loadPreviousTrips(userId: String) {
@@ -66,6 +73,9 @@ class GlobalMapViewController: UIViewController {
         let dispatchGroup = DispatchGroup()
         var tripPlaceMap: [Trip: GMSPlace] = [:]
         
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM d, yyyy 'at' h:mm:ss a z"
+        
         for trip in trips {
             let placeID = trip.placeId
             let fields: GMSPlaceField = [.name, .coordinate]
@@ -91,17 +101,39 @@ class GlobalMapViewController: UIViewController {
         dispatchGroup.notify(queue: .main) {
             // Now that all places have been fetched, display markers on the map
             for (trip, place) in tripPlaceMap {
-                print("going in here!!")
-                print(place.name ?? "no name for place")
                 let position = place.coordinate
                 let marker = GMSMarker(position: position)
                 marker.title = trip.name
-                marker.snippet = trip.location
+                let formattedDateString = DateFormatter.localizedString(from: trip.startDate, dateStyle: .short, timeStyle: .none)
+                let customSnippet = trip.location + " - " + formattedDateString
+                marker.snippet = customSnippet
                 marker.icon = GMSMarker.markerImage(with: color)
+                marker.userData = trip
+                marker.appearAnimation = .pop
                 marker.map = self.mapView
             }
         }
     }
+    
+    // Hanlde user tapping the info window of a marker -> segue to trip itinerary
+    func mapView(_ mapView: GMSMapView, didTapInfoWindowOf marker: GMSMarker) {
+        if let selectedTrip = marker.userData as? Trip {
+            self.performSegue(withIdentifier: "MapToItinerarySegue", sender: selectedTrip)
+        } else {
+            print("Error: userData is nil or not of type Trip")
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "MapToItinerarySegue",
+           let destination = segue.destination as? ItineraryViewController,
+           let newTrip = sender as? Trip {
+            destination.trip = newTrip
+            destination.shouldHideBackButton = true
+        }
+    }
+    
+    // Segue Identifier: MapToItinerarySegue
 
     
 

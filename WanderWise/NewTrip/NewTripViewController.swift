@@ -206,9 +206,11 @@ extension NewTripViewController: GMSAutocompleteViewControllerDelegate {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         destinationField.text = place.name
         currDestinationPlaceId = place.placeID ?? ""
+        /**
         print("Place name: \(place.name)")
         print("Place ID: \(place.placeID)")
         print("Place attributions: \(place.attributions)")
+         **/
         dismiss(animated: true, completion: nil)
     }
     
@@ -222,14 +224,14 @@ extension NewTripViewController: GMSAutocompleteViewControllerDelegate {
         dismiss(animated: true, completion: nil)
     }
     
-    // Turn the network activity indicator on and off again.
+    /** Turn the network activity indicator on and off again.
     func didRequestAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
     
     func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
-    }
+    }**/
     
 }
 

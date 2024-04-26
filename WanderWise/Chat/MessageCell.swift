@@ -14,21 +14,20 @@ class MessageCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
        
+        addSubview(bubbleView)
         bubbleView.layer.cornerRadius = 15
         bubbleView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(bubbleView)
-        addSubview(messageLabel)
         
+        addSubview(messageLabel)
         messageLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        // lets set up some constraints for our label
-        let constraints = [messageLabel.topAnchor.constraint(equalTo: topAnchor, constant: 32),
-        messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32),
-        messageLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -32),
+        // set up some constraints for our message and lable
+        let constraints = [messageLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+        messageLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+        messageLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
         messageLabel.widthAnchor.constraint(equalToConstant: 250),
-        
+                           
        bubbleView.topAnchor.constraint(equalTo: messageLabel.topAnchor, constant: -16),
        bubbleView.leadingAnchor.constraint(equalTo: messageLabel.leadingAnchor, constant: -16),
        bubbleView.bottomAnchor.constraint(equalTo: messageLabel.bottomAnchor, constant: 16),
@@ -41,7 +40,6 @@ class MessageCell: UITableViewCell {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-      
     }
 
 }

@@ -100,11 +100,12 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath) as! MessageCell
         
         let message = messages[indexPath.row]
+        
+        //cell.size
             
         // Determine if the message is from the user or the model
         let isUserMessage = indexPath.row % 2 == 1
         let hexColor = 0xBA6365
-        
         
         // Set the bubble style based on the sender
         if isUserMessage {

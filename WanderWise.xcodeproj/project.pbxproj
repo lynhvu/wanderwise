@@ -24,6 +24,7 @@
 		39422C472BC4B82500128FD7 /* GoogleMapsCore in Frameworks */ = {isa = PBXBuildFile; productRef = 39422C462BC4B82500128FD7 /* GoogleMapsCore */; };
 		398A282E2BC384870093255C /* UserProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398A282D2BC384870093255C /* UserProfile.swift */; };
 		398A28522BC4AD700093255C /* GlobalMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 398A28512BC4AD700093255C /* GlobalMapViewController.swift */; };
+		39C649B82BDC826F00F115A2 /* TripInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39C649B72BDC826F00F115A2 /* TripInfoCell.swift */; };
 		39F196E42BC4CC6E00BD1ED7 /* GooglePlaces in Frameworks */ = {isa = PBXBuildFile; productRef = 39F196E32BC4CC6E00BD1ED7 /* GooglePlaces */; };
 		39F196E82BC4D33500BD1ED7 /* tempController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F196E72BC4D33500BD1ED7 /* tempController.swift */; };
 		39F196EA2BC4F7C100BD1ED7 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39F196E92BC4F7C100BD1ED7 /* NotificationService.swift */; };
@@ -60,6 +61,7 @@
 		2C9218752BA79B76004439B7 /* NewTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewTripViewController.swift; sourceTree = "<group>"; };
 		398A282D2BC384870093255C /* UserProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfile.swift; sourceTree = "<group>"; };
 		398A28512BC4AD700093255C /* GlobalMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = GlobalMapViewController.swift; path = WanderWise/Core/Maps/GlobalMapViewController.swift; sourceTree = SOURCE_ROOT; };
+		39C649B72BDC826F00F115A2 /* TripInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripInfoCell.swift; sourceTree = "<group>"; };
 		39F196E72BC4D33500BD1ED7 /* tempController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tempController.swift; sourceTree = "<group>"; };
 		39F196E92BC4F7C100BD1ED7 /* NotificationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		39FBE6DD2BA91D4400F6B1F8 /* HomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeScreenViewController.swift; sourceTree = "<group>"; };
@@ -115,6 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				39FBE6DD2BA91D4400F6B1F8 /* HomeScreenViewController.swift */,
+				39C649B72BDC826F00F115A2 /* TripInfoCell.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				398A28522BC4AD700093255C /* GlobalMapViewController.swift in Sources */,
 				398A282E2BC384870093255C /* UserProfile.swift in Sources */,
 				2C2FF32E2BBE3F5D00B46650 /* Day.swift in Sources */,
+				39C649B82BDC826F00F115A2 /* TripInfoCell.swift in Sources */,
 				3DA7F0962BD06AC000A951BD /* EventDetailViewController.swift in Sources */,
 				3D0EFBA92BB8EC2D00C42F8F /* SignUpViewController.swift in Sources */,
 				3DFF7EC32B990C5C005C66B9 /* EditEventViewController.swift in Sources */,

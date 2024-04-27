@@ -21,8 +21,10 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     
     var currUserProfile = UserProfile()
     
-    let textCellIdentifier = "TextCell"
+    let textCellIdentifier = "TripInfoCellIdentifier"
     let segueID = "TripSegueIdentifier"
+    
+    let dateFormatter = DateFormatter()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,30 +70,36 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: textCellIdentifier, for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: textCellIdentifier, for: indexPath) as! TripInfoCell
         
+        let trip: Trip
         if tableView == upcomingTableView {
-            let trip = upcomingTrips[indexPath.row]
+            trip = upcomingTrips[indexPath.row]
+            updateTripInfo(trip: trip, cell: cell)
             // Check if the trip is currently occurring
             if Date() >= trip.startDate && Date() <= trip.endDate {
-                // Highlight the cell, for example, by changing its background color
-                cell.backgroundColor = UIColor.systemGreen.withAlphaComponent(0.2) // A light green color
-                cell.textLabel?.textColor = UIColor.darkText
+                // Display ongoing tag
+                cell.ongoingTagView.isHidden = false
             } else {
                 // Reset the cell appearance if it's not an active trip
-                cell.backgroundColor = UIColor.white
-                cell.textLabel?.textColor = UIColor.black
+                cell.ongoingTagView.isHidden = true
             }
-            cell.textLabel?.text = trip.name
         } else if tableView == pastTableView {
-            let trip = pastTrips[indexPath.row]
-            // Reset appearance for past trips, or customize as needed
-            cell.backgroundColor = UIColor.white
-            cell.textLabel?.textColor = UIColor.black
-            cell.textLabel?.text = trip.name
+            trip = pastTrips[indexPath.row]
+            updateTripInfo(trip: trip, cell: cell)
+            // Reset appearance for past trips
+            cell.ongoingTagView.isHidden = true
         }
         
         return cell
+    }
+    
+    func updateTripInfo(trip: Trip, cell: TripInfoCell){
+        let formattedDateString = DateFormatter.localizedString(from: trip.startDate, dateStyle: .short, timeStyle: .none)
+        let tripDetails = trip.location + " - " + formattedDateString
+        
+        cell.tripTitleLabel.text = trip.name
+        cell.tripDetailsLabel.text = tripDetails
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

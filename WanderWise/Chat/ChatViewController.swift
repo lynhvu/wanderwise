@@ -8,6 +8,9 @@
 import UIKit
 import GoogleGenerativeAI
 
+var isUserMessage: Bool!
+
+
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var tableView: UITableView!
@@ -30,6 +33,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         tableView.separatorStyle = .none
         
+        isUserMessage = false
         scrollToBottom()
         
         // set up keyboard notifications
@@ -104,7 +108,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         //cell.size
             
         // Determine if the message is from the user or the model
-        let isUserMessage = indexPath.row % 2 == 1
+        isUserMessage = indexPath.row % 2 == 1
         let hexColor = 0xBA6365
         
         // Set the bubble style based on the sender

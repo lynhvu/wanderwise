@@ -13,6 +13,7 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var chatButton: UIButton!
+    @IBOutlet weak var locationLabel: UILabel!
     
     var trip: Trip!
     
@@ -34,7 +35,7 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
         
-        updateDateLabel()
+        updateDateLabelAndLocation()
         
         if shouldHideBackButton {
             self.navigationItem.hidesBackButton = true
@@ -47,7 +48,7 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         tableView.reloadData()
-        updateDateLabel()
+        updateDateLabelAndLocation()
     }
     
     // returns the amount of events for each day
@@ -99,12 +100,13 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
         return cell.contentView
     }
     
-    func updateDateLabel() {
+    func updateDateLabelAndLocation() {
         if let startDate = trip.days.first?.date, let endDate = trip.days.last?.date {
             let formattedStartDate = dateFormatter.string(from: startDate)
             let formattedEndDate = dateFormatter.string(from: endDate)
             dateLabel.text = "\(formattedStartDate) - \(formattedEndDate)"
         }
+        locationLabel.text = trip.location
     }
 
     // MARK: - Navigation

@@ -809,7 +809,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="OYj-PG-vUg">
-                                <rect key="frame" x="15" y="160" width="363" height="643"/>
+                                <rect key="frame" x="15" y="175" width="363" height="628"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SectionHeaderCell" rowHeight="68" id="dW6-ZJ-YQE" customClass="ItinerarySectionHeaderTableViewCell" customModule="WanderWise" customModuleProvider="target">
@@ -909,7 +909,7 @@
                                 </prototypes>
                             </tableView>
                             <view contentMode="scaleToFill" id="uh5-aQ-VBZ" customClass="ItineraryHeaderView" customModule="WanderWise" customModuleProvider="target">
-                                <rect key="frame" x="14" y="90" width="363" height="69"/>
+                                <rect key="frame" x="14" y="90" width="373" height="84"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fm7-Nm-K3i">
@@ -920,7 +920,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iRV-Qd-FwA">
-                                        <rect key="frame" x="8" y="34" width="347" height="21"/>
+                                        <rect key="frame" x="8" y="56" width="347" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <color key="textColor" systemColor="systemBackgroundColor"/>
@@ -937,6 +937,13 @@
                                             <segue destination="Eci-cM-Mwe" kind="show" identifier="EditItinerarySegueIdentifier" id="ufM-pq-Vdo"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Location" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W37-DH-oMx">
+                                        <rect key="frame" x="8" y="34" width="347" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" systemColor="systemBackgroundColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <viewLayoutGuide key="safeArea" id="Ks9-Gl-ZJC"/>
                                 <color key="backgroundColor" red="0.30729377270000002" green="0.31599867339999999" blue="0.39216703180000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -966,6 +973,7 @@
                     <connections>
                         <outlet property="chatButton" destination="qO4-CY-Mya" id="ZB6-m4-x7e"/>
                         <outlet property="dateLabel" destination="iRV-Qd-FwA" id="J9S-y9-zWs"/>
+                        <outlet property="locationLabel" destination="W37-DH-oMx" id="YW1-W1-vyB"/>
                         <outlet property="tableView" destination="OYj-PG-vUg" id="oQy-la-rvZ"/>
                         <outlet property="titleLabel" destination="Fm7-Nm-K3i" id="Yfd-in-P8V"/>
                         <segue destination="2j6-06-yV1" kind="show" identifier="EventDetailSegue" id="EtE-E5-Hjv"/>
@@ -973,7 +981,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="psb-k4-qJ2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-80" y="-447"/>
+            <point key="canvasLocation" x="-80.152671755725194" y="-447.18309859154931"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="Mql-Lu-MjN">

@@ -42,6 +42,15 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
         activityIndicator.center = view.center
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tripNameField.text = ""
+        destinationField.text = ""
+        startDatePicker.date = Date()
+        endDatePicker.date = Date()
+    }
+    
     
     @IBAction func specifyLocation(_ sender: Any) {
         let autocompleteController = GMSAutocompleteViewController()

@@ -8,18 +8,18 @@
 import UIKit
 
 class EditEventViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
-
+    
     @IBOutlet weak var eventTitleField: UITextField!
     @IBOutlet weak var locationField: UITextField!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var timePicker: UIDatePicker!
     @IBOutlet weak var notesTextField: UITextView!
     @IBOutlet weak var saveButton: UIButton!
-
+    
     var trip: Trip!
     
     var selectedEvent: Event?
-        
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -38,7 +38,7 @@ class EditEventViewController: UIViewController, UITextFieldDelegate, UITextView
             timePicker.date = event.startTime // You might need a separate picker or method for end time if they differ
             notesTextField.text = event.description
         }
-
+        
         // set rounded corners for the notes text field and save button
         notesTextField.layer.cornerRadius = 10
         notesTextField.clipsToBounds = true
@@ -71,9 +71,11 @@ class EditEventViewController: UIViewController, UITextFieldDelegate, UITextView
         guard let event = selectedEvent,
               let title = eventTitleField.text, !title.isEmpty,
               let location = locationField.text, !location.isEmpty else {
-              showAlert(message: "Please fill out all fields.")
-              return
-          }
+            showAlert(message: "Please fill out all fields.")
+            return
+        }
+        
+        let oldEvent = Event(name: event.name, date: event.date, startTime: event.startTime, location: event.location, description: event.description)
         
         // Update the existing Event object's properties
         event.name = title
@@ -84,6 +86,9 @@ class EditEventViewController: UIViewController, UITextFieldDelegate, UITextView
         
         // Now use the Trip method to update the event in its corresponding day
         trip.updateEventInTrip(updatedEvent: event)
+        
+        // Update notification if notifications are enabled
+        NotificationService.shared.updateEventNotification(oldEvent: oldEvent, newEvent: event, in: trip)
     }
     
     private func createNewEvent() {
@@ -96,6 +101,9 @@ class EditEventViewController: UIViewController, UITextFieldDelegate, UITextView
         let newEvent = Event(name: title, date: datePicker.date, startTime: timePicker.date, location: location, description: notesTextField.text)
         
         trip.addEventToDay(event: newEvent, forDate: newEvent.date)
+        
+        // Schedule notification if notifications are enabled
+        NotificationService.shared.scheduleNotification(for: newEvent, in: trip)
     }
     
     private func showAlert(message: String) {

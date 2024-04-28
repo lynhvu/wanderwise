@@ -164,6 +164,7 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
                             self.showAlert(message: "Failed to save trip: \(error.localizedDescription)")
                         } else {
                             self.performSegue(withIdentifier: "CreatedItinerarySegue", sender: newTrip)
+                            self.scheduleNotificationsForTrip(newTrip)
                         }
                     }
                     
@@ -176,6 +177,14 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
                 }
             } catch {
                 print("\(error)")
+            }
+        }
+    }
+    
+    func scheduleNotificationsForTrip(_ trip: Trip) {
+        trip.days.forEach { day in
+            day.events.forEach { event in
+                NotificationService.shared.scheduleNotification(for: event, in: trip)
             }
         }
     }

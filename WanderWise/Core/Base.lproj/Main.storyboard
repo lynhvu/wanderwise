@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iwz-7F-Zkg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iwz-7F-Zkg">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -122,7 +122,6 @@
                                 </buttonConfiguration>
                                 <connections>
                                     <action selector="createAccountPressed:" destination="xda-df-8yP" eventType="touchUpInside" id="tWs-9v-WOL"/>
-                                    <segue destination="Aa8-Hj-EEl" kind="presentation" identifier="SignUpToHomeSegue" modalPresentationStyle="fullScreen" id="qet-fG-XIb"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -137,6 +136,7 @@
                         <outlet property="lastNameField" destination="Bva-Kz-8Zf" id="u03-ZG-SAv"/>
                         <outlet property="passwordField" destination="F5C-fL-R42" id="Iqj-8m-6SD"/>
                         <outlet property="usernameField" destination="TcG-De-qeu" id="hqh-ow-iHA"/>
+                        <segue destination="Aa8-Hj-EEl" kind="presentation" modalPresentationStyle="fullScreen" id="3XM-mh-Crs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9I1-RH-juQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -567,7 +567,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8gy-o5-UzW">
-                                <rect key="frame" x="20" y="447" width="353" height="261"/>
+                                <rect key="frame" x="20" y="447" width="353" height="261.66666666666674"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="B6D-GH-1pd">
                                         <rect key="frame" x="0.0" y="0.0" width="353" height="27"/>
@@ -593,7 +593,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="WAC-J2-w5N">
-                                        <rect key="frame" x="0.0" y="37" width="353" height="224"/>
+                                        <rect key="frame" x="0.0" y="36.999999999999986" width="353" height="224.66666666666663"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="TripInfoCellIdentifier" rowHeight="60" id="1aj-P8-CaP" customClass="TripInfoCell" customModule="WanderWise" customModuleProvider="target">
@@ -1483,7 +1483,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="qet-fG-XIb"/>
+        <segue reference="3XM-mh-Crs"/>
         <segue reference="5Ea-2u-8gu"/>
         <segue reference="OcL-vV-pD4"/>
         <segue reference="ZQB-ef-5vd"/>

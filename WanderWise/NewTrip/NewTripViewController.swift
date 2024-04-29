@@ -84,58 +84,58 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func attractionBtnPressed(_ sender: Any) {
         // update state
-                isAttractionsPressed.toggle()
-                
-                if isAttractionsPressed {
-                    // change color when pressed
-                    let hexColor = 0x4E5166 // dark blue
-                    attractionBtn.backgroundColor = UIColor(
-                        red: CGFloat((hexColor & 0xFF0000) >> 16) / 255.0,
-                        green: CGFloat((hexColor & 0x00FF00) >> 8) / 255.0,
-                        blue: CGFloat(hexColor & 0x0000FF) / 255.0, alpha: 1.0)
-                    attractionBtn.setTitleColor(.white, for: .normal)
-                } else {
-                    attractionBtn.backgroundColor = .white
-                    attractionBtn.setTitleColor(.gray, for: .normal)
-                }
-
+        isAttractionsPressed.toggle()
+        
+        if isAttractionsPressed {
+            // change color when pressed
+            let hexColor = 0x4E5166 // dark blue
+            attractionBtn.backgroundColor = UIColor(
+                red: CGFloat((hexColor & 0xFF0000) >> 16) / 255.0,
+                green: CGFloat((hexColor & 0x00FF00) >> 8) / 255.0,
+                blue: CGFloat(hexColor & 0x0000FF) / 255.0, alpha: 1.0)
+            attractionBtn.setTitleColor(.white, for: .normal)
+        } else {
+            attractionBtn.backgroundColor = .white
+            attractionBtn.setTitleColor(.gray, for: .normal)
+        }
+        
     }
     
     @IBAction func entertainmentBtnPressed(_ sender: Any) {
         // update state
-                isEntertainmentPressed.toggle()
-                
-                if isEntertainmentPressed {
-                    // change color when pressed
-                    let hexColor = 0x4E5166 // dark blue
-                    entertainmentBtn.backgroundColor = UIColor(
-                        red: CGFloat((hexColor & 0xFF0000) >> 16) / 255.0,
-                        green: CGFloat((hexColor & 0x00FF00) >> 8) / 255.0,
-                        blue: CGFloat(hexColor & 0x0000FF) / 255.0, alpha: 1.0)
-                    entertainmentBtn.setTitleColor(.white, for: .normal)
-                } else {
-                    entertainmentBtn.backgroundColor = .white
-                    entertainmentBtn.setTitleColor(.gray, for: .normal)
-                }
+        isEntertainmentPressed.toggle()
+        
+        if isEntertainmentPressed {
+            // change color when pressed
+            let hexColor = 0x4E5166 // dark blue
+            entertainmentBtn.backgroundColor = UIColor(
+                red: CGFloat((hexColor & 0xFF0000) >> 16) / 255.0,
+                green: CGFloat((hexColor & 0x00FF00) >> 8) / 255.0,
+                blue: CGFloat(hexColor & 0x0000FF) / 255.0, alpha: 1.0)
+            entertainmentBtn.setTitleColor(.white, for: .normal)
+        } else {
+            entertainmentBtn.backgroundColor = .white
+            entertainmentBtn.setTitleColor(.gray, for: .normal)
+        }
 
     }
     
     @IBAction func foodBtnPressed(_ sender: Any) {
         // update state
-                isFoodPressed.toggle()
-                
-                if isFoodPressed {
-                    // change color when pressed
-                    let hexColor = 0x4E5166 // dark blue
-                    foodBtn.backgroundColor = UIColor(
-                        red: CGFloat((hexColor & 0xFF0000) >> 16) / 255.0,
-                        green: CGFloat((hexColor & 0x00FF00) >> 8) / 255.0,
-                        blue: CGFloat(hexColor & 0x0000FF) / 255.0, alpha: 1.0)
-                    foodBtn.setTitleColor(.white, for: .normal)
-                } else {
-                    foodBtn.backgroundColor = .white
-                    foodBtn.setTitleColor(.gray, for: .normal)
-                }
+        isFoodPressed.toggle()
+        
+        if isFoodPressed {
+            // change color when pressed
+            let hexColor = 0x4E5166 // dark blue
+            foodBtn.backgroundColor = UIColor(
+                red: CGFloat((hexColor & 0xFF0000) >> 16) / 255.0,
+                green: CGFloat((hexColor & 0x00FF00) >> 8) / 255.0,
+                blue: CGFloat(hexColor & 0x0000FF) / 255.0, alpha: 1.0)
+            foodBtn.setTitleColor(.white, for: .normal)
+        } else {
+            foodBtn.backgroundColor = .white
+            foodBtn.setTitleColor(.gray, for: .normal)
+        }
 
     }
     
@@ -311,11 +311,6 @@ extension NewTripViewController: GMSAutocompleteViewControllerDelegate {
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         destinationField.text = place.name
         currDestinationPlaceId = place.placeID ?? ""
-        /**
-        print("Place name: \(place.name)")
-        print("Place ID: \(place.placeID)")
-        print("Place attributions: \(place.attributions)")
-         **/
         dismiss(animated: true, completion: nil)
     }
     
@@ -328,15 +323,5 @@ extension NewTripViewController: GMSAutocompleteViewControllerDelegate {
     func wasCancelled(_ viewController: GMSAutocompleteViewController) {
         dismiss(animated: true, completion: nil)
     }
-    
-    /** Turn the network activity indicator on and off again.
-    func didRequestAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-    }
-    
-    func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
-        UIApplication.shared.isNetworkActivityIndicatorVisible = false
-    }**/
-    
 }
 

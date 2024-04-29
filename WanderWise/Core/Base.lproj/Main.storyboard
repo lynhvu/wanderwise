@@ -1264,6 +1264,9 @@
                                 <rect key="frame" x="34" y="134" width="325" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="specifyLocation:" destination="hC5-Nn-KYf" eventType="editingDidBegin" id="EEC-AN-Eck"/>
+                                </connections>
                             </textField>
                             <datePicker contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="date" translatesAutoresizingMaskIntoConstraints="NO" id="V6U-jh-Y0w">
                                 <rect key="frame" x="34" y="183" width="127" height="34.333333333333343"/>
@@ -1526,7 +1529,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="3XM-mh-Crs"/>
         <segue reference="5Ea-2u-8gu"/>
-        <segue reference="g71-X5-WfU"/>
+        <segue reference="OcL-vV-pD4"/>
         <segue reference="ZQB-ef-5vd"/>
     </inferredMetricsTieBreakers>
     <resources>

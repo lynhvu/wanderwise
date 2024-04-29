@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import GooglePlaces
 
-class EditEventViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
+class EditEventViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate, GMSAutocompleteViewControllerDelegate {
     
     @IBOutlet weak var eventTitleField: UITextField!
     @IBOutlet weak var locationField: UITextField!
@@ -110,5 +111,31 @@ class EditEventViewController: UIViewController, UITextFieldDelegate, UITextView
         let alert = UIAlertController(title: "Warning", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
         present(alert, animated: true)
+    }
+    
+    @IBAction func specifyLocation(_ sender: Any) {
+        let autocompleteController = GMSAutocompleteViewController()
+        autocompleteController.delegate = self
+        
+        // Specify the place data types to return.
+        let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt64(UInt(GMSPlaceField.name.rawValue) |
+            UInt(GMSPlaceField.placeID.rawValue)))
+        autocompleteController.placeFields = fields
+        
+        // Display the autocomplete view controller.
+        present(autocompleteController, animated: true, completion: nil)
+    }
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
+        locationField.text = place.name
+        dismiss(animated: true, completion: nil)
+    }
+    
+    func viewController(_ viewController: GMSAutocompleteViewController, didFailAutocompleteWithError error: Error) {
+        print("Error: ", error.localizedDescription)
+    }
+    
+    func wasCancelled(_ viewController: GMSAutocompleteViewController) {
+        dismiss(animated: true, completion: nil)
     }
 }

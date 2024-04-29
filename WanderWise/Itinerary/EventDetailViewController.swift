@@ -11,9 +11,12 @@ class EventDetailViewController: UIViewController {
 
     
     @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var notesLabel: UILabel!
+    @IBOutlet weak var directionsButton: UIButton!
+    
     var selectedEvent: Event!
     
     override func viewDidLoad() {
@@ -23,8 +26,8 @@ class EventDetailViewController: UIViewController {
         dateFormatter.dateFormat = "MMMM dd, yyyy"
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "h:mm a"
-        dateLabel.text = "\(dateFormatter.string(from: selectedEvent.date)) : \(timeFormatter.string(from: selectedEvent.startTime)) "
-        
+        dateLabel.text = "\(dateFormatter.string(from: selectedEvent.date))"
+        timeLabel.text = "\(timeFormatter.string(from: selectedEvent.startTime))"
         titleLabel.text = selectedEvent.name
         locationLabel.text = selectedEvent.location
         notesLabel.text = selectedEvent.description

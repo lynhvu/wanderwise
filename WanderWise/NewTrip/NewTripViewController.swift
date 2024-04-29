@@ -17,6 +17,9 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var startDatePicker: UIDatePicker!
     @IBOutlet weak var endDatePicker: UIDatePicker!
     @IBOutlet weak var createTripButton: UIButton!
+    @IBOutlet weak var attractionBtn: UIButton!
+    @IBOutlet weak var entertainmentBtn: UIButton!
+    @IBOutlet weak var foodBtn: UIButton!
     
     var model: GenerativeModel!
     var chat: Chat!
@@ -24,6 +27,12 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
     let timeFormatter = DateFormatter()
     var days: [Day] = []
     var currDestinationPlaceId = ""
+    
+    // category buttons
+        var isAttractionsPressed: Bool!
+        var isEntertainmentPressed: Bool!
+        var isFoodPressed: Bool!
+
     
     let activityIndicator = UIActivityIndicatorView(style: .large)
     
@@ -39,6 +48,28 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
         dateFormatter.dateFormat = "yyyy-MM-dd"
         timeFormatter.dateFormat = "h:mm a"
         
+        // set the color for btns
+                attractionBtn.backgroundColor = .white
+                attractionBtn.titleLabel?.textColor = .gray
+                attractionBtn.layer.cornerRadius = 15
+                attractionBtn.layer.masksToBounds = true
+                
+                entertainmentBtn.backgroundColor = .white
+                entertainmentBtn.titleLabel?.textColor = .gray
+                entertainmentBtn.layer.cornerRadius = 15
+                entertainmentBtn.layer.masksToBounds = true
+                
+                foodBtn.backgroundColor = .white
+                foodBtn.titleLabel?.textColor = .gray
+                foodBtn.layer.cornerRadius = 15
+                foodBtn.layer.masksToBounds = true
+
+        // initialize the states for btns
+                isEntertainmentPressed = false
+                isAttractionsPressed = false
+                isFoodPressed = false
+
+        
         activityIndicator.center = view.center
     }
     
@@ -51,6 +82,62 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
         endDatePicker.date = Date()
     }
     
+    @IBAction func attractionBtnPressed(_ sender: Any) {
+        // update state
+                isAttractionsPressed.toggle()
+                
+                if isAttractionsPressed {
+                    // change color when pressed
+                    let hexColor = 0x4E5166 // dark blue
+                    attractionBtn.backgroundColor = UIColor(
+                        red: CGFloat((hexColor & 0xFF0000) >> 16) / 255.0,
+                        green: CGFloat((hexColor & 0x00FF00) >> 8) / 255.0,
+                        blue: CGFloat(hexColor & 0x0000FF) / 255.0, alpha: 1.0)
+                    attractionBtn.setTitleColor(.white, for: .normal)
+                } else {
+                    attractionBtn.backgroundColor = .white
+                    attractionBtn.setTitleColor(.gray, for: .normal)
+                }
+
+    }
+    
+    @IBAction func entertainmentBtnPressed(_ sender: Any) {
+        // update state
+                isEntertainmentPressed.toggle()
+                
+                if isEntertainmentPressed {
+                    // change color when pressed
+                    let hexColor = 0x4E5166 // dark blue
+                    entertainmentBtn.backgroundColor = UIColor(
+                        red: CGFloat((hexColor & 0xFF0000) >> 16) / 255.0,
+                        green: CGFloat((hexColor & 0x00FF00) >> 8) / 255.0,
+                        blue: CGFloat(hexColor & 0x0000FF) / 255.0, alpha: 1.0)
+                    entertainmentBtn.setTitleColor(.white, for: .normal)
+                } else {
+                    entertainmentBtn.backgroundColor = .white
+                    entertainmentBtn.setTitleColor(.gray, for: .normal)
+                }
+
+    }
+    
+    @IBAction func foodBtnPressed(_ sender: Any) {
+        // update state
+                isFoodPressed.toggle()
+                
+                if isFoodPressed {
+                    // change color when pressed
+                    let hexColor = 0x4E5166 // dark blue
+                    foodBtn.backgroundColor = UIColor(
+                        red: CGFloat((hexColor & 0xFF0000) >> 16) / 255.0,
+                        green: CGFloat((hexColor & 0x00FF00) >> 8) / 255.0,
+                        blue: CGFloat(hexColor & 0x0000FF) / 255.0, alpha: 1.0)
+                    foodBtn.setTitleColor(.white, for: .normal)
+                } else {
+                    foodBtn.backgroundColor = .white
+                    foodBtn.setTitleColor(.gray, for: .normal)
+                }
+
+    }
     
     @IBAction func specifyLocation(_ sender: Any) {
         let autocompleteController = GMSAutocompleteViewController()

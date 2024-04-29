@@ -76,11 +76,21 @@ class NotificationService {
         }
     }
     
+    func updateEventNotification(oldEvent: Event, newEvent: Event, in trip: Trip) {
+        removeNotificationByEvent(event: oldEvent)
+        scheduleNotification(for: newEvent, in: trip)
+    }
+    
     func removeAllNotifications() {
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
     }
     
-    func removeNotifications(for identifiers: [String]) {
+    func removeNotificationsByTrip(trip: Trip) {
+        let identifiers = trip.days.flatMap { $0.events.map { $0.id } }
         UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: identifiers)
+    }
+    
+    func removeNotificationByEvent(event: Event) {
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [event.id])
     }
 }

@@ -23,6 +23,7 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
     let dateFormatter = DateFormatter()
     let timeFormatter = DateFormatter()
     var days: [Day] = []
+    var currDestinationPlaceId = ""
     
     let activityIndicator = UIActivityIndicatorView(style: .large)
     
@@ -39,6 +40,15 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
         timeFormatter.dateFormat = "h:mm a"
         
         activityIndicator.center = view.center
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tripNameField.text = ""
+        destinationField.text = ""
+        startDatePicker.date = Date()
+        endDatePicker.date = Date()
     }
     
     
@@ -146,7 +156,7 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
                     print(text)
                     addEventsToDay(itinerary: text, dates: dates)
                     
-                    let newTrip = Trip(id: UUID().uuidString, userId: userId, name: tripName, startDate: self.startDatePicker.date, endDate: self.endDatePicker.date, location: destination, days: self.days)
+                    let newTrip = Trip(id: UUID().uuidString, userId: userId, name: tripName, startDate: self.startDatePicker.date, endDate: self.endDatePicker.date, location: destination, placeId: self.currDestinationPlaceId, days: self.days)
                     
                     // Save the new Trip to Firestore
                     newTrip.saveToDatabase { error in
@@ -154,6 +164,7 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
                             self.showAlert(message: "Failed to save trip: \(error.localizedDescription)")
                         } else {
                             self.performSegue(withIdentifier: "CreatedItinerarySegue", sender: newTrip)
+                            self.scheduleNotificationsForTrip(newTrip)
                         }
                     }
                     
@@ -166,6 +177,14 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
                 }
             } catch {
                 print("\(error)")
+            }
+        }
+    }
+    
+    func scheduleNotificationsForTrip(_ trip: Trip) {
+        trip.days.forEach { day in
+            day.events.forEach { event in
+                NotificationService.shared.scheduleNotification(for: event, in: trip)
             }
         }
     }
@@ -204,10 +223,12 @@ extension NewTripViewController: GMSAutocompleteViewControllerDelegate {
     // Handle the user's selection.
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
         destinationField.text = place.name
-        // TODO: save the placeID
+        currDestinationPlaceId = place.placeID ?? ""
+        /**
         print("Place name: \(place.name)")
         print("Place ID: \(place.placeID)")
         print("Place attributions: \(place.attributions)")
+         **/
         dismiss(animated: true, completion: nil)
     }
     
@@ -221,14 +242,14 @@ extension NewTripViewController: GMSAutocompleteViewControllerDelegate {
         dismiss(animated: true, completion: nil)
     }
     
-    // Turn the network activity indicator on and off again.
+    /** Turn the network activity indicator on and off again.
     func didRequestAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
     }
     
     func didUpdateAutocompletePredictions(_ viewController: GMSAutocompleteViewController) {
         UIApplication.shared.isNetworkActivityIndicatorVisible = false
-    }
+    }**/
     
 }
 

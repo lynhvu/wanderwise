@@ -8,6 +8,9 @@
 import UIKit
 import GoogleGenerativeAI
 
+var isUserMessage: Bool!
+
+
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
     @IBOutlet weak var tableView: UITableView!
@@ -27,9 +30,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         tableView.dataSource = self
         messageField.delegate = self
         tableView.reloadData()
-        scrollToBottom()
         
-        print("TRIP: \(trip!.toString())")
+        tableView.separatorStyle = .none
+        
+        isUserMessage = false
+        scrollToBottom()
         
         // set up keyboard notifications
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
@@ -94,11 +99,45 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return messages.count
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath)
-        cell.textLabel?.text = messages[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MessageCell", for: indexPath) as! MessageCell
+        
+        let message = messages[indexPath.row]
+        
+        //cell.size
+            
+        // Determine if the message is from the user or the model
+        isUserMessage = indexPath.row % 2 == 1
+        let hexColor = 0xBA6365
+        
+        // Set the bubble style based on the sender
+        if isUserMessage {
+            // set the color
+            cell.bubbleView.backgroundColor = UIColor(
+                red: CGFloat((hexColor & 0xFF0000) >> 16) / 255.0,
+                green: CGFloat((hexColor & 0x00FF00) >> 8) / 255.0,
+                blue: CGFloat(hexColor & 0x0000FF) / 255.0, alpha: 1.0) // red for user
+            cell.messageLabel.textColor = .white
+           
+            
+        } else {
+            // set the color
+            cell.bubbleView.backgroundColor = UIColor(
+                red: 0.85, green: 0.85, blue: 0.85, alpha: 1.0) // Light gray for model
+            cell.messageLabel.textColor = .black
+        }
+        
+        // Set the message text
+        cell.messageLabel.text = message
+        
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+            // Add space between messages
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0)
+        }
 
     @IBAction func sendButtonPressed(_ sender: Any) {
         // send user's message

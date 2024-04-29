@@ -44,6 +44,7 @@
 		3DFF7EC92B993DBF005C66B9 /* EditItineraryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFF7EC82B993DBF005C66B9 /* EditItineraryViewController.swift */; };
 		3DFFA3982BC23409005ADE5D /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DFFA3972BC23409005ADE5D /* ChatViewController.swift */; };
 		3DFFA39B2BC23939005ADE5D /* GoogleGenerativeAI in Frameworks */ = {isa = PBXBuildFile; productRef = 3DFFA39A2BC23939005ADE5D /* GoogleGenerativeAI */; };
+		C62B50752BD71766009EE72E /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C62B50742BD71766009EE72E /* MessageCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -78,6 +79,7 @@
 		3DFF7EC62B993C72005C66B9 /* ItineraryHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItineraryHeaderView.swift; sourceTree = "<group>"; };
 		3DFF7EC82B993DBF005C66B9 /* EditItineraryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditItineraryViewController.swift; sourceTree = "<group>"; };
 		3DFFA3972BC23409005ADE5D /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		C62B50742BD71766009EE72E /* MessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +201,7 @@
 			children = (
 				3DFFA3972BC23409005ADE5D /* ChatViewController.swift */,
 				3DBAE0F92BC5CD7700AE0961 /* GenerativeAI.swift */,
+				C62B50742BD71766009EE72E /* MessageCell.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -318,6 +321,7 @@
 				3DFF7EC32B990C5C005C66B9 /* EditEventViewController.swift in Sources */,
 				3D5827072BBFD050001CB2E0 /* WelcomeViewController.swift in Sources */,
 				2C2E43422B8FBA5000593DE5 /* AppDelegate.swift in Sources */,
+				C62B50752BD71766009EE72E /* MessageCell.swift in Sources */,
 				3D80D23F2BB5202600228CE3 /* SettingsViewController.swift in Sources */,
 				2C2FF3302BBE3F6C00B46650 /* Event.swift in Sources */,
 				39F196EA2BC4F7C100BD1ED7 /* NotificationService.swift in Sources */,

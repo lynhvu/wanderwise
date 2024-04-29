@@ -729,10 +729,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4L1-ve-CHa">
-                                <rect key="frame" x="16" y="59" width="361" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="361" id="kP2-T0-Fuy"/>
-                                </constraints>
+                                <rect key="frame" x="16" y="59" width="36" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -760,7 +757,6 @@
                             <constraint firstItem="jWF-gb-zS6" firstAttribute="top" secondItem="QQC-fD-WY5" secondAttribute="bottom" constant="10" id="dQj-vf-4gq"/>
                             <constraint firstItem="QQC-fD-WY5" firstAttribute="leading" secondItem="oxc-5M-Yed" secondAttribute="leading" constant="16" id="jX6-ug-s6T"/>
                             <constraint firstItem="4L1-ve-CHa" firstAttribute="top" secondItem="oxc-5M-Yed" secondAttribute="top" constant="15" id="lFP-Zs-HQo"/>
-                            <constraint firstItem="oxc-5M-Yed" firstAttribute="trailing" secondItem="4L1-ve-CHa" secondAttribute="trailing" constant="16" id="po4-ri-iiw"/>
                             <constraint firstItem="5PU-J3-LPo" firstAttribute="top" secondItem="jWF-gb-zS6" secondAttribute="bottom" constant="25" id="utP-QQ-NOM"/>
                         </constraints>
                     </view>
@@ -785,7 +781,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="OYj-PG-vUg">
-                                <rect key="frame" x="15" y="175" width="363" height="628"/>
+                                <rect key="frame" x="15" y="176" width="363" height="627"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SectionHeaderCell" rowHeight="68" id="dW6-ZJ-YQE" customClass="ItinerarySectionHeaderTableViewCell" customModule="WanderWise" customModuleProvider="target">
@@ -884,8 +880,19 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qO4-CY-Mya">
+                                <rect key="frame" x="325" y="700" width="50" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" image="message.fill" catalog="system">
+                                    <color key="baseBackgroundColor" red="0.72991901640000001" green="0.3883774579" blue="0.39606451990000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <segue destination="wSr-SM-C7x" kind="show" identifier="ChatSegue" id="8Yo-Qm-Gqb"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" id="uh5-aQ-VBZ" customClass="ItineraryHeaderView" customModule="WanderWise" customModuleProvider="target">
-                                <rect key="frame" x="14" y="90" width="373" height="84"/>
+                                <rect key="frame" x="15" y="91" width="363" height="84"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fm7-Nm-K3i">
@@ -924,17 +931,6 @@
                                 <viewLayoutGuide key="safeArea" id="Ks9-Gl-ZJC"/>
                                 <color key="backgroundColor" red="0.30729377270000002" green="0.31599867339999999" blue="0.39216703180000001" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qO4-CY-Mya">
-                                <rect key="frame" x="325" y="700" width="50" height="50"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" image="message.fill" catalog="system">
-                                    <color key="baseBackgroundColor" red="0.72991901640000001" green="0.3883774579" blue="0.39606451990000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                </buttonConfiguration>
-                                <connections>
-                                    <segue destination="wSr-SM-C7x" kind="show" identifier="ChatSegue" id="8Yo-Qm-Gqb"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="q3H-FH-QA1"/>
                         <color key="backgroundColor" red="0.89179652929999997" green="0.95605427030000001" blue="0.99608594179999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

@@ -16,7 +16,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     @IBOutlet weak var confirmPasswordField: UITextField!
-    @IBOutlet weak var notificationsSwitch: UISwitch!
     
     var userId = ""
     
@@ -89,7 +88,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         let lastName = self.lastNameField.text ?? ""
         let username = self.usernameField.text ?? ""
         let email = self.emailField.text ?? ""
-        let notifications = self.notificationsSwitch.isOn
+        let notifications = false
         let imageURL = ""
         
         let userId = authResult?.user.uid ?? ""

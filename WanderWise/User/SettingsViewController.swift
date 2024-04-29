@@ -208,7 +208,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, UINavigatio
             self.profileImageView.image = defaultImage
         }
     }
-
+    
     
     func uploadProfileImage(_ image: UIImage, userId: String, completion: @escaping (Result<String, Error>) -> Void) {
         guard let imageData = image.jpegData(compressionQuality: 0.4) else {
@@ -264,4 +264,31 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, UINavigatio
     }
     
     // TODO: add checks so the data they want to save is safe
+    
+    
+    @IBAction func notificationsToggled(_ sender: UISwitch) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            print("No user is currently signed in.")
+            return
+        }
+
+        if sender.isOn {
+            // Request notification permissions and schedule notifications if granted
+            NotificationService.shared.requestPermission { [] granted in
+                if granted {
+                    NotificationService.shared.scheduleNotificationsForUpcomingTrips(userId: userId)
+                    print("Notifications enabled and scheduled for upcoming trips.")
+                } else {
+                    DispatchQueue.main.async {
+                        sender.setOn(false, animated: true)
+                        print("Notification permissions were not granted.")
+                    }
+                }
+            }
+        } else {
+            // Remove all notifications when notifications are disabled
+            NotificationService.shared.removeAllNotifications()
+            print("All notifications have been removed.")
+        }
+    }
 }

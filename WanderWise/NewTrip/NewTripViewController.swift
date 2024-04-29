@@ -42,6 +42,15 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
         activityIndicator.center = view.center
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        tripNameField.text = ""
+        destinationField.text = ""
+        startDatePicker.date = Date()
+        endDatePicker.date = Date()
+    }
+    
     
     @IBAction func specifyLocation(_ sender: Any) {
         let autocompleteController = GMSAutocompleteViewController()
@@ -155,6 +164,7 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
                             self.showAlert(message: "Failed to save trip: \(error.localizedDescription)")
                         } else {
                             self.performSegue(withIdentifier: "CreatedItinerarySegue", sender: newTrip)
+                            self.scheduleNotificationsForTrip(newTrip)
                         }
                     }
                     
@@ -167,6 +177,14 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
                 }
             } catch {
                 print("\(error)")
+            }
+        }
+    }
+    
+    func scheduleNotificationsForTrip(_ trip: Trip) {
+        trip.days.forEach { day in
+            day.events.forEach { event in
+                NotificationService.shared.scheduleNotification(for: event, in: trip)
             }
         }
     }

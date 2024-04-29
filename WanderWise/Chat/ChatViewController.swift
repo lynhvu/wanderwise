@@ -133,6 +133,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+            // Add space between messages
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 5, right: 0)
+        }
 
     @IBAction func sendButtonPressed(_ sender: Any) {
         // send user's message

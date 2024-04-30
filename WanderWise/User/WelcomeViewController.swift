@@ -9,7 +9,7 @@ import UIKit
 import FirebaseAuth
 
 class WelcomeViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

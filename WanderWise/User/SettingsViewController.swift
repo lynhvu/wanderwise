@@ -271,7 +271,7 @@ class SettingsViewController: UIViewController, UITextFieldDelegate, UINavigatio
             print("No user is currently signed in.")
             return
         }
-
+        
         if sender.isOn {
             // Request notification permissions and schedule notifications if granted
             NotificationService.shared.requestPermission { [] granted in

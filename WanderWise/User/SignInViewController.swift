@@ -9,13 +9,13 @@ import UIKit
 import FirebaseAuth
 
 class SignInViewController: UIViewController, UITextFieldDelegate {
-
+    
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var passwordField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         emailField.delegate = self
         passwordField.delegate = self
         
@@ -43,7 +43,7 @@ class SignInViewController: UIViewController, UITextFieldDelegate {
                     title: "Error",
                     message: "\(error.localizedDescription)",
                     preferredStyle: .alert)
-                    signInErrorAlert.addAction(UIAlertAction(
+                signInErrorAlert.addAction(UIAlertAction(
                     title: "OK",
                     style: .default))
                 self.present(signInErrorAlert, animated: true)

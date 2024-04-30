@@ -49,7 +49,7 @@ class Trip: Hashable {
         dateFormatter.dateFormat = "MM-dd-yyyy"
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "h:mm a"
-    
+        
         for day in days {
             for event in day.events {
                 itinerary += "\(dateFormatter.string(from: day.date)), \(timeFormatter.string(from: event.startTime)), \(event.location), \(event.description) \n"
@@ -69,7 +69,7 @@ class Trip: Hashable {
               let daysDictionaries = dictionary["days"] as? [[String: Any]] else {
             return nil
         }
-
+        
         let startDate = startDateTimestamp.dateValue()
         let endDate = endDateTimestamp.dateValue()
         
@@ -107,6 +107,7 @@ class Trip: Hashable {
                 }
                 days[dayIndex].events.append(updatedEvent)
             }
+            days[dayIndex].events.sort { $0.startTime < $1.startTime }
         }
         
         saveToDatabase { error in
@@ -121,11 +122,7 @@ class Trip: Hashable {
     func addEventToDay(event: Event, forDate date: Date) {
         if let dayIndex = self.days.firstIndex(where: { Calendar.current.isDate($0.date, inSameDayAs: date) }) {
             self.days[dayIndex].events.append(event)
-        } else {
-            // Otherwise, create a new day with the event
-            let newDay = Day(date: date, events: [event])
-            self.days.append(newDay)
-            self.days.sort(by: { $0.date < $1.date })
+            self.days[dayIndex].events.sort { $0.startTime < $1.startTime }
         }
         
         self.saveToDatabase { error in

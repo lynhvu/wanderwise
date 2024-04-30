@@ -29,10 +29,9 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
     var currDestinationPlaceId = ""
     
     // category buttons
-        var isAttractionsPressed: Bool!
-        var isEntertainmentPressed: Bool!
-        var isFoodPressed: Bool!
-
+    var isAttractionsPressed: Bool!
+    var isEntertainmentPressed: Bool!
+    var isFoodPressed: Bool!
     
     let activityIndicator = UIActivityIndicatorView(style: .large)
     
@@ -49,26 +48,26 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
         timeFormatter.dateFormat = "h:mm a"
         
         // set the color for btns
-                attractionBtn.backgroundColor = .white
-                attractionBtn.titleLabel?.textColor = .gray
-                attractionBtn.layer.cornerRadius = 15
-                attractionBtn.layer.masksToBounds = true
-                
-                entertainmentBtn.backgroundColor = .white
-                entertainmentBtn.titleLabel?.textColor = .gray
-                entertainmentBtn.layer.cornerRadius = 15
-                entertainmentBtn.layer.masksToBounds = true
-                
-                foodBtn.backgroundColor = .white
-                foodBtn.titleLabel?.textColor = .gray
-                foodBtn.layer.cornerRadius = 15
-                foodBtn.layer.masksToBounds = true
-
+        attractionBtn.backgroundColor = .white
+        attractionBtn.titleLabel?.textColor = .gray
+        attractionBtn.layer.cornerRadius = 15
+        attractionBtn.layer.masksToBounds = true
+        
+        entertainmentBtn.backgroundColor = .white
+        entertainmentBtn.titleLabel?.textColor = .gray
+        entertainmentBtn.layer.cornerRadius = 15
+        entertainmentBtn.layer.masksToBounds = true
+        
+        foodBtn.backgroundColor = .white
+        foodBtn.titleLabel?.textColor = .gray
+        foodBtn.layer.cornerRadius = 15
+        foodBtn.layer.masksToBounds = true
+        
         // initialize the states for btns
-                isEntertainmentPressed = false
-                isAttractionsPressed = false
-                isFoodPressed = false
-
+        isEntertainmentPressed = false
+        isAttractionsPressed = false
+        isFoodPressed = false
+        
         
         activityIndicator.center = view.center
     }
@@ -117,7 +116,7 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
             entertainmentBtn.backgroundColor = .white
             entertainmentBtn.setTitleColor(.gray, for: .normal)
         }
-
+        
     }
     
     @IBAction func foodBtnPressed(_ sender: Any) {
@@ -136,7 +135,7 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
             foodBtn.backgroundColor = .white
             foodBtn.setTitleColor(.gray, for: .normal)
         }
-
+        
     }
     
     @IBAction func specifyLocation(_ sender: Any) {
@@ -145,7 +144,7 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
         
         // Specify the place data types to return.
         let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt64(UInt(GMSPlaceField.name.rawValue) |
-            UInt(GMSPlaceField.placeID.rawValue)))
+                                                                   UInt(GMSPlaceField.placeID.rawValue)))
         autocompleteController.placeFields = fields
         
         // Display the autocomplete view controller.
@@ -219,7 +218,7 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
         
         return dates
     }
-        
+    
     private func showAlert(message: String) {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .default))
@@ -302,7 +301,7 @@ class NewTripViewController: UIViewController, UITextFieldDelegate {
             dateIndex += 1
         }
     }
-
+    
 }
 
 extension NewTripViewController: GMSAutocompleteViewControllerDelegate {

@@ -43,7 +43,7 @@ class EventDetailViewController: UIViewController {
         // Construct the URL with the place's name
         let encodedPlaceName = placeName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
         let urlString = "https://www.google.com/maps/dir/?api=1&destination=\(encodedPlaceName)"
-
+        
         if let url = URL(string: urlString) {
             // Check if Google Maps app is installed, if yes, open with directions
             if UIApplication.shared.canOpenURL(url) {

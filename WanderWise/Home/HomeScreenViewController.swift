@@ -174,6 +174,12 @@ class HomeScreenViewController: UIViewController, UITableViewDelegate, UITableVi
         }
     }
     
+    @IBAction func planTripButtonPressed(_ sender: Any) {
+        if let tabBarController = self.tabBarController {
+            tabBarController.selectedIndex = 1
+        }
+    }
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

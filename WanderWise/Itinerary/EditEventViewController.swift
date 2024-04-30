@@ -119,7 +119,7 @@ class EditEventViewController: UIViewController, UITextFieldDelegate, UITextView
         
         // Specify the place data types to return.
         let fields: GMSPlaceField = GMSPlaceField(rawValue: UInt64(UInt(GMSPlaceField.name.rawValue) |
-            UInt(GMSPlaceField.placeID.rawValue)))
+                                                                   UInt(GMSPlaceField.placeID.rawValue)))
         autocompleteController.placeFields = fields
         
         // Display the autocomplete view controller.

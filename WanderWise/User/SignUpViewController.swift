@@ -44,38 +44,38 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
-
+    
     @IBAction func createAccountPressed(_ sender: Any) {
         if (allFieldsFilled()) {
             // create a new user
             if self.passwordField.text! == self.confirmPasswordField.text! {
                 Auth.auth().createUser(withEmail: self.emailField.text!, password: self.passwordField.text!)  {
-                        (authResult, error) in
-                        if let error = error as NSError? {
-                            let signUpErrorAlert = UIAlertController(
-                                title: "Error",
-                                message: "\(error.localizedDescription)",
-                                preferredStyle: .alert)
-                                signUpErrorAlert.addAction(UIAlertAction(
-                                    title: "OK",
-                                    style: .default))
-                            self.present(signUpErrorAlert, animated: true)
-                        } else {
-                            if (self.saveUserProfile(authResult: authResult)) {
-                                self.performSegue(withIdentifier: "SignUpToHomeSegue", sender: self)
-                            }
+                    (authResult, error) in
+                    if let error = error as NSError? {
+                        let signUpErrorAlert = UIAlertController(
+                            title: "Error",
+                            message: "\(error.localizedDescription)",
+                            preferredStyle: .alert)
+                        signUpErrorAlert.addAction(UIAlertAction(
+                            title: "OK",
+                            style: .default))
+                        self.present(signUpErrorAlert, animated: true)
+                    } else {
+                        if (self.saveUserProfile(authResult: authResult)) {
+                            self.performSegue(withIdentifier: "SignUpToHomeSegue", sender: self)
                         }
+                    }
                 }
             } else {
-            // Alert for mismatching password fields
-            let signUpErrorAlert = UIAlertController(
-                title: "Error",
-                message: "Passwords do not match",
-                preferredStyle: .alert)
+                // Alert for mismatching password fields
+                let signUpErrorAlert = UIAlertController(
+                    title: "Error",
+                    message: "Passwords do not match",
+                    preferredStyle: .alert)
                 signUpErrorAlert.addAction(UIAlertAction(
-                title: "OK",
-                style: .default))
-            self.present(signUpErrorAlert, animated: true)
+                    title: "OK",
+                    style: .default))
+                self.present(signUpErrorAlert, animated: true)
             }
         }
     }
@@ -97,13 +97,13 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
         newUser.saveUserInfo(userId: userId) { error in
             if let error = error {
-                    // Handle error
-                    print("Error saving user info: \(error.localizedDescription)")
-                } else {
-                    // User info saved successfully
-                    print("UserProfile info saved successfully")
-                    successfulSave = true
-                }
+                // Handle error
+                print("Error saving user info: \(error.localizedDescription)")
+            } else {
+                // User info saved successfully
+                print("UserProfile info saved successfully")
+                successfulSave = true
+            }
         }
         return successfulSave
     }
@@ -124,7 +124,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                 title: "Missing Information",
                 message: "Please fill in all fields.",
                 preferredStyle: .alert)
-                signUpErrorAlert.addAction(UIAlertAction(
+            signUpErrorAlert.addAction(UIAlertAction(
                 title: "OK",
                 style: .default))
             self.present(signUpErrorAlert, animated: true)
@@ -133,7 +133,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         }
         return allFieldsFilled
     }
-
+    
 }
 
 

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22155" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iwz-7F-Zkg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iwz-7F-Zkg">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22131"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22684"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -194,14 +194,8 @@
                                     <action selector="createTripButtonPressed:" destination="7Pt-uj-LiT" eventType="touchUpInside" id="Qt6-Tw-EyE"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Trip" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="979-xf-dV2">
-                                <rect key="frame" x="139" y="113" width="115" height="34"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ODL-YV-fVp">
-                                <rect key="frame" x="16" y="440" width="361" height="39"/>
+                                <rect key="frame" x="16" y="440" width="350" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Entertainment"/>
@@ -210,7 +204,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K0c-WD-mHo">
-                                <rect key="frame" x="16" y="500" width="361" height="39"/>
+                                <rect key="frame" x="16" y="500" width="350" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Food"/>
@@ -227,6 +221,12 @@
                                     <action selector="attractionBtnPressed:" destination="7Pt-uj-LiT" eventType="touchUpInside" id="qTh-zN-Ty3"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Trip" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="979-xf-dV2">
+                                <rect key="frame" x="139" y="113" width="115" height="34"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="yu5-LW-9lH"/>
                         <color key="backgroundColor" red="0.91435998679999997" green="0.96225148439999997" blue="0.9963367581" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
@@ -452,7 +452,7 @@
                                     <color key="baseBackgroundColor" red="0.72991901640000001" green="0.3883774579" blue="0.39606451990000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </buttonConfiguration>
                                 <connections>
-                                    <segue destination="7Pt-uj-LiT" kind="show" id="ZQB-ef-5vd"/>
+                                    <action selector="planTripButtonPressed:" destination="P4n-Ee-dTD" eventType="touchUpInside" id="S6L-5E-qlN"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bT6-g6-jie">
@@ -1441,6 +1441,7 @@
             <objects>
                 <navigationController id="dll-oS-5kw" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="" image="calendar" catalog="system" id="naH-6r-zax"/>
+                    <navigationItem key="navigationItem" id="xp2-QZ-1SO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Mar-nK-7lL">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -1530,7 +1531,6 @@
         <segue reference="3XM-mh-Crs"/>
         <segue reference="5Ea-2u-8gu"/>
         <segue reference="OcL-vV-pD4"/>
-        <segue reference="ZQB-ef-5vd"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="calendar" catalog="system" width="128" height="107"/>

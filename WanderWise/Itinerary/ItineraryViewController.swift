@@ -29,7 +29,7 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.delegate = self
         tableView.dataSource = self
         tableView.contentInset = UIEdgeInsets(top: -25, left: 0, bottom: 0, right: 0)
-
+        
         
         titleLabel.text = trip.name
         dateFormatter.dateStyle = .medium
@@ -55,7 +55,7 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return trip.days[section].events.count
     }
-        
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         selectedEvent = trip.days[indexPath.section].events[indexPath.row]
         tableView.deselectRow(at: indexPath, animated: true)
@@ -108,9 +108,9 @@ class ItineraryViewController: UIViewController, UITableViewDelegate, UITableVie
         }
         locationLabel.text = trip.location
     }
-
+    
     // MARK: - Navigation
-
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "EditItinerarySegueIdentifier",
            let destination = segue.destination as? EditItineraryViewController {

@@ -1,6 +1,0 @@
-framework module Pods_WanderWise {
-  umbrella header "Pods-WanderWise-umbrella.h"
-
-  export *
-  module * { export * }
-}

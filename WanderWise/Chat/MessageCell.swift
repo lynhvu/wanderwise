@@ -33,7 +33,7 @@ class MessageCell: UITableViewCell {
 //            trailingConstraint!.isActive = true
 //        }
         
-        var constraints: [NSLayoutConstraint] = []
+//        var constraints: [NSLayoutConstraint] = []
         
         // set up some constraints for our message and lable
 //        constraints = [messageLabel.topAnchor.constraint(equalTo: topAnchor, constant: 18),
